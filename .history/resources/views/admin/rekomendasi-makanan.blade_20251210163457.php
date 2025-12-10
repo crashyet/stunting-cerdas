@@ -1,0 +1,148 @@
+@extends('layouts.admin-layout')
+
+@section('title', 'Rekomendasi Makanan')
+
+@section('sidebar')
+    @include('components.sidebar')
+@endsection
+
+@section('content')
+<script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+
+<div class="flex flex-col animate-[fadeUp_.5s_ease-out]">
+
+    {{-- TITLE --}}
+    <h1 class="text-3xl font-bold mb-2 animate-[fadeUp_.55s_ease-out]">Manajemen Rekomendasi Makanan</h1>
+    <p class="text-gray-500 mb-8 animate-[fadeUp_.6s_ease-out]">Kelola daftar makanan bergizi untuk anak</p>
+
+    {{-- SEARCH BAR --}}
+    <div class="bg-white rounded-xl border px-5 py-4 flex items-center gap-3 mb-6 animate-[fadeUp_.65s_ease-out]">
+        <i class="fa-solid fa-magnifying-glass text-gray-400"></i>
+        <input type="text" placeholder="Cari makanan..."
+               class="w-full focus:outline-none text-gray-600">
+    </div>
+
+    {{-- HEADER + TAMBAH --}}
+    <div class="flex justify-between items-center mb-4 animate-[fadeUp_.7s_ease-out]">
+        <h2 class="text-xl font-semibold flex items-center gap-2">
+            <i class="fa-solid fa-bowl-food text-green-600"></i>
+            Daftar Makanan (6)
+        </h2>
+
+        <button @click="openModal = true"
+    class="px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg flex items-center gap-2">
+    <i class="fa-solid fa-plus"></i> Tambah Makanan
+</button>
+
+    </div>
+
+    {{-- TABEL --}}
+    <div class="bg-white border rounded-xl overflow-hidden animate-[fadeUp_.8s_ease-out]">
+        <table class="w-full text-left">
+            <thead class="bg-gray-100 border-b">
+                <tr>
+                    <th class="py-3 px-5">Nama</th>
+                    <th class="py-3 px-5">Kategori</th>
+                    <th class="py-3 px-5">Usia</th>
+                    <th class="py-3 px-5">Kalori</th>
+                    <th class="py-3 px-5">Protein</th>
+                    <th class="py-3 px-5">Aksi</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                {{-- ROW 1 --}}
+                <tr class="border-b animate-[fadeUp_.85s_ease-out]">
+                    <td class="py-4 px-5">Bubur Ayam Sayur</td>
+                    <td class="px-5">MPASI</td>
+                    <td class="px-5">6–12 bulan</td>
+                    <td class="px-5">150</td>
+                    <td class="px-5">8g</td>
+                    <td class="px-5 flex gap-3">
+                        <button class="text-gray-700 hover:text-black"><i class="fa-solid fa-pen"></i></button>
+                        <button class="text-red-500 hover:text-red-700"><i class="fa-solid fa-trash"></i></button>
+                    </td>
+                </tr>
+
+                {{-- ROW 2 --}}
+                <tr class="border-b animate-[fadeUp_.9s_ease-out]">
+                    <td class="py-4 px-5">Telur Orak-arik dengan Wortel</td>
+                    <td class="px-5">Sarapan</td>
+                    <td class="px-5">12–24 bulan</td>
+                    <td class="px-5">180</td>
+                    <td class="px-5">12g</td>
+                    <td class="px-5 flex gap-3">
+                        <button class="text-gray-700 hover:text-black"><i class="fa-solid fa-pen"></i></button>
+                        <button class="text-red-500 hover:text-red-700"><i class="fa-solid fa-trash"></i></button>
+                    </td>
+                </tr>
+
+                {{-- ROW 3 --}}
+                <tr class="border-b animate-[fadeUp_.95s_ease-out]">
+                    <td class="py-4 px-5">Sup Ikan Salmon</td>
+                    <td class="px-5">Makan Siang</td>
+                    <td class="px-5">12–24 bulan</td>
+                    <td class="px-5">200</td>
+                    <td class="px-5">15g</td>
+                    <td class="px-5 flex gap-3">
+                        <button class="text-gray-700 hover:text-black"><i class="fa-solid fa-pen"></i></button>
+                        <button class="text-red-500 hover:text-red-700"><i class="fa-solid fa-trash"></i></button>
+                    </td>
+                </tr>
+
+                {{-- ROW 4 --}}
+                <tr class="border-b animate-[fadeUp_1s_ease-out]">
+                    <td class="py-4 px-5">Puree Pisang Alpukat</td>
+                    <td class="px-5">MPASI</td>
+                    <td class="px-5">6–12 bulan</td>
+                    <td class="px-5">120</td>
+                    <td class="px-5">2g</td>
+                    <td class="px-5 flex gap-3">
+                        <button class="text-gray-700 hover:text-black"><i class="fa-solid fa-pen"></i></button>
+                        <button class="text-red-500 hover:text-red-700"><i class="fa-solid fa-trash"></i></button>
+                    </td>
+                </tr>
+
+                {{-- ROW 5 --}}
+                <tr class="border-b animate-[fadeUp_1.05s_ease-out]">
+                    <td class="py-4 px-5">Nasi Tim Ayam Brokoli</td>
+                    <td class="px-5">Makan Siang</td>
+                    <td class="px-5">24–60 bulan</td>
+                    <td class="px-5">250</td>
+                    <td class="px-5">18g</td>
+                    <td class="px-5 flex gap-3">
+                        <button class="text-gray-700 hover:text-black"><i class="fa-solid fa-pen"></i></button>
+                        <button class="text-red-500 hover:text-red-700"><i class="fa-solid fa-trash"></i></button>
+                    </td>
+                </tr>
+
+                {{-- ROW 6 --}}
+                <tr class="animate-[fadeUp_1.1s_ease-out]">
+                    <td class="py-4 px-5">Smoothie Bayam Buah</td>
+                    <td class="px-5">Snack</td>
+                    <td class="px-5">24–60 bulan</td>
+                    <td class="px-5">100</td>
+                    <td class="px-5">3g</td>
+                    <td class="px-5 flex gap-3">
+                        <button class="text-gray-700 hover:text-black"><i class="fa-solid fa-pen"></i></button>
+                        <button class="text-red-500 hover:text-red-700"><i class="fa-solid fa-trash"></i></button>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+
+{{-- CUSTOM ANIMATION --}}
+<style>
+@keyframes fadeUp {
+    0% { opacity: 0; transform: translateY(12px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+</style>
+
+@endsection
