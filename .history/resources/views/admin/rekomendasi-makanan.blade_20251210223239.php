@@ -181,13 +181,6 @@
                                         <i class="fa-solid fa-trash"></i>
                                     </button>
                                 </form>
-                                <form action="{{ route('admin.rekomendasi.updateStatus', $item->id) }}" method="POST">
-    @csrf
-    <select name="status" class="border rounded px-3 py-2" onchange="this.form.submit()">
-        <option value="draft" {{ $item->status == 'draft' ? 'selected' : '' }}>Draft</option>
-        <option value="publish" {{ $item->status == 'publish' ? 'selected' : '' }}>Publish</option>
-    </select>
-</form>
                             </td>
                         @empty
                         <tr>

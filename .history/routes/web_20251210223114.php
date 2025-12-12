@@ -8,7 +8,6 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\User\EdukasiController as UserEdukasiController;
 use App\Http\Controllers\EdukasiController as AdminEdukasiController;
 use App\Http\Controllers\Admin\RekomendasiMakananController;
-use App\Http\Controllers\User\RekomendasiUserController;
 
 
 
@@ -58,13 +57,6 @@ Route::middleware(['auth', 'role:user'])->group(function () {
     // REKOMENDASI MAKANAN (Controller Baru)
     Route::get('/rekomendasi', [RekomendasiController::class, 'index'])
         ->name('user.rekomendasi');
-
-Route::get('/rekomendasi', [RekomendasiUserController::class, 'index'])
-    ->name('user.rekomendasi');
-
-Route::get('/rekomendasi/{slug}', [RekomendasiUserController::class, 'detail'])
-    ->name('user.rekomendasi.detail');
-
 
     // DATA ANAK
     Route::get('/data-anak', function () {
@@ -134,10 +126,10 @@ Route::post('/edukasi/store', [EdukasiController::class, 'store'])
 
     Route::post('/admin/rekomendasi-makanan/store', [RekomendasiMakananController::class,'store'])
         ->name('admin.rekomendasi.store');
-    Route::delete('/admin/rekomendasi-makanan/{id}', [RekomendasiMakananController::class, 'destroy'])
+        Route::delete('/admin/rekomendasi-makanan/{id}', [RekomendasiMakananController::class, 'destroy'])
     ->name('admin.rekomendasi.destroy');
 
-    Route::post('/rekomendasi-makanan/{id}/status', [RekomendasiMakananController::class, 'updateStatus'])
-        ->name('admin.rekomendasi.updateStatus');
+
+
 
 });

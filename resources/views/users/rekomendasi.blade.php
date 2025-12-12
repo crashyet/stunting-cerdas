@@ -164,11 +164,7 @@
 
             {{-- VITAMIN --}}
             <div class="flex gap-1 mt-3 flex-wrap">
-                @foreach ($food['vitamin'] as $v)
-                <span class="bg-gray-100 text-gray-700 text-[10px] px-2 py-1 rounded-full shadow-sm">
-                    {{ $v }}
-                </span>
-                @endforeach
+                
             </div>
 
         </div>

@@ -172,22 +172,8 @@
                             <td class="px-5">{{ $item->protein }}</td>
                             <td class="px-5 flex gap-3">
                                 <button class="text-gray-700 hover:text-black"><i class="fa-solid fa-pen"></i></button>
-
-                                <form action="{{ route('admin.rekomendasi.destroy', $item->id) }}" method="POST"
-                                    onsubmit="return confirm('Yakin ingin hapus?')">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="text-red-500 hover:text-red-700">
-                                        <i class="fa-solid fa-trash"></i>
-                                    </button>
-                                </form>
-                                <form action="{{ route('admin.rekomendasi.updateStatus', $item->id) }}" method="POST">
-    @csrf
-    <select name="status" class="border rounded px-3 py-2" onchange="this.form.submit()">
-        <option value="draft" {{ $item->status == 'draft' ? 'selected' : '' }}>Draft</option>
-        <option value="publish" {{ $item->status == 'publish' ? 'selected' : '' }}>Publish</option>
-    </select>
-</form>
+                                
+                                <button class="text-red-500 hover:text-red-700"><i class="fa-solid fa-trash"></i></button>
                             </td>
                         @empty
                         <tr>

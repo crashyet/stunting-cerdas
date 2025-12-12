@@ -11,7 +11,7 @@ class RekomendasiMakanan extends Model
     protected $fillable = [
         'judul', 'kategori', 'usia', 'porsi', 'kalori',
         'protein', 'karbo', 'lemak', 'vitamin', 'porsi_disarankan',
-        'tips', 'emoji', 'slug','gambar'
+        'tips', 'emoji', 'slug' 'gambar'
     ];
 
     protected $casts = [
