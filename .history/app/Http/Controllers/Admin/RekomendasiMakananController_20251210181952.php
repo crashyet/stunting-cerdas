@@ -23,20 +23,31 @@ class RekomendasiMakananController extends Controller
     public function store(Request $request)
     {
         // VALIDASI
-        $validated = $request->validate([
+        $request->validate([
             'judul' => 'required',
             'kategori' => 'required',
-            'gambar' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048', 
+            'usia' => 'required',
+            'porsi' => 'required',
+            'kalori' => 'required|integer',
+            'protein' => 'required',
+            'karbo' => 'required',
+            'lemak' => 'required',
+            'vitamin' => 'required',
+            'porsi_disarankan' => 'required',
+            'tips' => 'required',
+            'emoji' => 'nullable',
+            'gambar' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
         ]);
 
-        // UPLOAD GAMBAR
+        // PROSES UPLOAD GAMBAR
         $filename = null;
+
         if ($request->hasFile('gambar')) {
             $filename = time() . '-' . $request->file('gambar')->getClientOriginalName();
             $request->file('gambar')->move(public_path('uploads/rekomendasi'), $filename);
         }
 
-        // SIMPAN KE DB
+        // SIMPAN DATA
         RekomendasiMakanan::create([
             'judul' => $request->judul,
             'kategori' => $request->kategori,
@@ -52,41 +63,9 @@ class RekomendasiMakananController extends Controller
             'emoji' => $request->emoji,
             'slug' => Str::slug($request->judul),
             'gambar' => $filename,
-            'status' => $request->status ?? 'draft', // ← tambahkan ini
-
         ]);
 
         return redirect()->route('admin.rekomendasi.index')
             ->with('success', 'Berhasil ditambahkan!');
     }
-
-    public function destroy($id)
-{
-    $item = RekomendasiMakanan::findOrFail($id);
-
-    // Hapus file gambar jika ada
-    if ($item->gambar && file_exists(public_path('uploads/rekomendasi/' . $item->gambar))) {
-        unlink(public_path('uploads/rekomendasi/' . $item->gambar));
-    }
-
-    // Hapus data dari database
-    $item->delete();
-
-    return redirect()->route('admin.rekomendasi.index')
-        ->with('success', 'Data berhasil dihapus!');
-}
-
-
-public function updateStatus(Request $request, $id)
-{
-    $data = RekomendasiMakanan::findOrFail($id);
-
-    $data->status = $data->status == 'draft' ? 'publish' : 'draft';
-    $data->save();
-
-    return back()->with('success', 'Status berhasil diperbarui!');
-}
-
-
-
 }

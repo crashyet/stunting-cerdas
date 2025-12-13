@@ -55,8 +55,7 @@
                     </div>
 
                     {{-- FORM --}}
-                    <form action="{{ route('admin.rekomendasi.store') }}" method="POST" enctype="multipart/form-data"
-                        class="space-y-4">
+                    <form action="{{ route('admin.rekomendasi.store') }}" method="POST" class="space-y-4">
                         @csrf
 
                         {{-- Nama + Kategori --}}
@@ -131,11 +130,7 @@
                             <label class="text-sm font-medium">Tips (pisahkan enter)</label>
                             <textarea name="tips" class="w-full border rounded-md px-3 py-2 h-24 focus:ring-2 focus:ring-green-500"></textarea>
                         </div>
-                        {{-- Gambar --}}
-                        <label class="text-sm font-medium">Gambar Makanan</label>
-                        <input type="file" name="gambar" class="border p-2 rounded">
-                        {{-- <p class="text-red-500 text-sm mt-1">{{ $message }}</p> --}}
-
+                         <input type="file" name="gambar" class="border p-2 rounded">
 
                         {{-- Submit --}}
                         <button class="w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg font-semibold">
@@ -163,37 +158,23 @@
                 </thead>
 
                 <tbody>
-                    @forelse ($data as $item)
-                        <tr class="border-b animate-[fadeUp_.85s_ease-out]">
-                            <td class="py-4 px-5">{{ $item->judul }}</td>
-                            <td class="px-5">{{ $item->kategori }}</td>
-                            <td class="px-5">{{ $item->usia }} bulan</td>
-                            <td class="px-5">{{ $item->kalori }}</td>
-                            <td class="px-5">{{ $item->protein }}</td>
-                            <td class="px-5 flex gap-3">
-                                <button class="text-gray-700 hover:text-black"><i class="fa-solid fa-pen"></i></button>
+                            @forelse ($data as $item)
 
-                                <form action="{{ route('admin.rekomendasi.destroy', $item->id) }}" method="POST"
-                                    onsubmit="return confirm('Yakin ingin hapus?')">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="text-red-500 hover:text-red-700">
-                                        <i class="fa-solid fa-trash"></i>
-                                    </button>
-                                </form>
-                                <form action="{{ route('admin.rekomendasi.updateStatus', $item->id) }}" method="POST">
-    @csrf
-    <select name="status" class="border rounded px-3 py-2" onchange="this.form.submit()">
-        <option value="draft" {{ $item->status == 'draft' ? 'selected' : '' }}>Draft</option>
-        <option value="publish" {{ $item->status == 'publish' ? 'selected' : '' }}>Publish</option>
-    </select>
-</form>
-                            </td>
-                        @empty
-                        <tr>
-                            <td colspan="4" class="text-center p-3">Belum ada data</td>
-                        </tr>
-                    @endforelse
+                    <tr class="border-b animate-[fadeUp_.85s_ease-out]">
+                        <td class="py-4 px-5">{{ $item->judul }}</td>
+                        <td class="px-5">{{ $item->kategori }}</td>
+                        <td class="px-5">{{ $item->usia }} bulan</td>
+                        <td class="px-5">{{ $item->kalori }}</td>
+                        <td class="px-5">{{ $item->protein }}</td>
+                        <td class="px-5 flex gap-3">
+                            <button class="text-gray-700 hover:text-black"><i class="fa-solid fa-pen"></i></button>
+                            <button class="text-red-500 hover:text-red-700"><i class="fa-solid fa-trash"></i></button>
+                        </td>
+                    @empty
+        <tr>
+            <td colspan="4" class="text-center p-3">Belum ada data</td>
+        </tr>
+        @endforelse
                 </tbody>
 
             </table>

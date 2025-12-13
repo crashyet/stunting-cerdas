@@ -52,8 +52,6 @@ class RekomendasiMakananController extends Controller
             'emoji' => $request->emoji,
             'slug' => Str::slug($request->judul),
             'gambar' => $filename,
-            'status' => $request->status ?? 'draft', // ← tambahkan ini
-
         ]);
 
         return redirect()->route('admin.rekomendasi.index')
@@ -75,18 +73,5 @@ class RekomendasiMakananController extends Controller
     return redirect()->route('admin.rekomendasi.index')
         ->with('success', 'Data berhasil dihapus!');
 }
-
-
-public function updateStatus(Request $request, $id)
-{
-    $data = RekomendasiMakanan::findOrFail($id);
-
-    $data->status = $data->status == 'draft' ? 'publish' : 'draft';
-    $data->save();
-
-    return back()->with('success', 'Status berhasil diperbarui!');
-}
-
-
 
 }
