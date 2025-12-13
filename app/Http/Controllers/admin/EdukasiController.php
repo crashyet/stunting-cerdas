@@ -1,31 +1,34 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Edukasi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 class EdukasiController extends Controller
 {
-public function kontenEdukasi()
-{
-    $edukasis = Edukasi::all();
-    return view('admin.konten-edukasi', compact('edukasis'));
-}
+    /* ================= ADMIN: LIST ================= */
+    public function kontenEdukasi()
+    {
+        $edukasis = Edukasi::all();
+        return view('admin.konten-edukasi', compact('edukasis'));
+    }
 
-public function updateStatus($id, Request $request)
-{
-    $edukasi = Edukasi::findOrFail($id);
+    /* ================= ADMIN: UPDATE STATUS ================= */
+    public function updateStatus($id, Request $request)
+    {
+        $edukasi = Edukasi::findOrFail($id);
 
-    $edukasi->update([
-        'status' => $request->status
-    ]);
+        $edukasi->update([
+            'status' => $request->status
+        ]);
 
-    return back()->with('success', 'Status artikel berhasil diperbarui!');
-}
+        return back()->with('success', 'Status artikel berhasil diperbarui!');
+    }
 
-
+    /* ================= ADMIN: STORE ================= */
     public function store(Request $request)
     {
         $request->validate([
@@ -38,13 +41,12 @@ public function updateStatus($id, Request $request)
             'thumbnail' => 'nullable|image',
         ]);
 
-        // Upload thumbnail
         $thumbnailPath = null;
         if ($request->hasFile('thumbnail')) {
             $thumbnailPath = $request->file('thumbnail')->store('thumbnail', 'public');
         }
 
-        // --- Generate Slug Unik ---
+        // Generate slug unik
         $slug = Str::slug($request->judul);
         $originalSlug = $slug;
         $counter = 1;
@@ -54,11 +56,10 @@ public function updateStatus($id, Request $request)
             $counter++;
         }
 
-        // --- Insert ke DB ---
         Edukasi::create([
             'kategori' => $request->kategori,
             'judul' => $request->judul,
-            'slug' => $slug, // ← pakai slug hasil pengecekan
+            'slug' => $slug,
             'penulis' => $request->penulis,
             'tanggal_publikasi' => now(),
             'waktu_baca' => $request->waktu_baca,
@@ -66,20 +67,17 @@ public function updateStatus($id, Request $request)
             'intro' => $request->intro,
             'konten' => $request->konten,
             'status' => 'draft',
-
         ]);
 
         return back()->with('success', 'Artikel berhasil ditambahkan!');
     }
 
+    /* ================= ADMIN: DELETE ================= */
     public function destroy($id)
-{
-    $edukasi = Edukasi::findOrFail($id);
-    $edukasi->delete();
+    {
+        $edukasi = Edukasi::findOrFail($id);
+        $edukasi->delete();
 
-    return redirect()->back()->with('success', 'Data edukasi berhasil dihapus!');
-}
-
-
-
+        return redirect()->back()->with('success', 'Data edukasi berhasil dihapus!');
+    }
 }

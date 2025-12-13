@@ -2,24 +2,19 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\EdukasiController;
-use App\Http\Controllers\RekomendasiController;
+
+
+use App\Http\Controllers\Admin\EdukasiController as AdminEdukasiController;
 use App\Http\Controllers\Admin\UserController;
-use App\Http\Controllers\User\EdukasiController as UserEdukasiController;
-use App\Http\Controllers\EdukasiController as AdminEdukasiController;
 use App\Http\Controllers\Admin\RekomendasiMakananController;
 
+use App\Http\Controllers\User\EdukasiController as UserEdukasiController;
+use App\Http\Controllers\RekomendasiController;
 
 
-/*
-|--------------------------------------------------------------------------
-| Landing Page
-|--------------------------------------------------------------------------
-*/
 Route::get('/', function () {
     return view('landingpage');
 })->name('landing');
-
 
 /*
 |--------------------------------------------------------------------------
@@ -34,7 +29,6 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/register', [AuthController::class, 'showRegister'])->name('register');
 Route::post('/register', [AuthController::class, 'register'])->name('register.post');
 
-
 /*
 |--------------------------------------------------------------------------
 | USER Routes (role:user)
@@ -42,8 +36,8 @@ Route::post('/register', [AuthController::class, 'register'])->name('register.po
 */
 Route::middleware(['auth', 'role:user'])->group(function () {
 
-    // HALAMAN UTAMA SETELAH LOGIN → EDUKASI
-     Route::get('/edukasi', [UserEdukasiController::class, 'index'])
+    // HALAMAN UTAMA → EDUKASI
+    Route::get('/edukasi', [UserEdukasiController::class, 'index'])
         ->name('user.edukasi');
 
     Route::get('/edukasi/{slug}', [UserEdukasiController::class, 'detail'])
@@ -54,9 +48,14 @@ Route::middleware(['auth', 'role:user'])->group(function () {
         return view('users.cek-stunting');
     })->name('user.cekstunting');
 
-    // REKOMENDASI MAKANAN (Controller Baru)
+    // REKOMENDASI MAKANAN
     Route::get('/rekomendasi', [RekomendasiController::class, 'index'])
         ->name('user.rekomendasi');
+
+    // DETEKSI MAKANAN 
+    Route::get('/deteksi-makanan', function () {return view('users.deteksi-makanan');
+        })->middleware(['auth', 'role:user'])
+        ->name('user.deteksi.makanan');
 
     // DATA ANAK
     Route::get('/data-anak', function () {
@@ -67,9 +66,7 @@ Route::middleware(['auth', 'role:user'])->group(function () {
     Route::get('/dashboard', function () {
         return view('users.dashboard');
     })->name('user.dashboard');
-
 });
-
 
 /*
 |--------------------------------------------------------------------------
@@ -78,47 +75,46 @@ Route::middleware(['auth', 'role:user'])->group(function () {
 */
 Route::middleware(['auth', 'role:admin'])->group(function () {
 
+    // DASHBOARD
     Route::get('/admin/dashboard', function () {
         return view('admin.dashboard');
     })->name('admin.dashboard');
 
-    Route::get('/admin/konten-edukasi', function () {
-    return view('admin.konten-edukasi');
-    });
+    // ARTIKEL EDUKASI
+    Route::get('/admin/konten-edukasi', [AdminEdukasiController::class, 'kontenEdukasi'])
+        ->name('admin.konten-edukasi');
 
+    Route::post('/edukasi/store', [AdminEdukasiController::class, 'store'])
+        ->name('admin.edukasi.store');
+
+    Route::delete('/admin/edukasi/{id}', [AdminEdukasiController::class, 'destroy'])
+        ->name('edukasi.destroy');
+
+    Route::patch('/admin/edukasi/{id}/status', [AdminEdukasiController::class, 'updateStatus'])
+        ->name('edukasi.updateStatus');
+
+    // HALAMAN TANPA CONTROLLER
     Route::get('/admin/rekomendasi-makanan', function () {
-    return view('admin.rekomendasi-makanan');
+        return view('admin.rekomendasi-makanan');
     });
 
     Route::get('/admin/cek-stunting', function () {
-    return view('admin.cek-stunting');
+        return view('admin.cek-stunting');
     });
 
     Route::get('/admin/cek-gizi', function () {
-    return view('admin.cek-gizi');
+        return view('admin.cek-gizi');
     });
 
     // MANAGEMENT USER
     Route::get('/admin/manajemen-user', [UserController::class, 'index'])
-    ->name('admin.users.index');
+        ->name('admin.users.index');
 
-Route::delete('/admin/manajemen-user/{user}', [UserController::class, 'destroy'])
-    ->name('admin.users.destroy');
-
-    // ARTIKEL EDUKASI
-Route::post('/edukasi/store', [EdukasiController::class, 'store'])
-        ->name('admin.edukasi.store');
-
-    Route::get('/admin/konten-edukasi', [EdukasiController::class, 'kontenEdukasi'])
-    ->name('admin.konten-edukasi');
-
-    Route::delete('/admin/edukasi/{id}', [EdukasiController::class, 'destroy'])->name('edukasi.destroy');
-
-    Route::patch('/admin/edukasi/{id}/status', [EdukasiController::class, 'updateStatus'])
-    ->name('edukasi.updateStatus');
+    Route::delete('/admin/manajemen-user/{user}', [UserController::class, 'destroy'])
+        ->name('admin.users.destroy');
 
     // REKOMENDASI MAKANAN
-     Route::get('/admin/rekomendasi-makanan', [RekomendasiMakananController::class,'index'])
+    Route::get('/admin/rekomendasi-makanan', [RekomendasiMakananController::class,'index'])
         ->name('admin.rekomendasi.index');
 
     Route::get('/admin/rekomendasi-makanan/create', [RekomendasiMakananController::class,'create'])
@@ -126,8 +122,4 @@ Route::post('/edukasi/store', [EdukasiController::class, 'store'])
 
     Route::post('/admin/rekomendasi-makanan/store', [RekomendasiMakananController::class,'store'])
         ->name('admin.rekomendasi.store');
-
-
-
-
 });

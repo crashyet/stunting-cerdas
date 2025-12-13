@@ -12,7 +12,7 @@
     <div class="absolute -top-28 -left-24 w-96 h-96 bg-green-300/20 blur-[130px] rounded-full"></div>
     <div class="absolute top-10 -right-40 w-[460px] h-[460px] bg-blue-300/20 blur-[160px] rounded-full"></div>
 
-    {{-- HERO CONTENT WRAPPER (ANIMASI DARI DALAM KE LUAR) --}}
+    {{-- HERO CONTENT WRAPPER --}}
     <div class="relative max-w-6xl mx-auto px-6 text-center scroll-hero">
 
         {{-- Badge --}}
@@ -106,10 +106,68 @@
                         px-7 py-6 transition-all hover:-translate-y-1 hover:shadow-xl scroll-fade">
 
                 {{-- ICON BOX --}}
-                <div class="w-14 h-14 flex items-center justify-center text-2xl
-                            rounded-xl bg-gradient-to-br from-blue-100 to-purple-100
-                            shadow-inner mb-4">
-                    {{ $item['icon'] }}
+                <div class="w-14 h-14 bg-green-100 rounded-2xl flex items-center justify-center shadow-sm mb-4">
+
+                    @switch($item['icon'])
+
+                        @case('📏')
+                            {{-- Ruler --}}
+                            <svg class="w-8 h-8 text-green-600" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                    d="M3 8l7-5 7 5v8l-7 5-7-5V8z" />
+                            </svg>
+                        @break
+
+                        @case('📘')
+                            {{-- Book --}}
+                            <svg class="w-8 h-8 text-blue-600" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                    d="M4 5a2 2 0 012-2h10a2 2 0 012 2v13a2 2 0 01-2 2H6a2 2 0 01-2-2V5z"/>
+                            </svg>
+                        @break
+
+                        @case('🥗')
+                            {{-- Food --}}
+                            <svg class="w-8 h-8 text-orange-500" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                    d="M4 10h16M5 10c-.5 3.5 2 7 7 7s7.5-3.5 7-7"/>
+                            </svg>
+                        @break
+
+                        @case('💙')
+                            {{-- Heart --}}
+                            <svg class="w-8 h-8 text-red-500" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                    d="M12 21s-6.5-4-9-9c-2-4 1-8 5-8a5 5 0 014 2 5 5 0 014-2c4 0 7 4 5 8-2.5 5-9 9-9 9z"/>
+                            </svg>
+                        @break
+
+                        @case('👨‍👩‍👧')
+                            {{-- Family --}}
+                            <svg class="w-8 h-8 text-purple-600" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <circle cx="7" cy="7" r="3" stroke-width="2"/>
+                                <circle cx="17" cy="7" r="3" stroke-width="2"/>
+                                <path stroke-width="2" d="M2 21v-1a5 5 0 015-5h3a5 5 0 015 5v1"/>
+                                <path stroke-width="2" d="M14 21v-1a5 5 0 015-5h1"/>
+                            </svg>
+                        @break
+
+                        @case('📊')
+                            {{-- Chart --}}
+                            <svg class="w-8 h-8 text-blue-600" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                    d="M4 20h16M6 16l3-3 3 3 4-6"/>
+                            </svg>
+                        @break
+
+                    @endswitch
+
                 </div>
 
                 {{-- TITLE --}}
@@ -142,14 +200,18 @@
             memantau pertumbuhan anak, memahami risiko stunting, dan mengambil langkah pencegahan sejak dini.
         </p>
 
-        {{-- CARD LIST --}}
         <div class="grid md:grid-cols-3 gap-10 mt-16">
 
+            {{-- CARD 1 --}}
             <div class="p-8 rounded-2xl bg-white/60 backdrop-blur shadow-md border border-gray-100 
                         hover:shadow-xl transition-all hover:-translate-y-1 scroll-fade">
                 <div class="w-14 h-14 mx-auto mb-4 flex items-center justify-center 
-                            bg-blue-100 rounded-full text-2xl">
-                    🚼
+                            bg-blue-100 rounded-full">
+                    <svg class="w-8 h-8 text-blue-600" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <circle cx="12" cy="7" r="3" stroke-width="2"/>
+                        <path stroke-width="2" d="M5 21v-1a7 7 0 0114 0v1"/>
+                    </svg>
                 </div>
                 <h3 class="font-semibold text-xl text-gray-800 mb-2">Edukasi Terpercaya</h3>
                 <p class="text-gray-600 text-sm leading-relaxed">
@@ -157,11 +219,15 @@
                 </p>
             </div>
 
+            {{-- CARD 2 --}}
             <div class="p-8 rounded-2xl bg-white/60 backdrop-blur shadow-md border border-gray-100 
                         hover:shadow-xl transition-all hover:-translate-y-1 scroll-fade">
                 <div class="w-14 h-14 mx-auto mb-4 flex items-center justify-center 
-                            bg-purple-100 rounded-full text-2xl">
-                    📊
+                            bg-purple-100 rounded-full">
+                    <svg class="w-8 h-8 text-purple-600" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-width="2" d="M4 20h16M6 16h2m2-4h2m2-3h2"/>
+                    </svg>
                 </div>
                 <h3 class="font-semibold text-xl text-gray-800 mb-2">Data Akurat WHO</h3>
                 <p class="text-gray-600 text-sm leading-relaxed">
@@ -169,11 +235,15 @@
                 </p>
             </div>
 
+            {{-- CARD 3 --}}
             <div class="p-8 rounded-2xl bg-white/60 backdrop-blur shadow-md border border-gray-100 
                         hover:shadow-xl transition-all hover:-translate-y-1 scroll-fade">
                 <div class="w-14 h-14 mx-auto mb-4 flex items-center justify-center 
-                            bg-green-100 rounded-full text-2xl">
-                    🤝
+                            bg-green-100 rounded-full">
+                    <svg class="w-8 h-8 text-green-600" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-width="2" d="M4 12l4 4 6-6 6 6"/>
+                    </svg>
                 </div>
                 <h3 class="font-semibold text-xl text-gray-800 mb-2">Kolaborasi Tenaga Medis</h3>
                 <p class="text-gray-600 text-sm leading-relaxed">
@@ -200,38 +270,72 @@
 
         <div class="grid md:grid-cols-3 gap-10">
 
+            {{-- CARD 1 — Pencegahan Stunting --}}
             <div class="p-8 bg-white rounded-3xl border border-gray-100 shadow-md
                         hover:shadow-xl transition-all hover:-translate-y-1 scroll-fade">
-                <div class="w-14 h-14 flex items-center justify-center rounded-full bg-blue-100 text-2xl mb-5">
-                    📌
+                <div class="w-14 h-14 flex items-center justify-center rounded-full bg-blue-100 mb-5">
+
+                    {{-- ICON: SHIELD CHECK --}}
+                    <svg class="w-7 h-7 text-blue-600" fill="none" viewBox="0 0 24 24"
+                         stroke="currentColor">
+                        <path stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                              d="M12 3l7 4v5c0 5-3.5 9-7 9s-7-4-7-9V7l7-4z" />
+                        <path stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                              d="M9 12l2 2 4-4" />
+                    </svg>
+
                 </div>
+
                 <h3 class="font-bold text-xl text-gray-800 mb-3">Pencegahan Stunting</h3>
                 <p class="text-gray-600 leading-relaxed">
                     Membantu orang tua mendeteksi risiko stunting sejak usia dini.
                 </p>
             </div>
 
+            {{-- CARD 2 — Edukasi Nasional --}}
             <div class="p-8 bg-white rounded-3xl border border-gray-100 shadow-md
                         hover:shadow-xl transition-all hover:-translate-y-1 scroll-fade">
-                <div class="w-14 h-14 flex items-center justify-center rounded-full bg-purple-100 text-2xl mb-5">
-                    📌
+                <div class="w-14 h-14 flex items-center justify-center rounded-full bg-purple-100 mb-5">
+
+                    {{-- ICON: LIGHT BULB / IDEA --}}
+                    <svg class="w-7 h-7 text-purple-600" fill="none" viewBox="0 0 24 24"
+                         stroke="currentColor">
+                        <path stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                              d="M12 3a6 6 0 016 6c0 2.2-1.2 3.5-2.3 4.5A4 4 0 0114 17v1H10v-1a4 4 0 01-1.7-3.5C7.2 12.5 6 11.2 6 9a6 6 0 016-6z" />
+                        <path stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                              d="M10 21h4" />
+                    </svg>
+
                 </div>
+
                 <h3 class="font-bold text-xl text-gray-800 mb-3">Edukasi Nasional</h3>
                 <p class="text-gray-600 leading-relaxed">
                     Memberikan informasi terpercaya dan mudah dipahami masyarakat.
                 </p>
             </div>
 
+            {{-- CARD 3 — Monitoring Real-Time --}}
             <div class="p-8 bg-white rounded-3xl border border-gray-100 shadow-md
                         hover:shadow-xl transition-all hover:-translate-y-1 scroll-fade">
-                <div class="w-14 h-14 flex items-center justify-center rounded-full bg-green-100 text-2xl mb-5">
-                    📌
+                <div class="w-14 h-14 flex items-center justify-center rounded-full bg-green-100 mb-5">
+
+                    {{-- ICON: CHART TREND --}}
+                    <svg class="w-7 h-7 text-green-600" fill="none" viewBox="0 0 24 24"
+                         stroke="currentColor">
+                        <path stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                              d="M4 20h16" />
+                        <path stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                              d="M6 16l4-4 3 3 5-7" />
+                    </svg>
+
                 </div>
+
                 <h3 class="font-bold text-xl text-gray-800 mb-3">Monitoring Real-Time</h3>
                 <p class="text-gray-600 leading-relaxed">
                     Memantau grafik perkembangan anak dalam satu dashboard lengkap.
                 </p>
             </div>
+
         </div>
     </div>
 </section>
@@ -249,9 +353,8 @@
     });
 </script>
 
-{{-- ========== ANIMASI SCROLL (HERO INNER REVEAL + SECTION FADE UP, repeatable) ========== --}}
+{{-- ANIMASI --}}
 <style>
-    /* HERO: muncul dari dalam ke luar (scale + blur + fade) */
     .scroll-hero {
         opacity: 0;
         transform: scale(0.85);
@@ -264,8 +367,6 @@
         transform: scale(1);
         filter: blur(0);
     }
-
-    /* SECTION LAIN: fade-up */
     .scroll-fade {
         opacity: 0;
         transform: translateY(26px);
@@ -281,9 +382,7 @@
     document.addEventListener('DOMContentLoaded', () => {
         const hero = document.querySelector('.scroll-hero');
 
-        // Jalankan animasi hero saat pertama kali halaman selesai dimuat
         if (hero) {
-            // sedikit delay biar transisinya kelihatan
             requestAnimationFrame(() => {
                 hero.classList.add('visible');
             });
@@ -291,12 +390,8 @@
 
         const observer = new IntersectionObserver(entries => {
             entries.forEach(entry => {
-                // Untuk hero dan section lain: animasi aktif tiap masuk viewport, hilang saat keluar
-                if (entry.isIntersecting) {
-                    entry.target.classList.add("visible");
-                } else {
-                    entry.target.classList.remove("visible");
-                }
+                if (entry.isIntersecting) entry.target.classList.add("visible");
+                else entry.target.classList.remove("visible");
             });
         }, { threshold: 0.25 });
 

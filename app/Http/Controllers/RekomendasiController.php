@@ -33,6 +33,79 @@ class RekomendasiController extends Controller
                 'protein' => '18g',
                 'vitamin' => ['Vitamin C','Vitamin K']
             ],
+            [
+                'nama' => 'Nasi Tim Ayam Brokoli',
+                'kategori' => 'Makan Siang',
+                'usia' => '24-60',
+                'kalori' => 250,
+                'protein' => '18g',
+                'vitamin' => ['Vitamin C','Vitamin K']
+            ],
+            [
+                'nama' => 'Nasi Tim Ayam Brokoli',
+                'kategori' => 'Makan Siang',
+                'usia' => '24-60',
+                'kalori' => 250,
+                'protein' => '18g',
+                'vitamin' => ['Vitamin C','Vitamin K']
+            ],
+            [
+                'nama' => 'Nasi Tim Ayam Brokoli',
+                'kategori' => 'Makan Siang',
+                'usia' => '24-60',
+                'kalori' => 250,
+                'protein' => '18g',
+                'vitamin' => ['Vitamin C','Vitamin K']
+            ],
+            [
+                'nama' => 'Nasi Tim Ayam Brokoli',
+                'kategori' => 'Makan Siang',
+                'usia' => '24-60',
+                'kalori' => 250,
+                'protein' => '18g',
+                'vitamin' => ['Vitamin C','Vitamin K']
+            ],
+            [
+                'nama' => 'Nasi Tim Ayam Brokoli',
+                'kategori' => 'Makan Siang',
+                'usia' => '24-60',
+                'kalori' => 250,
+                'protein' => '18g',
+                'vitamin' => ['Vitamin C','Vitamin K']
+            ],
+            [
+                'nama' => 'Nasi Tim Ayam Brokoli',
+                'kategori' => 'Makan Siang',
+                'usia' => '24-60',
+                'kalori' => 250,
+                'protein' => '18g',
+                'vitamin' => ['Vitamin C','Vitamin K']
+            ],
+            [
+                'nama' => 'Nasi Tim Ayam Brokoli',
+                'kategori' => 'Makan Siang',
+                'usia' => '24-60',
+                'kalori' => 250,
+                'protein' => '18g',
+                'vitamin' => ['Vitamin C','Vitamin K']
+            ],
+            [
+                'nama' => 'Nasi Tim Ayam Brokoli',
+                'kategori' => 'Makan Siang',
+                'usia' => '24-60',
+                'kalori' => 250,
+                'protein' => '18g',
+                'vitamin' => ['Vitamin C','Vitamin K']
+            ],
+            [
+                'nama' => 'Nasi Tim Ayam Brokoli',
+                'kategori' => 'Makan Siang',
+                'usia' => '24-60',
+                'kalori' => 250,
+                'protein' => '18g',
+                'vitamin' => ['Vitamin C','Vitamin K']
+            ],
+            
         ];
 
         // Filter USIA
