@@ -53,19 +53,16 @@ Route::middleware(['auth', 'role:user'])->group(function () {
     Route::get('/rekomendasi', [RekomendasiController::class, 'index'])
         ->name('user.rekomendasi');
 
-<<<<<<< HEAD
     // DETEKSI MAKANAN 
     Route::get('/deteksi-makanan', function () {return view('users.deteksi-makanan');
         })->middleware(['auth', 'role:user'])
         ->name('user.deteksi.makanan');
-=======
 Route::get('/rekomendasi', [RekomendasiUserController::class, 'index'])
     ->name('user.rekomendasi');
 
 Route::get('/rekomendasi/{slug}', [RekomendasiUserController::class, 'detail'])
     ->name('user.rekomendasi.detail');
 
->>>>>>> 0e7f55107dc5fdbe4c37c5e5a6c1fd22dfaceb64
 
     // DATA ANAK
     Route::get('/data-anak', function () {
@@ -132,13 +129,10 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
     Route::post('/admin/rekomendasi-makanan/store', [RekomendasiMakananController::class,'store'])
         ->name('admin.rekomendasi.store');
-<<<<<<< HEAD
-=======
     Route::delete('/admin/rekomendasi-makanan/{id}', [RekomendasiMakananController::class, 'destroy'])
     ->name('admin.rekomendasi.destroy');
 
     Route::post('/rekomendasi-makanan/{id}/status', [RekomendasiMakananController::class, 'updateStatus'])
         ->name('admin.rekomendasi.updateStatus');
 
->>>>>>> 0e7f55107dc5fdbe4c37c5e5a6c1fd22dfaceb64
 });
