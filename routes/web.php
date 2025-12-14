@@ -12,7 +12,6 @@ use App\Http\Controllers\User\AnakController;
 use App\Http\Controllers\User\CekStuntingController;
 
 use App\Http\Controllers\User\EdukasiController as UserEdukasiController;
-
 use App\Http\Controllers\RekomendasiController;
 
 
@@ -75,13 +74,8 @@ Route::get('/rekomendasi/{slug}', [RekomendasiUserController::class, 'detail'])
 
 
     // DATA ANAK
-    Route::get('/data-anak', function () {
-        return view('users.data-anak');
-    })->name('user.dataanak');
-    Route::middleware(['auth'])->group(function () {
-    Route::get('/data-anak', [AnakController::class, 'index'])->name('anak.index');
-    Route::post('/data-anak', [AnakController::class, 'store'])->name('anak.store');
-});
+    Route::get('/data-anak', [AnakController::class, 'index'])->name('user.dataanak');
+    Route::post('/data-anak', [AnakController::class, 'store'])->name('user.dataanak.store');
 
 
     // DASHBOARD USER
