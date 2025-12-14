@@ -7,6 +7,20 @@ import 'dotenv/config';
 const app = express();
 const upload = multer({ dest: "uploads/" });
 
+// CORS middleware - Allow requests from Laravel
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    
+    // Handle preflight requests
+    if (req.method === 'OPTIONS') {
+        return res.sendStatus(200);
+    }
+    
+    next();
+});
+
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
 console.log("API KEY = ", process.env.GEMINI_API_KEY ? "LOADED" : "NOT FOUND");
