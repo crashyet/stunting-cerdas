@@ -38,6 +38,6 @@ class EdukasiController extends Controller
             ->where('status', 'publish')
             ->firstOrFail();
 
-        return view('users.edukasi', compact('artikel'));
+        return view('users.detail-artikel', compact('artikel'));
     }
 }

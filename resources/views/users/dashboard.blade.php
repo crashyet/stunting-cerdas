@@ -2,38 +2,32 @@
 
 @section('content')
 
-{{-- ========================== HERO ========================== --}}
-<section class="relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]
-    bg-gradient-to-b from-[#E6F5EC] via-[#ECF5F1] to-[#F8FBFF]
-    pt-10 pb-14 md:pt-12 md:pb-16 border-a animate-fadeUp">
-
-    <div class="pl-6 md:pl-14 lg:pl-20 pr-6 animate-fadeUp delay-1">
+{{-- ======= HERO ======= --}}
+<section class="bg-gradient-to-b from-[#E6F5EC] via-[#ECF5F1] to-[#F8FBFF] pt-10 pb-14 border-a animate-fadeUp">
+    <div class="px-6 md:px-10 lg:px-14 animate-fadeUp delay-1">
         <div class="flex items-center gap-4 animate-fadeUp delay-2">
-
-            {{-- ICON DASHBOARD --}}
-            <div class="w-14 h-14 bg-green-100 rounded-2xl flex items-center justify-center shadow-sm animate-fadeUp delay-3">
+            <div class="w-14 h-14 bg-green-100 rounded-2xl flex items-center justify-center shadow-sm
+                        animate-fadeUp delay-3">
                 <svg xmlns="http://www.w3.org/2000/svg" 
                      class="w-8 h-8 text-green-600"
                      fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round"
-                        d="M3 13h4v8H3v-8zm7-6h4v14h-4V7zm7-4h4v18h-4V3z" />
+                          d="M3 13h4v8H3v-8zm7-6h4v14h-4V7zm7-4h4v18h-4V3z" />
                 </svg>
             </div>
-
-            <h1 class="text-2xl md:text-3xl font-extrabold text-gray-900 leading-tight animate-fadeUp delay-4">
+            <h1 class="text-2xl md:text-3xl font-extrabold text-gray-900 leading-tight
+                       animate-fadeUp delay-4">
                 Dashboard <span class="text-green-600">Monitoring</span>
             </h1>
         </div>
-
-        <p class="text-gray-600 mt-3 max-w-2xl text-sm md:text-base leading-relaxed animate-fadeUp delay-5">
+        <p class="text-gray-600 mt-3 max-w-2xl text-sm md:text-base leading-relaxed
+                  animate-fadeUp delay-5">
             Pantau perkembangan dan tren pertumbuhan anak setiap bulan secara menyeluruh.
         </p>
     </div>
 </section>
 
-
-
-{{-- ========================== SUMMARY CARDS ========================== --}}
+{{-- ===== SUMMARY CARDS ===== --}}
 <div class="px-6 md:px-14 mt-12 grid md:grid-cols-4 gap-6">
 
     {{-- TOTAL ANAK --}}
@@ -53,7 +47,6 @@
     <div class="p-6 rounded-3xl bg-yellow-50 border border-yellow-100 shadow-sm flex flex-col animate-fadeUp delay-3">
         <p class="text-gray-600 text-sm">Status Berisiko</p>
         <h2 class="text-3xl font-extrabold text-yellow-600 mt-2">1</h2>
-        <!-- NOTE: Pastikan kelas ini dipertahankan (ubah style atau kelas separingly) -->
     </div>
 
     {{-- STUNTING --}}
@@ -61,11 +54,9 @@
         <p class="text-gray-600 text-sm">Status Stunting</p>
         <h2 class="text-3xl font-extrabold text-red-600 mt-2">0</h2>
     </div>
-
 </div>
 
-
-{{-- ========================== CHART SECTION ========================== --}}
+{{-- ====== CHART SECTION ===== --}}
 <div class="px-6 md:px-14 mt-12 grid md:grid-cols-12 gap-10">
 
     {{-- LINE CHART --}}
@@ -100,14 +91,11 @@
             <canvas id="statusChart" class="max-h-[240px]"></canvas>
         </div>
     </div>
-
 </div>
 
-
-{{-- ========================== RIWAYAT PEMERIKSAAN ========================== --}}
+{{-- ======= RIWAYAT PEMERIKSAAN ======= --}}
 <div class="px-6 md:px-14 mt-12 mb-10">
     <div class="p-8 bg-white rounded-3xl border shadow-sm animate-fadeUp">
-
         <h3 class="font-bold text-xl mb-6 flex items-center gap-2 animate-fadeUp delay-1">
             <svg xmlns="http://www.w3.org/2000/svg"
                 class="w-6 h-6 text-gray-700"
@@ -152,7 +140,6 @@
                     {{ $item['status'] }}
                 </span>
             </div>
-
         </div>
         @endforeach
 
@@ -160,10 +147,9 @@
 </div>
 
 
-{{-- ========================== INSIGHT ========================== --}}
+{{-- ====== INSIGHT ====== --}}
 <div class="px-6 md:px-14 mt-10 mb-20">
     <div class="p-8 bg-green-50 border border-green-100 rounded-3xl shadow-sm animate-fadeUp delay-1">
-
         <h3 class="font-bold text-xl mb-4 flex items-center gap-2 animate-fadeUp delay-2">
             <svg xmlns="http://www.w3.org/2000/svg"
                 class="w-6 h-6 text-yellow-500"
@@ -191,9 +177,7 @@
 
 @endsection
 
-
-
-{{-- ========================== ANIMATION ========================== --}}
+{{-- ======== ANIMATION ======== --}}
 <style>
 @keyframes fadeUp {
     0% { opacity: 0; transform: translateY(14px); }

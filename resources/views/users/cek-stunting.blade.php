@@ -2,52 +2,45 @@
 
 @section('content')
 
-{{-- ========================== HERO (ANIMASI SAMA DENGAN EDUKASI) ========================== --}}
-<section class="relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]
-    bg-gradient-to-b from-[#E6F5EC] via-[#ECF5F1] to-[#F8FBFF]
-    pt-10 md:pt-12 pb-14 border-a
-    animate-[fadeUp_.6s_ease-out]">
-
-    <div class="pl-6 md:pl-14 lg:pl-20 pr-6 animate-[fadeUp_.7s_ease-out]">
-
-        <div class="flex items-center gap-4 animate-[fadeUp_.8s_ease-out]">
-            <div class="w-14 h-14 bg-green-100 rounded-2xl flex items-center justify-center shadow-sm">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-green-600"
+{{-- ====== HERO ======= --}}
+<section class="bg-gradient-to-b from-[#E6F5EC] via-[#ECF5F1] to-[#F8FBFF] pt-10 pb-14 border-a animate-[fadeUp_.6s_ease-out]">
+    <div class="px-6 md:px-10 lg:px-14">
+        <div class="flex items-center gap-4">
+            <div class="w-14 h-14 bg-green-100 rounded-2xl flex items-center justify-center shadow-sm animate-[fadeUp_.8s_ease-out]">
+                <svg xmlns="http://www.w3.org/2000/svg"
+                     class="w-8 h-8 text-green-600"
                      fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                          d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                          d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
                 </svg>
             </div>
-
-            <h1 class="text-2xl md:text-3xl font-extrabold text-gray-900 leading-tight tracking-tight">
+            <h1 class="text-2xl md:text-3xl font-extrabold text-gray-900 leading-tight
+                       animate-[fadeUp_.9s_ease-out]">
                 Cek <span class="text-green-600">Stunting</span>
             </h1>
         </div>
 
-        <p class="text-gray-600 mt-3 max-w-2xl text-sm md:text-base leading-relaxed animate-[fadeUp_.9s_ease-out]">
+        <p class="text-gray-600 mt-3 max-w-2xl text-sm md:text-base leading-relaxed
+                  animate-[fadeUp_1s_ease-out]">
             Hitung Z-score anak berdasarkan standar WHO untuk mengetahui status pertumbuhan.
         </p>
-
     </div>
 </section>
 
-
-
-{{-- ========================== MAIN WRAPPER ========================== --}}
+{{-- ======= MAIN WRAPPER ======= --}}
 <div class="container mx-auto px-10 md:px-14 mt-10 pb-24">
-
     <div class="grid md:grid-cols-2 gap-10 items-start">
 
-        {{-- ===================== KOLOM KIRI ===================== --}}
+        {{-- ===== KOLOM KIRI ===== --}}
         <div class="flex flex-col gap-8">
 
-            {{-- ---------- FORM ---------- --}}
+            {{-- ----- FORM ----- --}}
             <div class="p-8 bg-white rounded-3xl shadow-sm border animate-[fadeUp_1s_ease-out]">
                 <h2 class="text-xl font-semibold mb-1 flex items-center gap-2 animate-[fadeUp_1.1s_ease-out]">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-green-600" fill="none"
                          viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                              d="M9 12h6m-3-3v6m9-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                     Form Pemeriksaan
                 </h2>
@@ -101,23 +94,7 @@
               </form>
             </div>
 
-            {{-- ---------- INFO BOX ---------- --}}
-            <div class="p-4 bg-blue-50 border border-blue-100 rounded-xl text-sm animate-[fadeUp_1.4s_ease-out]">
-                <p class="font-semibold text-blue-800 mb-1 flex items-center gap-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-600"
-                         fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                              d="M13 16h-1v-4h-1m1-4h.01M12 20a8 8 0 100-16 8 8 0 000 16z" />
-                    </svg>
-                    Tentang Z-Score
-                </p>
-
-                <p class="text-blue-700 leading-relaxed">
-                    Z-score adalah ukuran standar WHO yang membandingkan tinggi/berat anak
-                    dengan rata-rata anak seusianya. Nilai <strong>di bawah -2</strong> menunjukkan stunting.
-                </p>
             </div>
-
         </div>
 
 
@@ -143,7 +120,6 @@
 
 
     </div>
-
 </div>
 
 <script>
@@ -381,4 +357,10 @@ function clearErrors() {
 }
 </style>
 
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
 @endsection
