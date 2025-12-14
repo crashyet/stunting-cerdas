@@ -94,7 +94,7 @@
 
         {{-- IMAGE --}}
         <div class="h-44 bg-gradient-to-b from-blue-50 to-white flex items-center justify-center">
-            <img src="{{ $card['gambar'] }}" class="w-16 opacity-90">
+            <img src="{{ asset('storage/' . $card['thumbnail']) }}" class="w-16 opacity-90">
         </div>
 
         <div class="p-6">
