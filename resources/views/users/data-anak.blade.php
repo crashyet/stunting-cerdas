@@ -46,118 +46,337 @@
                    class="ml-3 w-full bg-transparent text-sm focus:outline-none">
         </div>
 
-        <a href="#"
-           class="px-6 py-2.5 bg-green-600 text-white rounded-full shadow hover:bg-green-700 transition text-sm font-semibold animate-[fadeUp_1.1s_ease-out]">
-            + Tambah Anak
-        </a>
+        <button onclick="openModal()" type="button"
+           class="px-6 py-2.5 bg-green-600 text-white rounded-full shadow hover:bg-green-700 transition text-sm font-semibold animate-[fadeUp_1.1s_ease-out] flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+            </svg>
+            Tambah Anak
+        </button>
     </div>
 </div>
 
 {{-- ======= LIST DATA ANAK ======== --}}
-<div class="px-5 md:px-5 mt-10 pb-5 grid md:grid-cols-3 gap-0">
+<div class="px-6 md:px-14 mt-10 pb-20 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
 
-    @foreach([1,2,3] as $i)
-    <div class="rounded-3xl border bg-white shadow-sm hover:shadow-lg transition-all p-5 scale-[0.85] origin-top
+    @foreach([
+        ['nama' => 'Ahmad Rizki', 'umur' => '3 tahun 9 bulan', 'gender' => 'laki', 'tinggi' => 85, 'berat' => 12, 'tanggal' => '20 Jan 2024', 'status' => 'Normal'],
+        ['nama' => 'Siti Aisyah', 'umur' => '4 tahun 4 bulan', 'gender' => 'perempuan', 'tinggi' => 92, 'berat' => 14, 'tanggal' => '25 Jan 2024', 'status' => 'Normal'],
+        ['nama' => 'Naufal Fikri', 'umur' => '2 tahun 11 bulan', 'gender' => 'laki', 'tinggi' => 78, 'berat' => 10, 'tanggal' => '10 Feb 2024', 'status' => 'Stunting']
+    ] as $i => $child)
+    
+    <div class="child-card rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2
                 animate-[fadeUp_{{ 1.2 + ($i * 0.1) }}s_ease-out]">
+        
+        {{-- HEADER WITH GRADIENT --}}
+        <div class="relative p-6 pb-20 {{ $child['gender'] == 'laki' ? 'bg-gradient-to-br from-blue-400 via-blue-500 to-blue-600' : 'bg-gradient-to-br from-pink-400 via-pink-500 to-pink-600' }}">
+            
+            {{-- ACTION BUTTONS --}}
+            <div class="absolute top-4 right-4 flex gap-2">
+                <button class="w-8 h-8 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/30 transition">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 3l6 6M4 20l4-1 11-11-4-4L4 15l-1 4z"/>
+                    </svg>
+                </button>
+                <button class="w-8 h-8 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-red-500/80 transition">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 7h12M9 7V5h6v2M10 11v6M14 11v6M5 7l1 12a2 2 0 002 2h8a2 2 0 002-2l1-12"/>
+                    </svg>
+                </button>
+            </div>
 
-        {{-- ========= HEADER ========= --}}
-        <div class="flex justify-between items-center mb-4">
-
-            <div class="flex items-center gap-3">
-                
-                @if($i == 1)
-                {{-- Boy --}}
-                <svg xmlns="http://www.w3.org/2000/svg"
-                     class="w-7 h-7 text-blue-500"
-                     fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                          d="M12 12c2.3 0 4-1.7 4-4s-1.7-4-4-4-4 1.7-4 4 1.7 4 4 4zm6 8v-1.5c0-2.5-3.6-3.5-6-3.5s-6 1-6 3.5V20h12z"/>
-                </svg>
-                @else
-                {{-- Girl --}}
-                <svg xmlns="http://www.w3.org/2000/svg"
-                     class="w-7 h-7 text-pink-500"
-                     fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                          d="M12 12c2.3 0 4-1.7 4-4s-1.7-4-4-4-4 1.7-4 4 1.7 4 4 4zm-5 8c0-3 2.2-4 5-4s5 1 5 4H7z"/>
-                </svg>
-                @endif
-
-                <div>
-                    <h3 class="font-semibold text-lg">
-                        {{ $i == 1 ? 'Ahmad Rizki' : ($i==2 ? 'Siti Aisyah' : 'Naufal Fikri') }}
-                    </h3>
-
-                    <p class="text-gray-500 text-xs">
-                        {{ $i == 1 ? '3 tahun 9 bulan' : ($i==2 ? '4 tahun 4 bulan' : '2 tahun 11 bulan') }}
-                    </p>
+            {{-- AVATAR ICON --}}
+            <div class="flex justify-center mb-4">
+                <div class="w-20 h-20 bg-white/30 backdrop-blur-md rounded-full flex items-center justify-center shadow-lg">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                    </svg>
                 </div>
             </div>
 
-            <div class="flex gap-3 text-gray-500">
-
-                {{-- EDIT --}}
-                <svg xmlns="http://www.w3.org/2000/svg"
-                     class="w-5 h-5 cursor-pointer hover:text-green-600 transition"
-                     fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                          d="M15 3l6 6M4 20l4-1 11-11-4-4L4 15l-1 4z"/>
-                </svg>
-
-                {{-- DELETE --}}
-                <svg xmlns="http://www.w3.org/2000/svg"
-                     class="w-5 h-5 cursor-pointer hover:text-red-600 transition"
-                     fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                          d="M6 7h12M9 7V5h6v2M10 11v6M14 11v6M5 7l1 12a2 2 0 002 2h8a2 2 0 002-2l1-12"/>
-                </svg>
-
+            {{-- NAME & AGE --}}
+            <div class="text-center text-white">
+                <h3 class="text-xl font-bold mb-1">{{ $child['nama'] }}</h3>
+                <p class="text-white/90 text-sm flex items-center justify-center gap-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                    {{ $child['umur'] }}
+                </p>
             </div>
         </div>
 
-        {{-- ========= INFO BAR ========= --}}
-        <div class="grid grid-cols-3 gap-3">
-            <div class="bg-gray-50 rounded-2xl p-3 text-center shadow-sm">
-                <svg xmlns="http://www.w3.org/2000/svg"
-                     class="w-4 h-4 mx-auto text-gray-400 mb-1"
-                     fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                          d="M12 3v18m4-4H8m4-4H8m4-4H8"/>
-                </svg>
-                <h2 class="text-lg font-bold">
-                    {{ $i == 1 ? '85' : ($i==2 ? '92' : '78') }}
-                </h2>
-                <span class="text-gray-400 text-xs">cm</span>
+        {{-- WHITE CARD CONTENT --}}
+        <div class="bg-white p-6 -mt-12 mx-4 rounded-2xl shadow-lg relative z-10">
+            
+            {{-- STATUS BADGE --}}
+            <div class="flex justify-center mb-4">
+                <span class="px-4 py-1.5 rounded-full text-xs font-semibold {{ $child['status'] == 'Normal' ? 'bg-green-100 text-green-700' : 'bg-yellow-100 text-yellow-700' }}">
+                    {{ $child['status'] }}
+                </span>
             </div>
 
-            <div class="bg-gray-50 rounded-2xl p-3 text-center shadow-sm">
-                <svg xmlns="http://www.w3.org/2000/svg"
-                     class="w-4 h-4 mx-auto text-gray-400 mb-1"
-                     fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                          d="M6 3h12l-1 7H7L6 3zm3 14a3 3 0 006 0H9z"/>
-                </svg>
-                <h2 class="text-lg font-bold">
-                    {{ $i == 1 ? '12' : ($i==2 ? '14' : '10') }}
-                </h2>
-                <span class="text-gray-400 text-xs">kg</span>
+            {{-- METRICS --}}
+            <div class="grid grid-cols-2 gap-3 mb-4">
+                {{-- HEIGHT --}}
+                <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-3 text-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mx-auto text-blue-600 mb-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4"/>
+                    </svg>
+                    <p class="text-2xl font-bold text-blue-700">{{ $child['tinggi'] }}</p>
+                    <p class="text-xs text-blue-600">cm</p>
+                </div>
+
+                {{-- WEIGHT --}}
+                <div class="bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl p-3 text-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mx-auto text-purple-600 mb-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"/>
+                    </svg>
+                    <p class="text-2xl font-bold text-purple-700">{{ $child['berat'] }}</p>
+                    <p class="text-xs text-purple-600">kg</p>
+                </div>
             </div>
 
-            <div class="bg-gray-50 rounded-2xl p-3 text-center shadow-sm">
-                <svg xmlns="http://www.w3.org/2000/svg"
-                     class="w-4 h-4 mx-auto text-gray-400 mb-1"
-                     fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                          d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+            {{-- LAST CHECK DATE --}}
+            <div class="flex items-center justify-center gap-2 text-gray-500 text-sm">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
                 </svg>
-                <h2 class="text-lg font-bold">
-                    {{ $i == 1 ? '20 Jan' : ($i==2 ? '25 Jan' : '10 Feb') }}
-                </h2>
+                <span>Terakhir cek: {{ $child['tanggal'] }}</span>
             </div>
         </div>
     </div>
     @endforeach
 </div>
+
+{{-- ======= MODAL POPUP ======= --}}
+<div id="modalOverlay" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
+    <div id="modalContent" class="bg-white rounded-3xl shadow-2xl max-w-md w-full max-h-[90vh] overflow-y-auto transform scale-95 opacity-0 transition-all duration-300">
+        
+        {{-- MODAL HEADER --}}
+        <div class="sticky top-0 bg-gradient-to-r from-green-500 to-green-600 p-6 rounded-t-3xl">
+            <div class="flex items-center justify-between">
+                <h2 class="text-xl font-bold text-white flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"/>
+                    </svg>
+                    Tambah Data Anak
+                </h2>
+                <button onclick="closeModal()" type="button" class="w-8 h-8 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center transition">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        {{-- MODAL BODY --}}
+        <form id="childForm" onsubmit="handleSubmit(event)" class="p-6 space-y-5">
+            
+            {{-- NAMA ANAK --}}
+            <div>
+                <label class="block text-sm font-semibold text-gray-700 mb-2">Nama Anak *</label>
+                <input type="text" id="childName" required
+                    class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent transition"
+                    placeholder="Masukkan nama anak">
+            </div>
+
+            {{-- JENIS KELAMIN --}}
+            <div>
+                <label class="block text-sm font-semibold text-gray-700 mb-2">Jenis Kelamin *</label>
+                <div class="grid grid-cols-2 gap-3">
+                    <label class="relative cursor-pointer">
+                        <input type="radio" name="gender" value="laki" required class="peer sr-only">
+                        <div class="p-4 border-2 border-gray-300 rounded-xl peer-checked:border-blue-500 peer-checked:bg-blue-50 transition flex items-center gap-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                            </svg>
+                            <span class="font-medium text-gray-700">Laki-laki</span>
+                        </div>
+                    </label>
+                    <label class="relative cursor-pointer">
+                        <input type="radio" name="gender" value="perempuan" required class="peer sr-only">
+                        <div class="p-4 border-2 border-gray-300 rounded-xl peer-checked:border-pink-500 peer-checked:bg-pink-50 transition flex items-center gap-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-pink-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                            </svg>
+                            <span class="font-medium text-gray-700">Perempuan</span>
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            {{-- UMUR (BULAN) --}}
+            <div>
+                <label class="block text-sm font-semibold text-gray-700 mb-2">Umur (bulan) *</label>
+                <input type="number" id="age" required min="0" max="60" step="1"
+                    class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent transition"
+                    placeholder="Contoh: 24">
+                <p class="text-xs text-gray-500 mt-1">Masukkan umur anak dalam bulan (0-60 bulan)</p>
+            </div>
+
+            {{-- TINGGI & BERAT --}}
+            <div class="grid grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">Tinggi (cm) *</label>
+                    <input type="number" id="height" required min="40" max="150" step="0.1"
+                        class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent transition"
+                        placeholder="85">
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">Berat (kg) *</label>
+                    <input type="number" id="weight" required min="2" max="50" step="0.1"
+                        class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent transition"
+                        placeholder="12">
+                </div>
+            </div>
+
+            {{-- BUTTONS --}}
+            <div class="flex gap-3 pt-4">
+                <button type="button" onclick="closeModal()"
+                    class="flex-1 px-6 py-3 border-2 border-gray-300 text-gray-700 rounded-xl font-semibold hover:bg-gray-50 transition">
+                    Batal
+                </button>
+                <button type="submit"
+                    class="flex-1 px-6 py-3 bg-green-600 text-white rounded-xl font-semibold hover:bg-green-700 transition flex items-center justify-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                    </svg>
+                    Tambah
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+{{-- ======= SUCCESS MODAL ======= --}}
+<div id="successModal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
+    <div class="bg-white rounded-3xl shadow-2xl max-w-sm w-full p-8 text-center transform scale-95 opacity-0 transition-all duration-300" id="successContent">
+        {{-- SUCCESS ICON --}}
+        <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+            </svg>
+        </div>
+        
+        <h3 class="text-2xl font-bold text-gray-800 mb-2">Berhasil!</h3>
+        <p class="text-gray-600 mb-1" id="successMessage">Data anak berhasil ditambahkan</p>
+        <p class="text-sm text-gray-400 mb-6">Data belum tersimpan ke database</p>
+        
+        <button onclick="closeSuccessModal()" type="button"
+            class="w-full px-6 py-3 bg-green-600 text-white rounded-xl font-semibold hover:bg-green-700 transition">
+            OK, Mengerti
+        </button>
+    </div>
+</div>
+
+{{-- ======= JAVASCRIPT ======= --}}
+<script>
+// Modal Controls
+function openModal() {
+    const overlay = document.getElementById('modalOverlay');
+    const content = document.getElementById('modalContent');
+    
+    overlay.classList.remove('hidden');
+    overlay.classList.add('flex');
+    
+    // Trigger animation
+    setTimeout(() => {
+        content.classList.remove('scale-95', 'opacity-0');
+        content.classList.add('scale-100', 'opacity-100');
+    }, 10);
+}
+
+function closeModal() {
+    const overlay = document.getElementById('modalOverlay');
+    const content = document.getElementById('modalContent');
+    
+    content.classList.remove('scale-100', 'opacity-100');
+    content.classList.add('scale-95', 'opacity-0');
+    
+    setTimeout(() => {
+        overlay.classList.remove('flex');
+        overlay.classList.add('hidden');
+        document.getElementById('childForm').reset();
+    }, 300);
+}
+
+// Close modal when clicking outside
+document.getElementById('modalOverlay')?.addEventListener('click', function(e) {
+    if (e.target === this) {
+        closeModal();
+    }
+});
+
+// Form Submit Handler
+function handleSubmit(event) {
+    event.preventDefault();
+    
+    const formData = {
+        name: document.getElementById('childName').value,
+        gender: document.querySelector('input[name="gender"]:checked').value,
+        age: document.getElementById('age').value,
+        height: document.getElementById('height').value,
+        weight: document.getElementById('weight').value
+    };
+    
+    console.log('Form Data:', formData);
+    
+    // Close form modal
+    closeModal();
+    
+    // Show success modal
+    setTimeout(() => {
+        showSuccessModal(formData.name);
+    }, 400);
+}
+
+// Success Modal Controls
+function showSuccessModal(childName) {
+    const overlay = document.getElementById('successModal');
+    const content = document.getElementById('successContent');
+    const message = document.getElementById('successMessage');
+    
+    message.textContent = `Data anak "${childName}" berhasil ditambahkan`;
+    
+    overlay.classList.remove('hidden');
+    overlay.classList.add('flex');
+    
+    setTimeout(() => {
+        content.classList.remove('scale-95', 'opacity-0');
+        content.classList.add('scale-100', 'opacity-100');
+    }, 10);
+}
+
+function closeSuccessModal() {
+    const overlay = document.getElementById('successModal');
+    const content = document.getElementById('successContent');
+    
+    content.classList.remove('scale-100', 'opacity-100');
+    content.classList.add('scale-95', 'opacity-0');
+    
+    setTimeout(() => {
+        overlay.classList.remove('flex');
+        overlay.classList.add('hidden');
+    }, 300);
+}
+
+// Search Functionality
+const searchInput = document.querySelector('input[placeholder="Cari anak..."]');
+searchInput?.addEventListener('input', function(e) {
+    const searchTerm = e.target.value.toLowerCase();
+    const cards = document.querySelectorAll('.child-card');
+    
+    cards.forEach(card => {
+        const name = card.querySelector('h3').textContent.toLowerCase();
+        if (name.includes(searchTerm)) {
+            card.style.display = 'block';
+        } else {
+            card.style.display = 'none';
+        }
+    });
+});
+</script>
 
 {{-- ======= KEYFRAMES ====== --}}
 <style>
@@ -168,3 +387,4 @@
 </style>
 
 @endsection
+
