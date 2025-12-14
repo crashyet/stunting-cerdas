@@ -8,8 +8,11 @@ use App\Http\Controllers\Admin\EdukasiController as AdminEdukasiController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\RekomendasiMakananController;
 use App\Http\Controllers\User\RekomendasiUserController;
+use App\Http\Controllers\User\AnakController;
+use App\Http\Controllers\User\CekStuntingController;
 
 use App\Http\Controllers\User\EdukasiController as UserEdukasiController;
+
 use App\Http\Controllers\RekomendasiController;
 
 
@@ -30,6 +33,8 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/register', [AuthController::class, 'showRegister'])->name('register');
 Route::post('/register', [AuthController::class, 'register'])->name('register.post');
 
+
+
 /*
 |--------------------------------------------------------------------------
 | USER Routes (role:user)
@@ -48,6 +53,8 @@ Route::middleware(['auth', 'role:user'])->group(function () {
     Route::get('/cek-stunting', function () {
         return view('users.cek-stunting');
     })->name('user.cekstunting');
+     Route::get('/cek-stunting', [CekStuntingController::class, 'index'])
+        ->name('cek.stunting');
 
     Route::post('/hitung-zscore', [App\Http\Controllers\ZScoreController::class, 'hitung'])
         ->name('user.hitung-zscore');
@@ -71,6 +78,11 @@ Route::get('/rekomendasi/{slug}', [RekomendasiUserController::class, 'detail'])
     Route::get('/data-anak', function () {
         return view('users.data-anak');
     })->name('user.dataanak');
+    Route::middleware(['auth'])->group(function () {
+    Route::get('/data-anak', [AnakController::class, 'index'])->name('anak.index');
+    Route::post('/data-anak', [AnakController::class, 'store'])->name('anak.store');
+});
+
 
     // DASHBOARD USER
     Route::get('/dashboard', function () {
@@ -118,10 +130,25 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
     // MANAGEMENT USER
     Route::get('/admin/manajemen-user', [UserController::class, 'index'])
-        ->name('admin.users.index');
+    ->name('admin.users.index');
 
     Route::delete('/admin/manajemen-user/{user}', [UserController::class, 'destroy'])
-        ->name('admin.users.destroy');
+    ->name('admin.users.destroy');
+
+    // ARTIKEL EDUKASI
+    // ARTIKEL EDUKASI
+Route::get('/admin/konten-edukasi', [AdminEdukasiController::class, 'kontenEdukasi'])
+    ->name('admin.konten-edukasi');
+
+Route::post('/admin/edukasi/store', [AdminEdukasiController::class, 'store'])
+    ->name('admin.edukasi.store');
+
+Route::delete('/admin/edukasi/{id}', [AdminEdukasiController::class, 'destroy'])
+    ->name('edukasi.destroy');
+
+Route::patch('/admin/edukasi/{id}/status', [AdminEdukasiController::class, 'updateStatus'])
+    ->name('edukasi.updateStatus');
+
 
     // REKOMENDASI MAKANAN
     Route::get('/admin/rekomendasi-makanan', [RekomendasiMakananController::class,'index'])

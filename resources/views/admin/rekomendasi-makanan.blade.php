@@ -26,7 +26,7 @@
         <div class="flex justify-between items-center mb-4 animate-[fadeUp_.7s_ease-out]">
             <h2 class="text-xl font-semibold flex items-center gap-2">
                 <i class="fa-solid fa-bowl-food text-green-600"></i>
-                Daftar Makanan (6)
+                Daftar Makanan ({{ $data->count() }})
             </h2>
 
             {{-- BUTTON TAMBAH (Trigger Modal) --}}
