@@ -49,7 +49,10 @@ Route::middleware(['auth', 'role:user'])->group(function () {
         return view('users.cek-stunting');
     })->name('user.cekstunting');
 
-    // REKOMENDASI MAKANAN
+    Route::post('/hitung-zscore', [App\Http\Controllers\ZScoreController::class, 'hitung'])
+        ->name('user.hitung-zscore');
+
+    // REKOMENDASI MAKANAN (Controller Baru)
     Route::get('/rekomendasi', [RekomendasiController::class, 'index'])
         ->name('user.rekomendasi');
 
