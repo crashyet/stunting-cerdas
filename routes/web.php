@@ -8,6 +8,8 @@ use App\Http\Controllers\Admin\EdukasiController as AdminEdukasiController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\RekomendasiMakananController;
 use App\Http\Controllers\User\RekomendasiUserController;
+use App\Http\Controllers\User\AnakController;
+use App\Http\Controllers\User\CekStuntingController;
 
 use App\Http\Controllers\User\EdukasiController as UserEdukasiController;
 use App\Http\Controllers\RekomendasiController;
@@ -48,6 +50,8 @@ Route::middleware(['auth', 'role:user'])->group(function () {
     Route::get('/cek-stunting', function () {
         return view('users.cek-stunting');
     })->name('user.cekstunting');
+     Route::get('/cek-stunting', [CekStuntingController::class, 'index'])
+        ->name('cek.stunting');
 
     // REKOMENDASI MAKANAN
     Route::get('/rekomendasi', [RekomendasiController::class, 'index'])
@@ -68,6 +72,11 @@ Route::get('/rekomendasi/{slug}', [RekomendasiUserController::class, 'detail'])
     Route::get('/data-anak', function () {
         return view('users.data-anak');
     })->name('user.dataanak');
+    Route::middleware(['auth'])->group(function () {
+    Route::get('/data-anak', [AnakController::class, 'index'])->name('anak.index');
+    Route::post('/data-anak', [AnakController::class, 'store'])->name('anak.store');
+});
+
 
     // DASHBOARD USER
     Route::get('/dashboard', function () {

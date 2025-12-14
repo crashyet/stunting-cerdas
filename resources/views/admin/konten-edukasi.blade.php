@@ -27,7 +27,7 @@
         <div class="flex justify-between items-center mb-4">
             <h2 class="text-xl font-semibold text-gray-800 flex items-center gap-2">
                 <i class="fa-solid fa-book-open-reader text-green-600"></i>
-                Daftar Artikel (6)
+                Daftar Artikel ({{ $edukasis->count() }})
             </h2>
 
             <button @click="openAddArticle = true"
