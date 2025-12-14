@@ -127,7 +127,7 @@
                 {{ $food['usia'] }} bulan
             </span>
 
-            <img src="/food.png" class="w-16 opacity-90">
+            <img src="" class="w-16 opacity-90">
         </div>
 
         <div class="p-4">

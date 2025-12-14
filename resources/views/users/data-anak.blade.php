@@ -1,21 +1,26 @@
 @extends('layouts.user-layout')
 
 @section('content')
+<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+<div 
+    x-data="{ openAdd: false }"
+    x-effect="document.body.classList.toggle('overflow-hidden', openAdd)"
+>
 
 {{-- ======= HERO ======== --}}
 <section class="bg-gradient-to-b from-[#E6F5EC] via-[#ECF5F1] to-[#F8FBFF] pt-10 pb-14 border-a animate-[fadeUp_.5s_ease-out]">
     <div class="px-6 md:px-10 lg:px-14 animate-[fadeUp_.6s_ease-out]">
         <div class="flex items-center gap-4 animate-[fadeUp_.7s_ease-out]">
             <div class="w-12 h-12 bg-green-100 rounded-2xl flex items-center justify-center shadow-sm">
-                <svg xmlns="http://www.w3.org/2000/svg"
-                     class="w-7 h-7 text-green-600"
-                     fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 text-green-600" fill="none"
+                    viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round"
                           d="M12 12c2.2 0 4-1.8 4-4s-1.8-4-4-4-4 1.8-4 4 1.8 4 4 4zm-5 8c0-3 2.3-4 5-4s5 1 5 4v1H7v-1z"/>
                 </svg>
             </div>
 
-            <h1 class="text-2xl md:text-3xl font-extrabold text-gray-900 leading-tight">
+            <h1 class="text-2xl md:text-3xl font-extrabold">
                 Data <span class="text-green-600">Anak</span>
             </h1>
 
@@ -38,18 +43,18 @@
                  class="h-5 w-5 text-gray-400"
                  fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round"
-                      d="M21 21l-4.35-4.35M10 18a8 8 0 100-16 8 8 0 000 16z"/>
+                    d="M21 21l-4.35-4.35M10 18a8 8 0 100-16 8 8 0 000 16z" />
             </svg>
 
-            <input type="text"
-                   placeholder="Cari anak..."
-                   class="ml-3 w-full bg-transparent text-sm focus:outline-none">
+            <input type="text" placeholder="Cari anak..."
+                class="ml-3 w-full bg-transparent text-sm focus:outline-none">
         </div>
 
         <a href="#"
            class="px-6 py-2.5 bg-green-600 text-white rounded-full shadow hover:bg-green-700 transition text-sm font-semibold animate-[fadeUp_1.1s_ease-out]">
             + Tambah Anak
-        </a>
+        </button>
+
     </div>
 </div>
 
@@ -83,37 +88,12 @@
                 </svg>
                 @endif
 
+            <div class="grid grid-cols-2 gap-4">
                 <div>
-                    <h3 class="font-semibold text-lg">
-                        {{ $i == 1 ? 'Ahmad Rizki' : ($i==2 ? 'Siti Aisyah' : 'Naufal Fikri') }}
-                    </h3>
-
-                    <p class="text-gray-500 text-xs">
-                        {{ $i == 1 ? '3 tahun 9 bulan' : ($i==2 ? '4 tahun 4 bulan' : '2 tahun 11 bulan') }}
-                    </p>
+                    <label class="text-sm font-medium">Umur (bulan)</label>
+                    <input type="number" name="umur" required
+                        class="w-full rounded-md border px-3 py-2 focus:ring-2 focus:ring-green-500">
                 </div>
-            </div>
-
-            <div class="flex gap-3 text-gray-500">
-
-                {{-- EDIT --}}
-                <svg xmlns="http://www.w3.org/2000/svg"
-                     class="w-5 h-5 cursor-pointer hover:text-green-600 transition"
-                     fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                          d="M15 3l6 6M4 20l4-1 11-11-4-4L4 15l-1 4z"/>
-                </svg>
-
-                {{-- DELETE --}}
-                <svg xmlns="http://www.w3.org/2000/svg"
-                     class="w-5 h-5 cursor-pointer hover:text-red-600 transition"
-                     fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                          d="M6 7h12M9 7V5h6v2M10 11v6M14 11v6M5 7l1 12a2 2 0 002 2h8a2 2 0 002-2l1-12"/>
-                </svg>
-
-            </div>
-        </div>
 
         {{-- ========= INFO BAR ========= --}}
         <div class="grid grid-cols-3 gap-3">
@@ -162,9 +142,16 @@
 {{-- ======= KEYFRAMES ====== --}}
 <style>
 @keyframes fadeUp {
-    0% { opacity: 0; transform: translateY(14px); }
-    100% { opacity: 1; transform: translateY(0); }
+    from { opacity: 0; transform: translateY(14px); }
+    to { opacity: 1; transform: translateY(0); }
 }
+.animate-\[fadeUp_ease-out\] {
+    animation-name: fadeUp;
+    animation-timing-function: ease-out;
+    animation-fill-mode: both;
+}
+[x-cloak] { display: none !important; }
 </style>
 
+</div>
 @endsection
