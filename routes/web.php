@@ -166,3 +166,7 @@ Route::patch('/admin/edukasi/{id}/status', [AdminEdukasiController::class, 'upda
         ->name('admin.rekomendasi.updateStatus');
 
 });
+
+Route::get('/analyze', [AnalyzeController::class, 'index'])->name('analyze.index');
+Route::post('/analyze', [AnalyzeController::class, 'submit'])->name('analyze.submit');
+

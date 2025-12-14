@@ -40,7 +40,7 @@
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-green-600" fill="none"
                          viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                              d="M9 12h6m-3-3v6m9-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                     Form Pemeriksaan
                 </h2>
@@ -94,15 +94,30 @@
               </form>
             </div>
 
+            {{-- ---------- INFO BOX ---------- --}}
+            <div class="p-4 bg-blue-50 border border-blue-100 rounded-xl text-sm animate-[fadeUp_1.4s_ease-out]">
+                <p class="font-semibold text-blue-800 mb-1 flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-600"
+                         fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M13 16h-1v-4h-1m1-4h.01M12 20a8 8 0 100-16 8 8 0 000 16z" />
+                    </svg>
+                    Tentang Z-Score
+                </p>
+
+                <p class="text-blue-700 leading-relaxed">
+                    Z-score adalah ukuran standar WHO yang membandingkan tinggi/berat anak
+                    dengan rata-rata anak seusianya. Nilai <strong>di bawah -2</strong> menunjukkan stunting.
+                </p>
             </div>
         </div>
 
+        {{-- ======== KOLOM KANAN ======== --}}
+        <div class="p-8 bg-white rounded-3xl shadow-sm border
+                    flex flex-col justify-center items-center text-center h-full
+                    animate-[fadeUp_1.5s_ease-out]">
 
-
-        {{-- ===================== KOLOM KANAN ===================== --}}
-        <div class="p-8 bg-white rounded-3xl shadow-sm border flex flex-col justify-center items-center text-center h-full animate-[fadeUp_1.5s_ease-out]">
-
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16 text-gray-400 mb-4" fill="none"
+            <svg id="placeholderIcon" xmlns="http://www.w3.org/2000/svg" class="w-16 h-16 text-gray-400 mb-4" fill="none"
                   viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                   d="M8 12h.01M12 12h.01M16 12h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -114,11 +129,7 @@
                     Isi form di samping untuk menghitung status pertumbuhan anak
                 </p>
             </div>
-
         </div>
-
-
-
     </div>
 </div>
 
@@ -166,6 +177,9 @@ async function hitungZScore() {
   }
 
   if (hasError) {
+    // Hide placeholder icon
+    document.getElementById("placeholderIcon").classList.add("hidden");
+    
     hasilEl.innerHTML = `
       <div class="text-center">
         <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16 text-red-400 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -178,6 +192,9 @@ async function hitungZScore() {
     return;
   }
 
+  // Hide placeholder icon
+  document.getElementById("placeholderIcon").classList.add("hidden");
+  
   // Show loading state
   submitBtn.disabled = true;
   submitBtn.innerHTML = `
@@ -357,10 +374,4 @@ function clearErrors() {
 }
 </style>
 
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-    </style>
 @endsection
