@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\RekomendasiMakanan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class RekomendasiMakananController extends Controller
 {
@@ -15,78 +16,83 @@ class RekomendasiMakananController extends Controller
         return view('admin.rekomendasi-makanan', compact('data'));
     }
 
-    public function create()
-    {
-        return view('admin.rekomendasi-makanan');
-    }
-
     public function store(Request $request)
     {
         // VALIDASI
-        $validated = $request->validate([
-            'judul' => 'required',
-            'kategori' => 'required',
-            'gambar' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048', 
+        $request->validate([
+            'judul'      => 'required',
+            'kategori'   => 'required',
+            'gambar'     => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
         ]);
 
-        // UPLOAD GAMBAR
-        $filename = null;
+        // ================================
+        // 📌 Upload Gambar ke Storage
+        // ================================
+        $gambarPath = null;
         if ($request->hasFile('gambar')) {
-            $filename = time() . '-' . $request->file('gambar')->getClientOriginalName();
-            $request->file('gambar')->move(public_path('uploads/rekomendasi'), $filename);
+            $gambarPath = $request->file('gambar')->store('rekomendasi', 'public');
         }
 
-        // SIMPAN KE DB
-        RekomendasiMakanan::create([
-            'judul' => $request->judul,
-            'kategori' => $request->kategori,
-            'usia' => $request->usia,
-            'porsi' => $request->porsi,
-            'kalori' => $request->kalori,
-            'protein' => $request->protein,
-            'karbo' => $request->karbo,
-            'lemak' => $request->lemak,
-            'vitamin' => $request->vitamin,
-            'porsi_disarankan' => $request->porsi_disarankan,
-            'tips' => $request->tips,
-            'emoji' => $request->emoji,
-            'slug' => Str::slug($request->judul),
-            'gambar' => $filename,
-            'status' => $request->status ?? 'draft', // ← tambahkan ini
+        // ================================
+        // 📌 Generate Slug Unik
+        // ================================
+        $slug = Str::slug($request->judul);
+        $originalSlug = $slug;
+        $counter = 1;
 
+        while (RekomendasiMakanan::where('slug', $slug)->exists()) {
+            $slug = $originalSlug . '-' . $counter;
+            $counter++;
+        }
+
+        // ================================
+        // 📌 Simpan Ke Database
+        // ================================
+        RekomendasiMakanan::create([
+            'judul'            => $request->judul,
+            'kategori'         => $request->kategori,
+            'usia'             => $request->usia,
+            'porsi'            => $request->porsi,
+            'kalori'           => $request->kalori,
+            'protein'          => $request->protein,
+            'karbo'            => $request->karbo,
+            'lemak'            => $request->lemak,
+            'vitamin'          => $request->vitamin,
+            'porsi_disarankan' => $request->porsi_disarankan,
+            'tips'             => $request->tips,
+            'emoji'            => $request->emoji,
+            'slug'             => $slug,
+            'gambar'           => $gambarPath,
+            'status'           => $request->status ?? 'draft',
         ]);
 
         return redirect()->route('admin.rekomendasi.index')
-            ->with('success', 'Berhasil ditambahkan!');
+            ->with('success', 'Rekomendasi berhasil ditambahkan!');
     }
 
     public function destroy($id)
-{
-    $item = RekomendasiMakanan::findOrFail($id);
+    {
+        $item = RekomendasiMakanan::findOrFail($id);
 
-    // Hapus file gambar jika ada
-    if ($item->gambar && file_exists(public_path('uploads/rekomendasi/' . $item->gambar))) {
-        unlink(public_path('uploads/rekomendasi/' . $item->gambar));
+        // Hapus file dari storage
+        if ($item->gambar) {
+            Storage::disk('public')->delete($item->gambar);
+        }
+
+        $item->delete();
+
+        return redirect()->route('admin.rekomendasi.index')
+            ->with('success', 'Rekomendasi berhasil dihapus!');
     }
 
-    // Hapus data dari database
-    $item->delete();
+    public function updateStatus(Request $request, $id)
+    {
+        $data = RekomendasiMakanan::findOrFail($id);
 
-    return redirect()->route('admin.rekomendasi.index')
-        ->with('success', 'Data berhasil dihapus!');
-}
+        // toggle draft/publish
+        $data->status = $data->status === 'draft' ? 'publish' : 'draft';
+        $data->save();
 
-
-public function updateStatus(Request $request, $id)
-{
-    $data = RekomendasiMakanan::findOrFail($id);
-
-    $data->status = $data->status == 'draft' ? 'publish' : 'draft';
-    $data->save();
-
-    return back()->with('success', 'Status berhasil diperbarui!');
-}
-
-
-
+        return back()->with('success', 'Status berhasil diperbarui!');
+    }
 }
