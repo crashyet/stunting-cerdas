@@ -139,3 +139,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         ->name('admin.rekomendasi.updateStatus');
 
 });
+
+Route::get('/analyze', [AnalyzeController::class, 'index'])->name('analyze.index');
+Route::post('/analyze', [AnalyzeController::class, 'submit'])->name('analyze.submit');
+
