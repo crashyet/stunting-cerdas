@@ -127,8 +127,10 @@
                 {{ $food['usia'] }} bulan
             </span>
 
-            <img src="" class="w-16 opacity-90">
-        </div>
+<img
+    src="{{ asset('storage/rekomendasi/' . $food['gambar']) }}"
+    alt="{{ $food['nama'] }}"
+    class="w-20 opacity-90 object-contain">        </div>
 
         <div class="p-4">
             <h3 class="font-semibold text-sm md:text-base">{{ $food['nama'] }}</h3>

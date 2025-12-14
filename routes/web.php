@@ -12,6 +12,7 @@ use App\Http\Controllers\User\AnakController;
 use App\Http\Controllers\User\CekStuntingController;
 
 use App\Http\Controllers\User\EdukasiController as UserEdukasiController;
+
 use App\Http\Controllers\RekomendasiController;
 
 
@@ -135,16 +136,19 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     ->name('admin.users.destroy');
 
     // ARTIKEL EDUKASI
-    Route::post('/edukasi/store', [EdukasiController::class, 'store'])
-    ->name('admin.edukasi.store');
-
-    Route::get('/admin/konten-edukasi', [EdukasiController::class, 'kontenEdukasi'])
+    // ARTIKEL EDUKASI
+Route::get('/admin/konten-edukasi', [AdminEdukasiController::class, 'kontenEdukasi'])
     ->name('admin.konten-edukasi');
 
-    Route::delete('/admin/edukasi/{id}', [EdukasiController::class, 'destroy'])->name('edukasi.destroy');
+Route::post('/admin/edukasi/store', [AdminEdukasiController::class, 'store'])
+    ->name('admin.edukasi.store');
 
-    Route::delete('/admin/manajemen-user/{user}', [UserController::class, 'destroy'])
-        ->name('admin.users.destroy');
+Route::delete('/admin/edukasi/{id}', [AdminEdukasiController::class, 'destroy'])
+    ->name('edukasi.destroy');
+
+Route::patch('/admin/edukasi/{id}/status', [AdminEdukasiController::class, 'updateStatus'])
+    ->name('edukasi.updateStatus');
+
 
     // REKOMENDASI MAKANAN
     Route::get('/admin/rekomendasi-makanan', [RekomendasiMakananController::class,'index'])
