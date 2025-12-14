@@ -117,17 +117,18 @@
                     flex flex-col justify-center items-center text-center h-full
                     animate-[fadeUp_1.5s_ease-out]">
 
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16 text-gray-400 mb-4" fill="none"
-                 viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="M8 12h.01M12 12h.01M16 12h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
+            <svg id="placeholderIcon" xmlns="http://www.w3.org/2000/svg" class="w-16 h-16 text-gray-400 mb-4" fill="none"
+                  viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M8 12h.01M12 12h.01M16 12h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+            <div id="hasil" class="text-center text-gray-600">
 
-        </div>
-
-            <p class="text-gray-400 text-sm mt-1 leading-relaxed">
-                Isi form di samping untuk menghitung status pertumbuhan anak
-            </p>
+                <h3 class="text-gray-600 font-medium text-lg">Hasil Akan Tampil Di Sini</h3>
+                <p class="text-gray-400 text-sm mt-1 leading-relaxed">
+                    Isi form di samping untuk menghitung status pertumbuhan anak
+                </p>
+            </div>
         </div>
     </div>
 </div>
@@ -176,6 +177,9 @@ async function hitungZScore() {
   }
 
   if (hasError) {
+    // Hide placeholder icon
+    document.getElementById("placeholderIcon").classList.add("hidden");
+    
     hasilEl.innerHTML = `
       <div class="text-center">
         <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16 text-red-400 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -188,6 +192,9 @@ async function hitungZScore() {
     return;
   }
 
+  // Hide placeholder icon
+  document.getElementById("placeholderIcon").classList.add("hidden");
+  
   // Show loading state
   submitBtn.disabled = true;
   submitBtn.innerHTML = `
