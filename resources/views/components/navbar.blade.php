@@ -77,19 +77,16 @@
         </li>
 
         <li>
-    <a href="{{ route('user.deteksi.makanan') }}"
-       class="menu-item {{ request()->routeIs('user.deteksi.makanan') ? 'active' : '' }}">
-
-        <svg class="icon" fill="none" stroke="currentColor" stroke-width="2"
-             viewBox="0 0 24 24">
-            <path d="M3 7h4l2-2h6l2 2h4v12H3V7z"/>
-            <circle cx="12" cy="13" r="3"/>
-        </svg>
-
-        <span class="sidebar-text">Deteksi Makanan</span>
-    </a>
-</li>
-
+            <a href="{{ route('user.deteksi.makanan') }}"
+               class="menu-item {{ request()->routeIs('user.deteksi.makanan') ? 'active' : '' }}">
+                <svg class="icon" fill="none" stroke="currentColor" stroke-width="2"
+                     viewBox="0 0 24 24">
+                    <path d="M3 7h4l2-2h6l2 2h4v12H3V7z"/>
+                    <circle cx="12" cy="13" r="3"/>
+                </svg>
+                <span class="sidebar-text">Deteksi Makanan</span>
+            </a>
+        </li>
 
         <li>
             <a href="/data-anak" class="menu-item {{ $active['dataanak'] ? 'active' : '' }}">
@@ -112,7 +109,7 @@
     </ul>
 
     {{-- PROFIL --}}
-    <div class="bottom-profile absolute bottom-6 left-0 w-full px-3">
+    <div class="bottom-profile absolute bottom-6 left-0 w-full px-1">
         <button class="menu-item">
             <div class="profile-avatar">
                 <i class="fa-solid fa-user text-gray-600"></i>
@@ -122,7 +119,7 @@
     </div>
 </div>
 
-{{-- ================= STYLE ================= --}}
+{{-- ================= STYLE ASLI ================= --}}
 <style>
 .sidebar.collapsed { width: 69px; }
 
@@ -143,9 +140,7 @@
     transition: .25s;
 }
 
-.menu-item:hover {
-    background: #ecfdf5;
-}
+.menu-item:hover { background: #ecfdf5; }
 
 .menu-item.active {
     background: #16a34a;
@@ -153,9 +148,7 @@
     box-shadow: 0 6px 18px rgba(22,163,74,.35);
 }
 
-.menu-item.active svg {
-    color: #fff;
-}
+.menu-item.active svg { color: #fff; }
 
 .icon {
     width: 20px;
@@ -209,8 +202,19 @@
     border-radius: 14px;
     z-index: -1;
 }
+
+.bottom-profile .menu-item {
+    width: 100%;                 
+    display: flex;               
+    padding-left: 18px;
+    padding-right: 18px;
+    box-sizing: border-box;
+}
+
+
 </style>
 
+{{-- ================= SCRIPT ASLI ================= --}}
 <script>
 document.addEventListener('DOMContentLoaded', () => {
     const sidebar = document.getElementById('sidebar');
@@ -246,5 +250,108 @@ function toggleSidebar(){
 
     localStorage.setItem('sidebar-state', isCollapsed ? 'closed' : 'open');
 }
+</script>
+
+{{-- ================= TAMBAHAN AMAN (TIDAK MENGUBAH KODE DI ATAS) ================= --}}
+
+<form id="logoutDropdown"
+      method="POST"
+      action="{{ route('logout') }}"
+      class="profile-logout hidden">
+    @csrf
+    <button type="submit">Logout</button>
+</form>
+
+<style>
+.profile-logout {
+    position: absolute;
+    bottom: 72px;
+    left: 12px;
+    right: 12px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,.12);
+    overflow: hidden;
+    z-index: 9999;
+}
+
+.profile-logout button {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 14px;
+    color: #dc2626;
+    background: none;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+}
+
+.profile-logout button:hover {
+    background: #fee2e2;
+}
+
+.bottom-profile .menu-item {
+    width: 100%;
+    display: flex;
+    padding-left: 18px;
+    padding-right: 18px;
+    box-sizing: border-box;
+}
+
+.profile-logout {
+    position: absolute;
+    bottom: 72px;
+    left: 12px;
+    right: 12px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,.12);
+    overflow: hidden;
+    z-index: 9999;
+    display: none; /* penting: tidak otomatis muncul */
+}
+
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const profile = document.querySelector('.bottom-profile');
+    const logout  = document.getElementById('logoutDropdown');
+
+    if (!profile || !logout) return;
+
+    profile.appendChild(logout);
+
+    profile.addEventListener('mouseenter', () => {
+        logout.classList.remove('hidden');
+    });
+
+    profile.addEventListener('mouseleave', () => {
+        logout.classList.add('hidden');
+    });
+});
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const profile = document.querySelector('.bottom-profile');
+    const logout  = document.getElementById('logoutDropdown');
+
+    if (!profile || !logout) return;
+
+    profile.appendChild(logout);
+
+    // klik profil → toggle logout
+    profile.addEventListener('click', (e) => {
+        e.stopPropagation();
+        logout.style.display =
+            logout.style.display === 'block' ? 'none' : 'block';
+    });
+
+    // klik di luar → tutup
+    document.addEventListener('click', () => {
+        logout.style.display = 'none';
+    });
+});
 </script>
 
