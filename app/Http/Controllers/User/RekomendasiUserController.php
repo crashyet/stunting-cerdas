@@ -8,21 +8,18 @@ use App\Models\RekomendasiMakanan;
 class RekomendasiUserController extends Controller
 {
     public function index()
-{
-    $foods = RekomendasiMakanan::where('status', 'publish')
-        ->latest()
-        ->get();
+    {
+        $foods = RekomendasiMakanan::latest()->get();
 
-    return view('users.rekomendasi', compact('foods'));
-}
+        return view('users.rekomendasi', compact('foods'));
+    }
 
-public function detail($slug)
-{
-    $food = RekomendasiMakanan::where('slug', $slug)
-        ->where('status', 'publish')
-        ->firstOrFail();
+    public function detail($slug)
+    {
+        $food = RekomendasiMakanan::where('slug', $slug)
+            ->firstOrFail();
 
-    return view('users.rekomendasi-detail', compact('food'));
-}
-
+        return view('users.rekomendasi-detail', compact('food'));
+    }
+    
 }

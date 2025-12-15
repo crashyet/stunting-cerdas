@@ -48,6 +48,14 @@
 
 {{-- ================= HEADER ARTIKEL ================= --}}
 <div class="px-6 md:px-20 lg:px-52 py-10">
+    {{-- BACK BUTTON --}}
+    <div class="container mx-auto px-4 py-6">
+        <a href="{{ route('user.edukasi') }}"
+           class="inline-flex items-center gap-2 px-5 py-2 rounded-xl
+                  text-sm font-semibold hover:bg-gray-100 transition">
+            ← Kembali
+        </a>
+    </div>
 
     {{-- KATEGORI --}}
     <span

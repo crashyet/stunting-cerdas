@@ -76,6 +76,7 @@
 </div>
 
 {{-- ================= TIPS GIZI ================= --}}
+
 <div class="px-6 md:px-14 mt-10">
     <div class="bg-gradient-to-r from-green-50 to-blue-50 p-6 rounded-2xl shadow-sm">
 
@@ -111,45 +112,58 @@
 </div>
 
 {{-- ================= GRID CARD MAKANAN ================= --}}
+
 <div class="px-6 md:px-14 mt-10 pb-20 grid grid-cols-2 md:grid-cols-4 gap-6">
 
 @foreach ($foods as $i => $food)
+    <a href="{{ route('rekomendasi.show', $food->slug) }}" class="block">
 
     <div
-        class="rounded-3xl border bg-white shadow-sm overflow-hidden
-        {{ $animateCard ? 'animate-[fadeUp_'.(0.6 + ($i * 0.08)).'s_ease-out]' : '' }}">
+    class="rounded-3xl border bg-white shadow-sm overflow-hidden
+    {{ $animateCard ? 'animate-[fadeUp_'.(0.6 + ($i * 0.08)).'s_ease-out]' : '' }}">
 
-        <div class="h-48 bg-gradient-to-b from-green-50 to-blue-50
-                    flex items-center justify-center relative">
+    {{-- IMAGE --}}
+    <div class="relative h-48 w-full overflow-hidden">
+        <span
+            class="absolute right-3 top-3 z-10 px-3 py-1 bg-blue-100 text-blue-700
+                   text-[10px] rounded-full font-semibold shadow-sm">
+            {{ $food['usia'] }} bulan
+        </span>
 
-            <span class="absolute right-3 top-3 px-3 py-1 bg-blue-100 text-blue-700
-                         text-[10px] rounded-full font-semibold shadow-sm">
-                {{ $food['usia'] }} bulan
-            </span>
+        <img
+            src="{{ asset('storage/' . $food['gambar']) }}"
+            alt="{{ $food['judul'] }}"
+            class="w-full h-full object-cover">
+    </div>
 
-            <img src="" class="w-16 opacity-90">
-        </div>
+    {{-- CONTENT --}}
+    <div class="p-4">
+        <h3 class="font-semibold text-sm md:text-base">
+            {{ $food['judul'] }}
+        </h3>
 
-        <div class="p-4">
-            <h3 class="font-semibold text-sm md:text-base">{{ $food['nama'] }}</h3>
-            <p class="text-gray-500 text-xs md:text-sm">{{ $food['kategori'] }}</p>
+        <p class="text-gray-500 text-xs md:text-sm">
+            {{ $food['kategori'] }}
+        </p>
 
-            <div class="flex items-center gap-2 mt-4">
-                <div class="flex-1 bg-green-50 py-2 px-4 rounded-xl text-center">
-                    <p class="text-green-600 text-[11px] font-medium">Kalori</p>
-                    <p class="text-green-700 font-bold text-lg">{{ $food['kalori'] }}</p>
-                </div>
-                <div class="flex-1 bg-blue-50 py-2 px-4 rounded-xl text-center">
-                    <p class="text-blue-600 text-[11px] font-medium">Protein</p>
-                    <p class="text-blue-700 font-bold text-lg">{{ $food['protein'] }}g</p>
-                </div>
+        <div class="flex items-center gap-2 mt-4">
+            <div class="flex-1 bg-green-50 py-2 px-4 rounded-xl text-center">
+                <p class="text-green-600 text-[11px] font-medium">Kalori</p>
+                <p class="text-green-700 font-bold text-lg">
+                    {{ $food['kalori'] }}
+                </p>
             </div>
 
-            <div class="flex gap-1 mt-3 flex-wrap">
-                
+            <div class="flex-1 bg-blue-50 py-2 px-4 rounded-xl text-center">
+                <p class="text-blue-600 text-[11px] font-medium">Protein</p>
+                <p class="text-blue-700 font-bold text-lg">
+                    {{ $food['protein'] }}g
+                </p>
             </div>
         </div>
     </div>
+</div>
+</a>
 
 @endforeach
 </div>

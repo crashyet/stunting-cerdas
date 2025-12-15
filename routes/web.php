@@ -13,6 +13,7 @@ use App\Http\Controllers\User\CekStuntingController;
 
 use App\Http\Controllers\User\EdukasiController as UserEdukasiController;
 use App\Http\Controllers\RekomendasiController;
+use App\Http\Controllers\AnalyzeController;
 
 
 Route::get('/', function () {
@@ -61,6 +62,12 @@ Route::middleware(['auth', 'role:user'])->group(function () {
     // REKOMENDASI MAKANAN (Controller Baru)
     Route::get('/rekomendasi', [RekomendasiController::class, 'index'])
         ->name('user.rekomendasi');
+        Route::get('/rekomendasi', [RekomendasiUserController::class, 'index'])
+    ->name('user.rekomendasi');
+
+Route::get('/rekomendasi-makanan/{slug}', [RekomendasiUserController::class, 'detail'])
+    ->name('rekomendasi.show');
+
 
     // DETEKSI MAKANAN 
     Route::get('/deteksi-makanan', function () {return view('users.deteksi-makanan');
@@ -74,13 +81,8 @@ Route::get('/rekomendasi/{slug}', [RekomendasiUserController::class, 'detail'])
 
 
     // DATA ANAK
-    Route::get('/data-anak', function () {
-        return view('users.data-anak');
-    })->name('user.dataanak');
-    Route::middleware(['auth'])->group(function () {
-    Route::get('/data-anak', [AnakController::class, 'index'])->name('anak.index');
-    Route::post('/data-anak', [AnakController::class, 'store'])->name('anak.store');
-});
+    Route::get('/data-anak', [AnakController::class, 'index'])->name('user.dataanak');
+    Route::post('/data-anak', [AnakController::class, 'store'])->name('user.dataanak.store');
 
 
     // DASHBOARD USER
@@ -135,16 +137,19 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     ->name('admin.users.destroy');
 
     // ARTIKEL EDUKASI
-    Route::post('/edukasi/store', [EdukasiController::class, 'store'])
-    ->name('admin.edukasi.store');
-
-    Route::get('/admin/konten-edukasi', [EdukasiController::class, 'kontenEdukasi'])
+    // ARTIKEL EDUKASI
+Route::get('/admin/konten-edukasi', [AdminEdukasiController::class, 'kontenEdukasi'])
     ->name('admin.konten-edukasi');
 
-    Route::delete('/admin/edukasi/{id}', [EdukasiController::class, 'destroy'])->name('edukasi.destroy');
+Route::post('/admin/edukasi/store', [AdminEdukasiController::class, 'store'])
+    ->name('admin.edukasi.store');
 
-    Route::delete('/admin/manajemen-user/{user}', [UserController::class, 'destroy'])
-        ->name('admin.users.destroy');
+Route::delete('/admin/edukasi/{id}', [AdminEdukasiController::class, 'destroy'])
+    ->name('edukasi.destroy');
+
+Route::patch('/admin/edukasi/{id}/status', [AdminEdukasiController::class, 'updateStatus'])
+    ->name('edukasi.updateStatus');
+
 
     // REKOMENDASI MAKANAN
     Route::get('/admin/rekomendasi-makanan', [RekomendasiMakananController::class,'index'])
@@ -162,3 +167,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         ->name('admin.rekomendasi.updateStatus');
 
 });
+
+Route::get('/analyze', [AnalyzeController::class, 'index'])->name('analyze.index');
+Route::post('/analyze', [AnalyzeController::class, 'submit'])->name('analyze.submit');
+

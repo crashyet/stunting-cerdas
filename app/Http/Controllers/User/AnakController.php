@@ -12,7 +12,11 @@ class AnakController extends Controller
     // halaman DATA ANAK
     public function index()
     {
-        $anak = Anak::where('user_id', Auth::id())->get();
+        $anak = Anak::where('user_id', Auth::id())
+            ->with(['pengukuran' => function($query) {
+                $query->latest();
+            }])
+            ->get();
 
         return view('users.data-anak', compact('anak'));
     }
@@ -24,15 +28,32 @@ class AnakController extends Controller
             'nama' => 'required',
             'umur' => 'required|numeric',
             'jenis_kelamin' => 'required',
+            'tinggi_badan' => 'nullable|numeric',
+            'berat_badan' => 'nullable|numeric',
         ]);
 
-        Anak::create([
+        // Create anak record
+        $anak = Anak::create([
             'user_id' => Auth::id(),
             'nama' => $request->nama,
             'umur' => $request->umur,
             'jenis_kelamin' => $request->jenis_kelamin,
         ]);
 
-        return back()->with('success', 'Data anak berhasil ditambahkan');
+        // Create pengukuran record if tinggi and berat provided
+        if ($request->tinggi_badan && $request->berat_badan) {
+            $anak->pengukuran()->create([
+                'tinggi_badan' => $request->tinggi_badan,
+                'berat' => $request->berat_badan,
+                'umur' => $request->umur,
+                'tanggal_pengukuran' => now(),
+            ]);
+        }
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Data anak berhasil ditambahkan',
+            'data' => $anak->load('pengukuran')
+        ]);
     }
 }
