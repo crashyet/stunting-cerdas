@@ -13,7 +13,7 @@
     <div class="absolute top-10 -right-40 w-[460px] h-[460px] bg-blue-300/20 blur-[160px] rounded-full"></div>
 
     {{-- HERO CONTENT WRAPPER --}}
-    <div class="relative w-full max-w-6xl mx-auto px-6 text-center scroll-hero">
+    <<div class="relative w-full max-w-6xl mx-auto px-6 text-center scroll-hero">
 
         {{-- Badge --}}
         <div class="inline-block bg-white/70 backdrop-blur-md text-green-700 px-6 py-2 rounded-full 
@@ -196,7 +196,7 @@
             Tentang <span class="text-green-600">Kami</span>
         </h2>
 
-        <p class="text-center text-gray-600 mb-14 max-w-xl mx-auto scroll-fade">
+        <p class="text-center text-gray-600 mb-14 max-w-xl mx-auto scroll-fade"> 
             Cegah Stunting adalah platform digital berbasis data dan edukasi yang bertujuan membantu orang tua 
             memantau pertumbuhan anak, memahami risiko stunting, dan mengambil langkah pencegahan sejak dini.
         </p>
@@ -345,180 +345,200 @@
 <section id="edukasi" class="py-28 px-6 bg-gradient-to-t from-white to-blue-50">
     <div class="container mx-auto max-w-6xl">
 
-        <h2 class="text-center text-4xl font-extrabold text-gray-900 mb-4">
+        <h2 class="text-center text-4xl font-extrabold text-gray-900 mb-4 scroll-fade">
             Edukasi <span class="text-green-600">Stunting</span>
         </h2>
 
         <p class="text-center text-gray-600 mb-14 max-w-xl mx-auto scroll-fade">
-            Bersama membantu orang tua membangun masa depan anak yang lebih sehat dengan edukasi yang terpercaya, 
+            Membantu membangun masa depan anak yang lebih sehat melalui edukasi yang terpercaya, 
             pemantauan perkembangan, dan dukungan berkelanjutan.
         </p>
 
         <div class="grid md:grid-cols-3 gap-10">
 
-            {{-- AMAN WALAU $articles BELUM ADA --}}
-            @if(isset($articles) && count($articles))
-                @foreach ($articles as $card)
-
-                {{-- ===== CARD (MODEL SESUAI PUNYAMU) ===== --}}
-                <div
-                    class="edukasi-card p-8 bg-white rounded-3xl border border-gray-100 shadow-md
-                           hover:shadow-xl transition-all hover:-translate-y-1 scroll-fade cursor-pointer"
-
-                    data-title="{{ $card->judul }}"
-                    data-image="{{ $card->thumbnail
-                        ? asset('storage/'.$card->thumbnail)
-                        : 'https://via.placeholder.com/600x400?text=No+Image' }}"
-                    data-excerpt="{{ $card->intro }}"
-                    data-link="{{ route('user.edukasi.detail', $card->slug) }}"
-                >
-
-                    <div class="w-14 h-14 flex items-center justify-center rounded-full bg-green-100 mb-5">
-                        {{-- ICON: CHART TREND --}}
-                        <svg class="w-7 h-7 text-green-600" fill="none" viewBox="0 0 24 24"
-                             stroke="currentColor">
-                            <path stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                  d="M4 20h16" />
-                            <path stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                  d="M6 16l4-4 3 3 5-7" />
-                        </svg>
-                    </div>
-
-                    <h3 class="font-bold text-xl text-gray-800 mb-3">
-                        {{ $card->judul }}
-                    </h3>
-
-                    <p class="text-gray-600 leading-relaxed">
-                        {{ $card->intro }}
-                    </p>
+            <!-- CARD 1 -->
+            <div data-modal="modal-1"
+                 class="edukasi-card p-8 bg-white rounded-3xl border border-gray-100 shadow-md
+                        hover:shadow-xl transition-all hover:-translate-y-1 scroll-fade cursor-pointer">
+                <div class="w-14 h-14 flex items-center justify-center rounded-full bg-blue-100 mb-5">
+                    <svg class="w-7 h-7 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                              d="M4 6a2 2 0 012-2h11a2 2 0 012 2v13H6a2 2 0 01-2-2z"/>
+                        <path stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                              d="M6 4v13"/>
+                        <path stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                              d="M9 12l2 2 4-4"/>
+                    </svg>
                 </div>
-                @endforeach
-            @else
-                <div class="col-span-3 text-center text-gray-500">
-                    Artikel belum tersedia
+                <h3 class="font-bold text-xl text-gray-800 mb-3">Pencegahan Stunting</h3>
+                <p class="text-gray-600 leading-relaxed">
+                    Membantu orang tua mendeteksi risiko stunting sejak usia dini.
+                </p>
+            </div>
+
+            <!-- CARD 2 -->
+            <div data-modal="modal-2"
+                 class="edukasi-card p-8 bg-white rounded-3xl border border-gray-100 shadow-md
+                        hover:shadow-xl transition-all hover:-translate-y-1 scroll-fade cursor-pointer">
+                <div class="w-14 h-14 flex items-center justify-center rounded-full bg-purple-100 mb-5">
+                    <svg class="w-7 h-7 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                              d="M12 3l9 4.5-9 4.5-9-4.5L12 3z"/>
+                        <path stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                              d="M21 10v5a9 9 0 01-18 0v-5"/>
+                    </svg>
                 </div>
-            @endif
+                <h3 class="font-bold text-xl text-gray-800 mb-3">1000 Hari Pertama Kehidupan</h3>
+                <p class="text-gray-600 leading-relaxed">
+                     periode emas krusial untuk mencegah stunting.
+                </p>
+            </div>
+
+            <!-- CARD 3 -->
+            <div data-modal="modal-3"
+                 class="edukasi-card p-8 bg-white rounded-3xl border border-gray-100 shadow-md
+                        hover:shadow-xl transition-all hover:-translate-y-1 scroll-fade cursor-pointer">
+                <div class="w-14 h-14 flex items-center justify-center rounded-full bg-green-100 mb-5">
+                    <svg class="w-7 h-7 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                              d="M4 6a2 2 0 012-2h11a2 2 0 012 2v13H6a2 2 0 01-2-2z"/>
+                        <path stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                              d="M6 4v13"/>
+                        <path stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                              d="M9 15l3-3 3 2 4-5"/>
+                    </svg>
+                </div>
+                <h3 class="font-bold text-xl text-gray-800 mb-3">apa itu stunting?</h3>
+                <p class="text-gray-600 leading-relaxed">
+                   Stunting adalah gagal tumbuh akibat kekurangan gizi jangka panjang.
+                </p>
+            </div>
 
         </div>
     </div>
 </section>
 
-{{-- ========================= POPUP PREVIEW ========================= --}}
+<!-- ================= MODAL ================= -->
 <div id="modal-overlay" class="modal-overlay hidden">
     <div class="modal-box">
-
-        <img id="modal-image" class="modal-image">
-
-        <h3 id="modal-title" class="modal-title"></h3>
-
-        <p id="modal-excerpt" class="modal-excerpt"></p>
-
-        <a id="modal-button" class="modal-button">
-            Lanjut Baca
-        </a>
-
         <button class="modal-close">&times;</button>
+        <h3 id="modal-title"></h3>
+        <p id="modal-content"></p>
     </div>
 </div>
 
-{{-- ========================= STYLE ========================= --}}
+<!-- ================= CSS ================= -->
 <style>
-.modal-overlay{
-    position:fixed; inset:0;
-    background:rgba(0,0,0,.35);
-    display:flex; align-items:center; justify-content:center;
-    z-index:999;
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
 }
-.modal-overlay.hidden{display:none;}
+.modal-overlay.hidden { display: none; }
 
-@media(min-width:1024px){
-    .modal-overlay{backdrop-filter:blur(6px);}
-}
-
-.modal-box{
-    background:#fff;
-    width:90%; max-width:480px;
-    max-height:80vh; overflow-y:auto;
-    border-radius:20px;
-    padding:24px;
-    position:relative;
+/* BLUR KHUSUS DESKTOP */
+@media (min-width: 1024px) {
+    .modal-overlay {
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+    }
 }
 
-.modal-image{
-    width:100%; height:180px;
-    object-fit:cover;
-    border-radius:14px;
-    margin-bottom:14px;
+.modal-box {
+    background: #fff;
+    max-width: 500px;
+    width: 90%;
+
+    max-height: 75vh;          
+    overflow-y: auto;          
+
+    border-radius: 20px;
+    padding: 24px;
+    position: relative;
+
+    animation: modalFade .25s ease;
 }
 
-.modal-title{font-size:20px;font-weight:700;margin-bottom:10px;}
-.modal-excerpt{font-size:14px;color:#4b5563;line-height:1.6;}
-
-.modal-button{
-    display:block;
-    margin-top:18px;
-    background:#16a34a;
-    color:#fff;
-    text-align:center;
-    padding:12px;
-    border-radius:12px;
-    font-weight:600;
-    text-decoration:none;
+@keyframes modalFade {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+.modal-box h3 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: #111827;
+}
+.modal-box p {
+    font-size: 14px;
+    color: #4b5563;
+    line-height: 1.6;
+}
+.modal-close {
+    position: absolute;
+    top: 12px;
+    right: 14px;
+    background: none;
+    border: none;
+    font-size: 22px;
+    cursor: pointer;
+    color: #6b7280;
 }
 
-.modal-close{
-    position:absolute;
-    top:12px; right:14px;
-    font-size:22px;
-    background:none; border:none;
-    cursor:pointer;
+/* KUNCI SCROLL */
+body.modal-open {
+    overflow: hidden;
 }
-
-body.modal-open{overflow:hidden;}
 </style>
 
-{{-- ========================= SCRIPT ========================= --}}
+<!-- ================= JS ================= -->
 <script>
-document.addEventListener('DOMContentLoaded', () => {
+const modalData = {
+    "modal-1": {
+        title: "Pencegahan Stunting",
+        content: "Pencegahan stunting fokus pada 1000 Hari Pertama Kehidupan (dari kehamilan hingga anak usia 2 tahun) dengan memastikan gizi ibu hamil, ASI eksklusif 6 bulan, MPASI kaya protein hewani, imunisasi lengkap, serta menjaga kebersihan lingkungan dan kesehatan anak secara rutin. Pencegahan juga melibatkan edukasi remaja putri (mencegah anemia dan pernikahan dini) dan perbaikan sanitasi."
+    },
+    "modal-2": {
+        title: "1000 Hari Pertama Kehidupan (HPK)",
+        content: "1000 Hari Pertama Kehidupan (HPK), dari dalam kandungan hingga anak usia 2 tahun, adalah periode emas krusial untuk mencegah stunting, yaitu gagal tumbuh akibat kekurangan gizi kronis dan infeksi berulang; kekurangan gizi di masa ini bisa menyebabkan gangguan permanen pada pertumbuhan fisik dan perkembangan otak, sehingga asupan nutrisi ibu hamil dan anak (ASI eksklusif, MPASI berkualitas) serta pemantauan rutin sangat vital untuk masa depan anak."
+    },
+    "modal-3": {
+        title: "apa itu stunting?",
+        content: "Stunting adalah kondisi gagal tumbuh pada anak akibat kekurangan gizi kronis (dalam jangka panjang), yang ditandai dengan tinggi badan lebih pendek dari standar usianya, dan dapat menghambat perkembangan fisik, kognitif (kecerdasan), serta meningkatkan risiko penyakit di masa depan. Ini terjadi karena asupan gizi yang tidak mencukupi sejak ibu hamil hingga anak berusia di bawah 5 tahun, termasuk infeksi berulang."
+    }
+};
 
-    const overlay = document.getElementById('modal-overlay');
-    const titleEl = document.getElementById('modal-title');
-    const textEl  = document.getElementById('modal-excerpt');
-    const imgEl   = document.getElementById('modal-image');
-    const btnEl   = document.getElementById('modal-button');
+const overlay = document.getElementById("modal-overlay");
+const titleEl = document.getElementById("modal-title");
+const contentEl = document.getElementById("modal-content");
 
-    document.querySelectorAll('.edukasi-card').forEach(card => {
-        card.addEventListener('click', () => {
+document.querySelectorAll(".edukasi-card").forEach(card => {
+    card.addEventListener("click", () => {
+        const key = card.dataset.modal;
+        titleEl.textContent = modalData[key].title;
+        contentEl.textContent = modalData[key].content;
 
-            titleEl.textContent = card.dataset.title;
-            textEl.textContent  = card.dataset.excerpt;
-            imgEl.src           = card.dataset.image;
-
-            @if(auth()->check())
-                btnEl.href = card.dataset.link;
-            @else
-                btnEl.href = '/login';
-            @endif
-
-            overlay.classList.remove('hidden');
-            document.body.classList.add('modal-open');
-        });
+        overlay.classList.remove("hidden");
+        document.body.classList.add("modal-open");
     });
-
-    document.querySelector('.modal-close').onclick = () => {
-        overlay.classList.add('hidden');
-        document.body.classList.remove('modal-open');
-    };
-
-    overlay.onclick = e => {
-        if(e.target === overlay){
-            overlay.classList.add('hidden');
-            document.body.classList.remove('modal-open');
-        }
-    };
 });
-</script>
 
+document.querySelector(".modal-close").onclick = () => {
+    overlay.classList.add("hidden");
+    document.body.classList.remove("modal-open");
+};
+
+overlay.onclick = e => {
+    if (e.target === overlay) {
+        overlay.classList.add("hidden");
+        document.body.classList.remove("modal-open");
+    }
+};
+</script>
 
 {{-- Smooth Scroll --}}
 <script>
