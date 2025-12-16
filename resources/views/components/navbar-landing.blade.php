@@ -28,6 +28,7 @@
             <li><a href="#fitur" class="hover:text-green-600 transition">Fitur</a></li>
             <li><a href="#tentang" class="hover:text-green-600 transition">Tentang</a></li>
             <li><a href="#tujuan" class="hover:text-green-600 transition">Tujuan</a></li>
+             <li><a href="#edukasi" class="hover:text-green-600 transition">Edukasi</a></li>
         </ul>
 
         {{-- BUTTON LOGIN --}}

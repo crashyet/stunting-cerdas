@@ -19,6 +19,7 @@
                 <li><a href="#fitur" class="hover:text-white transition">Fitur</a></li>
                 <li><a href="#tentang" class="hover:text-white transition">Tentang Kami</a></li>
                 <li><a href="#tujuan" class="hover:text-white transition">Tujuan</a></li>
+                <li><a href="#edukasi" class="hover:text-white transition">Edukasi</a></li>
             </ul>
         </div>
 

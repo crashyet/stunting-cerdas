@@ -15,9 +15,20 @@ use App\Http\Controllers\User\EdukasiController as UserEdukasiController;
 use App\Http\Controllers\RekomendasiController;
 
 
+use Illuminate\Support\Facades\DB;
+
 Route::get('/', function () {
-    return view('landingpage');
+
+    $articles = DB::table('edukasi') // ⬅️ SESUAIKAN NAMA TABEL
+        ->where('status', 'publish')
+        ->orderByDesc('created_at')
+        ->limit(3)
+        ->get();
+
+    return view('landingpage', compact('articles'));
+
 })->name('landing');
+
 
 /*
 |--------------------------------------------------------------------------
