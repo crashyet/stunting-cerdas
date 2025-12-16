@@ -18,7 +18,7 @@
             </div>
             <span class="text-2xl font-extrabold tracking-tight bg-clip-text text-transparent
                          bg-gradient-to-r from-green-500 to-blue-500">
-                StuntingCare
+                Cegah Stunting
             </span>
         </div>
 

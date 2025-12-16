@@ -98,23 +98,38 @@
             </a>
         </li>
 
-        <li>
+        <!-- <li>
             <a href="/dashboard" class="menu-item {{ $active['dashboard'] ? 'active' : '' }}">
                 <svg class="icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                     <path d="M3 3h7v7H3zM14 3h7v11h-7zM14 18h7v3h-7zM3 14h7v7H3z"/>
                 </svg>
                 <span class="sidebar-text">Dashboard</span>
             </a>
-        </li>
+        </li> -->
     </ul>
 
     {{-- PROFIL --}}
-    <div class="bottom-profile absolute bottom-6 left-0 w-full px-1">
-        <button class="menu-item">
-            <div class="profile-avatar">
-                <i class="fa-solid fa-user text-gray-600"></i>
+        <div class="bottom-profile absolute bottom-6 left-0 w-full px-1">
+        <button class="menu-item flex items-center gap-3
+                    bg-gray-100 rounded-2xl px-3 py-3 w-full">
+
+            {{-- FOTO PROFIL (HURUF AWAL NAMA) --}}
+            <div class="profile-avatar
+                        w-10 h-10 rounded-full bg-gray-300
+                        flex items-center justify-center
+                        text-gray-700 font-semibold">
+                {{ strtoupper(substr(auth()->user()->name, 0, 1)) }}
             </div>
-            <span class="sidebar-text">Profil</span>
+
+            {{-- NAMA & EMAIL --}}
+            <div class="sidebar-text flex flex-col text-left leading-tight">
+                <span class="text-sm font-semibold text-gray-900">
+                    {{ auth()->user()->name }}
+                </span>
+                <span class="text-xs text-gray-500">
+                    {{ auth()->user()->email }}
+                </span>
+            </div>
         </button>
     </div>
 </div>
@@ -175,7 +190,7 @@
     width: 36px;
     height: 36px;
     border-radius: 9999px;
-    background: #e5e7eb;
+    background: #86efac;
     display: flex;
     align-items: center;
     justify-content: center;

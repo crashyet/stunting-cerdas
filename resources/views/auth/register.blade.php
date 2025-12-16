@@ -8,7 +8,7 @@
 
         {{-- LOGO --}}
         <div class="text-center mb-7">
-            <h1 class="text-3xl font-extrabold text-green-600">StuntingCare</h1>
+            <h1 class="text-3xl font-extrabold text-green-600">Cegah Stunting</h1>
             <p class="text-gray-500 text-sm mt-1">Daftar akun baru</p>
         </div>
 

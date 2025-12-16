@@ -4,7 +4,7 @@
 
         {{-- BRAND --}}
         <div>
-            <h3 class="text-2xl font-extrabold mb-4 tracking-wide">StuntingCare</h3>
+            <h3 class="text-2xl font-extrabold mb-4 tracking-wide">Cegah Stunting</h3>
             <p class="text-gray-200 text-sm leading-relaxed max-w-sm">
                 Platform kesehatan terpadu untuk memantau pertumbuhan anak,
                 mencegah stunting, dan memberikan edukasi nutrisi berkualitas.
@@ -26,7 +26,7 @@
         <div>
             <h3 class="text-lg font-semibold mb-4">Kontak</h3>
             <ul class="space-y-1 text-gray-200 text-sm">
-                <li>Email: support@stuntingcare.id</li>
+                <li>Email: support@cegahstunting.id</li>
                 <li>Telepon: +62 812-3456-7890</li>
             </ul>
         </div>
@@ -34,7 +34,7 @@
 
     {{-- COPYRIGHT --}}
     <div class="border-t border-white/20 mt-12 pt-6 text-center text-gray-200 text-sm">
-        © 2025 StuntingCare. Semua hak dilindungi.
+        © 2025 Cegah Stunting. Semua hak dilindungi.
     </div>
 
 </footer>

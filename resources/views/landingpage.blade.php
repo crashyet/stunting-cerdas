@@ -196,7 +196,7 @@
         </h2>
 
         <p class="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed scroll-fade">
-            StuntingCare adalah platform digital berbasis data dan edukasi yang bertujuan membantu orang tua 
+            Cegah Stunting adalah platform digital berbasis data dan edukasi yang bertujuan membantu orang tua 
             memantau pertumbuhan anak, memahami risiko stunting, dan mengambil langkah pencegahan sejak dini.
         </p>
 
