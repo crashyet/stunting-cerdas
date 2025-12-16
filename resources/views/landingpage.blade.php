@@ -3,7 +3,7 @@
 @section('content')
 
 {{-- ========================= HERO SECTION ========================= --}}
-<section id="beranda" class="relative overflow-hidden pt-40 pb-28">
+<section id="beranda" class="relative overflow-hidden min-h-screen flex items-center pt-40 pb-28">
 
     {{-- Elegant gradient --}}
     <div class="absolute inset-0 bg-gradient-to-br from-green-50 via-white to-blue-50"></div>
@@ -13,7 +13,7 @@
     <div class="absolute top-10 -right-40 w-[460px] h-[460px] bg-blue-300/20 blur-[160px] rounded-full"></div>
 
     {{-- HERO CONTENT WRAPPER --}}
-    <div class="relative max-w-6xl mx-auto px-6 text-center scroll-hero">
+    <div class="relative w-full max-w-6xl mx-auto px-6 text-center scroll-hero">
 
         {{-- Badge --}}
         <div class="inline-block bg-white/70 backdrop-blur-md text-green-700 px-6 py-2 rounded-full 
