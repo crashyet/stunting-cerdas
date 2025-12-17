@@ -13,6 +13,7 @@ use App\Http\Controllers\User\CekStuntingController;
 
 use App\Http\Controllers\User\EdukasiController as UserEdukasiController;
 use App\Http\Controllers\RekomendasiController;
+use App\Http\Controllers\AnalyzeController;
 
 
 use Illuminate\Support\Facades\DB;
@@ -72,6 +73,12 @@ Route::middleware(['auth', 'role:user'])->group(function () {
     // REKOMENDASI MAKANAN (Controller Baru)
     Route::get('/rekomendasi', [RekomendasiController::class, 'index'])
         ->name('user.rekomendasi');
+        Route::get('/rekomendasi', [RekomendasiUserController::class, 'index'])
+    ->name('user.rekomendasi');
+
+Route::get('/rekomendasi-makanan/{slug}', [RekomendasiUserController::class, 'detail'])
+    ->name('rekomendasi.show');
+
 
     // DETEKSI MAKANAN 
     Route::get('/deteksi-makanan', function () {return view('users.deteksi-makanan');

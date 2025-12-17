@@ -21,4 +21,5 @@ class RekomendasiUserController extends Controller
 
         return view('users.rekomendasi-detail', compact('food'));
     }
+    
 }
