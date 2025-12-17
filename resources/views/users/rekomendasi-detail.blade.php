@@ -1,13 +1,13 @@
 @extends('layouts.user-layout')
 
 @section('content')
-    <div class="min-h-screen bg-gray-50">
+    <div class="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors">
 
         {{-- BACK BUTTON --}}
         <div class="container mx-auto px-4 py-6">
             <a href="{{ route('user.rekomendasi') }}"
                 class="inline-flex items-center gap-2 px-5 py-2 rounded-xl
-                  text-sm font-semibold hover:bg-gray-100 transition">
+                  text-sm font-semibold hover:bg-gray-100 dark:hover:bg-gray-700 transition text-gray-900 dark:text-gray-100">
                 ← Kembali
             </a>
         </div>
@@ -21,7 +21,7 @@
 
                     {{-- IMAGE --}}
                     <div
-                        class="aspect-square rounded-3xl overflow-hidden shadow-sm bg-gradient-to-br from-green-50 to-blue-50">
+                        class="aspect-square rounded-3xl overflow-hidden shadow-sm bg-gradient-to-br from-green-50 to-blue-50 dark:from-green-900/20 dark:to-blue-900/20 transition-colors">
                         <img src="{{ asset('storage/' . $food->gambar) }}" alt="{{ $food->judul }}"
                             class="w-full h-full object-cover">
                     </div>
@@ -36,7 +36,7 @@
                                 {{ $food->kategori }}
                             </span>
 
-                            <h1 class="text-3xl md:text-4xl font-bold mb-2">
+                            <h1 class="text-3xl md:text-4xl font-bold mb-2 text-gray-900 dark:text-gray-100 transition-colors">
                                 {{ $food->judul }}
                             </h1>
 
@@ -138,7 +138,7 @@
 
                         {{-- VITAMIN --}}
                         <div>
-                            <h3 class="font-bold text-lg mb-3">Kandungan Vitamin</h3>
+                            <h3 class="font-bold text-lg mb-3 dark:text-gray-100 transition-colors">Kandungan Vitamin</h3>
                             <div class="flex flex-wrap gap-2">
                                 @foreach (explode(',', $food->vitamin) as $vit)
                                     <span
@@ -163,10 +163,10 @@
 
                 {{-- TIPS --}}
                 <div class="max-w-5xl mx-auto mt-12">
-                    <div class="bg-white rounded-xl shadow-sm p-6">
-                        <h3 class="text-xl font-bold mb-4">Tips Penyajian</h3>
+                    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6 transition-colors">
+                        <h3 class="text-xl font-bold mb-4 text-gray-900 dark:text-gray-100 transition-colors">Tips Penyajian</h3>
 
-                        <ul class="space-y-3 text-gray-600 text-sm">
+                        <ul class="space-y-3 text-gray-600 dark:text-gray-400 text-sm transition-colors">
                             @foreach (explode("\n", $food->tips) as $tip)
                                 <li class="flex gap-2">
                                     <span class="text-green-600 font-bold">✓</span>

@@ -6,7 +6,7 @@
 <section id="beranda" class="relative overflow-hidden min-h-screen flex items-center pt-40 pb-28">
 
     {{-- Elegant gradient --}}
-    <div class="absolute inset-0 bg-gradient-to-br from-green-50 via-white to-blue-50"></div>
+    <div class="absolute inset-0 bg-gradient-to-br from-green-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition-colors"></div>
 
     {{-- Soft Blurred Orbs --}}
     <div class="absolute -top-28 -left-24 w-96 h-96 bg-green-300/20 blur-[130px] rounded-full"></div>
@@ -16,13 +16,13 @@
     <<div class="relative w-full max-w-6xl mx-auto px-6 text-center scroll-hero">
 
         {{-- Badge --}}
-        <div class="inline-block bg-white/70 backdrop-blur-md text-green-700 px-6 py-2 rounded-full 
-                    text-sm font-medium border border-green-100 shadow-sm mb-8">
+        <div class="inline-block bg-white/70 dark:bg-gray-800/70 backdrop-blur-md text-green-700 dark:text-green-400 px-6 py-2 rounded-full 
+                    text-sm font-medium border border-green-100 dark:border-green-800 shadow-sm mb-8 transition-colors">
             Platform Pencegahan Stunting #1 di Indonesia
         </div>
 
         {{-- Title --}}
-        <h1 class="text-4xl md:text-6xl font-extrabold leading-tight text-gray-900 tracking-tight">
+        <h1 class="text-4xl md:text-6xl font-extrabold leading-tight text-gray-900 dark:text-gray-100 tracking-tight transition-colors">
             Wujudkan 
             <span class="bg-clip-text text-transparent bg-gradient-to-r from-green-600 to-blue-500">
                 Generasi Sehat
@@ -34,7 +34,7 @@
         </h1>
 
         {{-- Subtitle --}}
-        <p class="mt-6 text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+        <p class="mt-6 text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed transition-colors">
             Pantau tumbuh kembang anak, dapatkan rekomendasi gizi tepat,
             dan akses edukasi lengkap untuk mencegah stunting sejak dini.
         </p>
@@ -43,14 +43,14 @@
         <div class="mt-10 flex justify-center gap-4 flex-wrap">
             
             <a href="/cek-stunting"
-                class="px-8 py-4 bg-green-600 text-white rounded-full font-semibold shadow-md 
-                       hover:shadow-xl hover:bg-green-700 active:scale-95 transition">
+                class="px-8 py-4 bg-green-600 dark:bg-green-700 text-white rounded-full font-semibold shadow-md 
+                       hover:shadow-xl hover:bg-green-700 dark:hover:bg-green-600 active:scale-95 transition">
                 Cek Stunting Sekarang →
             </a>
 
             <a href="#fitur"
-                class="px-8 py-4 border border-green-600 text-green-700 rounded-full font-semibold 
-                       hover:bg-green-50 active:scale-95 transition">
+                class="px-8 py-4 border border-green-600 dark:border-green-500 text-green-700 dark:text-green-400 rounded-full font-semibold 
+                       hover:bg-green-50 dark:hover:bg-gray-800 active:scale-95 transition">
                 Pelajari Lebih Lanjut
             </a>
         </div>
@@ -65,8 +65,8 @@
                 ['24/7', 'Monitoring'],
             ] as $item)
                 <div class="transition hover:scale-105">
-                    <h3 class="text-3xl font-bold text-green-700">{{ $item[0] }}</h3>
-                    <p class="text-gray-600 text-sm mt-1">{{ $item[1] }}</p>
+                    <h3 class="text-3xl font-bold text-green-700 dark:text-green-400 transition-colors">{{ $item[0] }}</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm mt-1 transition-colors">{{ $item[1] }}</p>
                 </div>
             @endforeach
 
@@ -76,15 +76,15 @@
 </section>
 
 {{-- ========================= FITUR SECTION ========================= --}}
-<section id="fitur" class="py-24 px-6 bg-gradient-to-b from-white to-[#f3f7ff]">
+<section id="fitur" class="py-24 px-6 bg-gradient-to-b from-white to-[#f3f7ff] dark:from-gray-900 dark:to-gray-800 transition-colors">
 
     <div class="container mx-auto max-w-6xl">
 
-        <h2 class="text-center text-4xl font-extrabold text-gray-900 mb-3 scroll-fade">
-            Fitur <span class="text-green-600">Unggulan</span>
+        <h2 class="text-center text-4xl font-extrabold text-gray-900 dark:text-gray-100 mb-3 scroll-fade transition-colors">
+            Fitur <span class="text-green-600 dark:text-green-400">Unggulan</span>
         </h2>
 
-        <p class="text-center text-gray-600 mb-14 max-w-xl mx-auto scroll-fade">
+        <p class="text-center text-gray-600 dark:text-gray-400 mb-14 max-w-xl mx-auto scroll-fade transition-colors">
             Platform lengkap yang dirancang untuk mendukung perjalanan kesehatan anak Anda, 
             dengan informasi terpercaya dan pemantauan yang mudah digunakan.
         </p>
@@ -103,11 +103,11 @@
         <div class="grid md:grid-cols-3 gap-8">
 
             @foreach ($fitur as $item)
-            <div class="bg-white rounded-2xl shadow-lg border border-gray-100
+            <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700
                         px-7 py-6 transition-all hover:-translate-y-1 hover:shadow-xl scroll-fade">
 
                 {{-- ICON BOX --}}
-                <div class="w-14 h-14 bg-green-100 rounded-2xl flex items-center justify-center shadow-sm mb-4">
+                <div class="w-14 h-14 bg-green-100 dark:bg-green-900 rounded-2xl flex items-center justify-center shadow-sm mb-4 transition-colors">
 
                     @switch($item['icon'])
 
@@ -172,12 +172,12 @@
                 </div>
 
                 {{-- TITLE --}}
-                <h3 class="font-semibold text-lg text-gray-900 mb-1">
+                <h3 class="font-semibold text-lg text-gray-900 dark:text-gray-100 mb-1 transition-colors">
                     {{ $item['title'] }}
                 </h3>
 
                 {{-- DESCRIPTION --}}
-                <p class="text-gray-600 text-[15px] leading-relaxed">
+                <p class="text-gray-600 dark:text-gray-400 text-[15px] leading-relaxed transition-colors">
                     {{ $item['desc'] }}
                 </p>
             </div>
@@ -189,14 +189,14 @@
 </section>
 
 {{-- ========================= TENTANG KAMI ========================= --}}
-<section id="tentang" class="py-28 px-6 bg-gradient-to-br from-purple-50 via-blue-50 to-cyan-50">
+<section id="tentang" class="py-28 px-6 bg-gradient-to-br from-purple-50 via-blue-50 to-cyan-50 dark:from-gray-800 dark:via-gray-850 dark:to-gray-900 transition-colors">
     <div class="container mx-auto max-w-5xl text-center">
 
-        <h2 class="text-4xl font-extrabold text-gray-900 mb-4 scroll-fade">
-            Tentang <span class="text-green-600">Kami</span>
+        <h2 class="text-4xl font-extrabold text-gray-900 dark:text-gray-100 mb-4 scroll-fade transition-colors">
+            Tentang <span class="text-green-600 dark:text-green-400">Kami</span>
         </h2>
 
-        <p class="text-center text-gray-600 mb-14 max-w-xl mx-auto scroll-fade"> 
+        <p class="text-center text-gray-600 dark:text-gray-400 mb-14 max-w-xl mx-auto scroll-fade transition-colors">
             Cegah Stunting adalah platform digital berbasis data dan edukasi yang bertujuan membantu orang tua 
             memantau pertumbuhan anak, memahami risiko stunting, dan mengambil langkah pencegahan sejak dini.
         </p>
@@ -204,7 +204,7 @@
         <div class="grid md:grid-cols-3 gap-10 mt-16">
 
             {{-- CARD 1 --}}
-            <div class="p-8 rounded-2xl bg-white/60 backdrop-blur shadow-md border border-gray-100 
+            <div class="p-8 rounded-2xl bg-white/60 dark:bg-gray-800/60 backdrop-blur shadow-md border border-gray-100 dark:border-gray-700 
                         hover:shadow-xl transition-all hover:-translate-y-1 scroll-fade">
                 <div class="w-14 h-14 mx-auto mb-4 flex items-center justify-center 
                             bg-blue-100 rounded-full">
@@ -214,14 +214,14 @@
                         <path stroke-width="2" d="M5 21v-1a7 7 0 0114 0v1"/>
                     </svg>
                 </div>
-                <h3 class="font-semibold text-xl text-gray-800 mb-2">Edukasi Terpercaya</h3>
-                <p class="text-gray-600 text-sm leading-relaxed">
+                <h3 class="font-semibold text-xl text-gray-800 dark:text-gray-100 mb-2 transition-colors">Edukasi Terpercaya</h3>
+                <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed transition-colors">
                     Materi edukasi berdasarkan standar WHO dan riset terkini.
                 </p>
             </div>
 
             {{-- CARD 2 --}}
-            <div class="p-8 rounded-2xl bg-white/60 backdrop-blur shadow-md border border-gray-100 
+            <div class="p-8 rounded-2xl bg-white/60 dark:bg-gray-800/60 backdrop-blur shadow-md border border-gray-100 dark:border-gray-700 
                         hover:shadow-xl transition-all hover:-translate-y-1 scroll-fade">
                 <div class="w-14 h-14 mx-auto mb-4 flex items-center justify-center 
                             bg-purple-100 rounded-full">
@@ -230,14 +230,14 @@
                         <path stroke-width="2" d="M4 20h16M6 16h2m2-4h2m2-3h2"/>
                     </svg>
                 </div>
-                <h3 class="font-semibold text-xl text-gray-800 mb-2">Data Akurat WHO</h3>
-                <p class="text-gray-600 text-sm leading-relaxed">
+                <h3 class="font-semibold text-xl text-gray-800 dark:text-gray-100 mb-2 transition-colors">Data Akurat WHO</h3>
+                <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed transition-colors">
                     Menggunakan data tinggi badan dan perkembangan anak berbasis standar internasional.
                 </p>
             </div>
 
             {{-- CARD 3 --}}
-            <div class="p-8 rounded-2xl bg-white/60 backdrop-blur shadow-md border border-gray-100 
+            <div class="p-8 rounded-2xl bg-white/60 dark:bg-gray-800/60 backdrop-blur shadow-md border border-gray-100 dark:border-gray-700 
                         hover:shadow-xl transition-all hover:-translate-y-1 scroll-fade">
                 <div class="w-14 h-14 mx-auto mb-4 flex items-center justify-center 
                             bg-green-100 rounded-full">
@@ -246,8 +246,8 @@
                         <path stroke-width="2" d="M4 12l4 4 6-6 6 6"/>
                     </svg>
                 </div>
-                <h3 class="font-semibold text-xl text-gray-800 mb-2">Kolaborasi Tenaga Medis</h3>
-                <p class="text-gray-600 text-sm leading-relaxed">
+                <h3 class="font-semibold text-xl text-gray-800 dark:text-gray-100 mb-2 transition-colors">Kolaborasi Tenaga Medis</h3>
+                <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed transition-colors">
                     Divalidasi oleh tenaga kesehatan untuk memastikan keakuratan informasi.
                 </p>
             </div>
@@ -258,21 +258,21 @@
 </section>
 
 {{-- ========================= TUJUAN ========================= --}}
-<section id="tujuan" class="py-28 px-6 bg-gradient-to-t from-white to-blue-50">
+<section id="tujuan" class="py-28 px-6 bg-gradient-to-t from-white to-blue-50 dark:from-gray-800 dark:via-gray-850 dark:to-gray-900 transition-colors">
     <div class="container mx-auto max-w-6xl">
 
-        <h2 class="text-center text-4xl font-extrabold text-gray-900 mb-4 scroll-fade">
-            Tujuan <span class="text-green-600">Kami</span>
+        <h2 class="text-center text-4xl font-extrabold text-gray-900 dark:text-gray-100 mb-4 scroll-fade transition-colors">
+            Tujuan <span class="text-green-600 dark:text-green-400">Kami</span>
         </h2>
 
-        <p class="text-center text-gray-600 mb-14 max-w-xl mx-auto scroll-fade">
+        <p class="text-center text-gray-600 dark:text-gray-400 mb-14 max-w-xl mx-auto scroll-fade transition-colors">
             Bersama membantu orang tua membangun masa depan anak yang lebih sehat melalui edukasi, data, dan pemantauan yang mudah.
         </p>
 
         <div class="grid md:grid-cols-3 gap-10">
 
             {{-- CARD 1 — Pencegahan Stunting --}}
-            <div class="p-8 bg-white rounded-3xl border border-gray-100 shadow-md
+            <div class="p-8 bg-white dark:bg-gray-800 rounded-3xl border border-gray-100 dark:border-gray-700 shadow-md
                         hover:shadow-xl transition-all hover:-translate-y-1 scroll-fade">
                 <div class="w-14 h-14 flex items-center justify-center rounded-full bg-blue-100 mb-5">
 
@@ -287,14 +287,14 @@
 
                 </div>
 
-                <h3 class="font-bold text-xl text-gray-800 mb-3">Pencegahan Stunting</h3>
-                <p class="text-gray-600 leading-relaxed">
+                <h3 class="font-bold text-xl text-gray-800 dark:text-gray-100 mb-3 transition-colors">Pencegahan Stunting</h3>
+                <p class="text-gray-600 dark:text-gray-400 leading-relaxed transition-colors">
                     Membantu orang tua mendeteksi risiko stunting sejak usia dini.
                 </p>
             </div>
 
             {{-- CARD 2 — Edukasi Nasional --}}
-            <div class="p-8 bg-white rounded-3xl border border-gray-100 shadow-md
+            <div class="p-8 bg-white dark:bg-gray-800 rounded-3xl border border-gray-100 dark:border-gray-700 shadow-md
                         hover:shadow-xl transition-all hover:-translate-y-1 scroll-fade">
                 <div class="w-14 h-14 flex items-center justify-center rounded-full bg-purple-100 mb-5">
 
@@ -309,14 +309,14 @@
 
                 </div>
 
-                <h3 class="font-bold text-xl text-gray-800 mb-3">Edukasi Nasional</h3>
-                <p class="text-gray-600 leading-relaxed">
+                <h3 class="font-bold text-xl text-gray-800 dark:text-gray-100 mb-3 transition-colors">Edukasi Nasional</h3>
+                <p class="text-gray-600 dark:text-gray-400 leading-relaxed transition-colors">
                     Memberikan informasi terpercaya dan mudah dipahami masyarakat.
                 </p>
             </div>
 
             {{-- CARD 3 — Monitoring Real-Time --}}
-            <div class="p-8 bg-white rounded-3xl border border-gray-100 shadow-md
+            <div class="p-8 bg-white dark:bg-gray-800 rounded-3xl border border-gray-100 dark:border-gray-700 shadow-md
                         hover:shadow-xl transition-all hover:-translate-y-1 scroll-fade">
                 <div class="w-14 h-14 flex items-center justify-center rounded-full bg-green-100 mb-5">
 
@@ -331,8 +331,8 @@
 
                 </div>
 
-                <h3 class="font-bold text-xl text-gray-800 mb-3">Monitoring Real-Time</h3>
-                <p class="text-gray-600 leading-relaxed">
+                <h3 class="font-bold text-xl text-gray-800 dark:text-gray-100 mb-3 transition-colors">Monitoring Real-Time</h3>
+                <p class="text-gray-600 dark:text-gray-400 leading-relaxed transition-colors">
                     Memantau grafik perkembangan anak dalam satu dashboard lengkap.
                 </p>
             </div>
@@ -342,14 +342,14 @@
 </section> 
 
 {{-- ========================= EDUKASI ========================= --}}
-<section id="edukasi" class="py-28 px-6 bg-gradient-to-t from-white to-blue-50">
+<section id="edukasi" class="py-28 px-6 bg-gradient-to-t from-white to-blue-50 dark:from-gray-800 dark:via-gray-850 dark:to-gray-900 transition-colors">
     <div class="container mx-auto max-w-6xl">
 
-        <h2 class="text-center text-4xl font-extrabold text-gray-900 mb-4 scroll-fade">
-            Edukasi <span class="text-green-600">Stunting</span>
+        <h2 class="text-center text-4xl font-extrabold text-gray-900 dark:text-gray-100 mb-4 transition-colors">
+            Edukasi <span class="text-green-600 dark:text-green-400">Stunting</span>
         </h2>
 
-        <p class="text-center text-gray-600 mb-14 max-w-xl mx-auto scroll-fade">
+        <p class="text-center text-gray-600 dark:text-gray-400 mb-14 max-w-xl mx-auto scroll-fade transition-colors">
             Membantu membangun masa depan anak yang lebih sehat melalui edukasi yang terpercaya, 
             pemantauan perkembangan, dan dukungan berkelanjutan.
         </p>
@@ -358,7 +358,7 @@
 
             <!-- CARD 1 -->
             <div data-modal="modal-1"
-                 class="edukasi-card p-8 bg-white rounded-3xl border border-gray-100 shadow-md
+                 class="edukasi-card p-8 bg-white dark:bg-gray-800 rounded-3xl border border-gray-100 dark:border-gray-700 shadow-md
                         hover:shadow-xl transition-all hover:-translate-y-1 scroll-fade cursor-pointer">
                 <div class="w-14 h-14 flex items-center justify-center rounded-full bg-blue-100 mb-5">
                     <svg class="w-7 h-7 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -370,15 +370,15 @@
                               d="M9 12l2 2 4-4"/>
                     </svg>
                 </div>
-                <h3 class="font-bold text-xl text-gray-800 mb-3">Pencegahan Stunting</h3>
-                <p class="text-gray-600 leading-relaxed">
+                <h3 class="font-bold text-xl text-gray-800 dark:text-gray-100 mb-3 transition-colors">Pencegahan Stunting</h3>
+                <p class="text-gray-600 dark:text-gray-400 leading-relaxed transition-colors">
                     Membantu orang tua mendeteksi risiko stunting sejak usia dini.
                 </p>
             </div>
 
             <!-- CARD 2 -->
             <div data-modal="modal-2"
-                 class="edukasi-card p-8 bg-white rounded-3xl border border-gray-100 shadow-md
+                 class="edukasi-card p-8 bg-white dark:bg-gray-800 rounded-3xl border border-gray-100 dark:border-gray-700 shadow-md
                         hover:shadow-xl transition-all hover:-translate-y-1 scroll-fade cursor-pointer">
                 <div class="w-14 h-14 flex items-center justify-center rounded-full bg-purple-100 mb-5">
                     <svg class="w-7 h-7 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -388,15 +388,15 @@
                               d="M21 10v5a9 9 0 01-18 0v-5"/>
                     </svg>
                 </div>
-                <h3 class="font-bold text-xl text-gray-800 mb-3">1000 Hari Pertama Kehidupan</h3>
-                <p class="text-gray-600 leading-relaxed">
+                <h3 class="font-bold text-xl text-gray-800 dark:text-gray-100 mb-3 transition-colors">1000 Hari Pertama Kehidupan</h3>
+                <p class="text-gray-600 dark:text-gray-400 leading-relaxed transition-colors">
                      periode emas krusial untuk mencegah stunting.
                 </p>
             </div>
 
             <!-- CARD 3 -->
             <div data-modal="modal-3"
-                 class="edukasi-card p-8 bg-white rounded-3xl border border-gray-100 shadow-md
+                 class="edukasi-card p-8 bg-white dark:bg-gray-800 rounded-3xl border border-gray-100 dark:border-gray-700 shadow-md
                         hover:shadow-xl transition-all hover:-translate-y-1 scroll-fade cursor-pointer">
                 <div class="w-14 h-14 flex items-center justify-center rounded-full bg-green-100 mb-5">
                     <svg class="w-7 h-7 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -408,8 +408,8 @@
                               d="M9 15l3-3 3 2 4-5"/>
                     </svg>
                 </div>
-                <h3 class="font-bold text-xl text-gray-800 mb-3">apa itu stunting?</h3>
-                <p class="text-gray-600 leading-relaxed">
+                <h3 class="font-bold text-xl text-gray-800 dark:text-gray-100 mb-3 transition-colors">apa itu stunting?</h3>
+                <p class="text-gray-600 dark:text-gray-400 leading-relaxed transition-colors">
                    Stunting adalah gagal tumbuh akibat kekurangan gizi jangka panjang.
                 </p>
             </div>
@@ -461,6 +461,21 @@
     position: relative;
 
     animation: modalFade .25s ease;
+}
+
+/* Dark mode class support */
+.dark .modal-box {
+    background: #1f2937;
+    border: 1px solid #374151;
+}
+.dark .modal-box h3 {
+    color: #f3f4f6;
+}
+.dark .modal-box p {
+    color: #9ca3af;
+}
+.dark .modal-close {
+    color: #9ca3af;
 }
 
 @keyframes modalFade {

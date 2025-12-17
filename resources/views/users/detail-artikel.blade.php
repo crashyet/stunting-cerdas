@@ -18,6 +18,10 @@
     color: #111827;
 }
 
+.dark .article-content h2 {
+    color: #f3f4f6;
+}
+
 .article-content ul {
     list-style: disc;
     padding-left: 1.5rem;
@@ -35,6 +39,10 @@
     color: #374151;
 }
 
+.dark .article-content li {
+    color: #d1d5db;
+}
+
 /* ===== HIGHLIGHT BOX ===== */
 .highlight-box {
     background: #ecfdf5;
@@ -44,6 +52,12 @@
     margin: 2rem 0;
     color: #166534;
 }
+
+.dark .highlight-box {
+    background: #064e3b;
+    border-left-color: #10b981;
+    color: #6ee7b7;
+}
 </style>
 
 {{-- ================= HEADER ARTIKEL ================= --}}
@@ -52,7 +66,7 @@
     <div class="container mx-auto px-4 py-6">
         <a href="{{ route('user.edukasi') }}"
            class="inline-flex items-center gap-2 px-5 py-2 rounded-xl
-                  text-sm font-semibold hover:bg-gray-100 transition">
+                  text-sm font-semibold hover:bg-gray-100 dark:hover:bg-gray-700 transition text-gray-900 dark:text-gray-100">
             ← Kembali
         </a>
     </div>
@@ -67,17 +81,17 @@
 
     {{-- JUDUL --}}
     <h1
-        class="text-3xl md:text-4xl font-bold text-gray-900
+        class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100
                leading-tight mt-4
-               animate-[fadeUp_.6s_ease-out]">
+               animate-[fadeUp_.6s_ease-out] transition-colors">
         {{ $artikel->judul }}
     </h1>
 
     {{-- META (SVG ASLI — TIDAK DIUBAH) --}}
     <div
         class="flex flex-wrap items-center gap-6
-               text-sm text-gray-500 mt-6
-               animate-[fadeUp_.8s_ease-out]">
+               text-sm text-gray-500 dark:text-gray-400 mt-6
+               animate-[fadeUp_.8s_ease-out] transition-colors">
 
         {{-- PENULIS --}}
         <div class="flex items-center gap-2">
@@ -114,9 +128,9 @@
 {{-- ================= THUMBNAIL ================= --}}
 <div class="px-6 md:px-20 lg:px-52 animate-[fadeUp_1s_ease-out]">
     <div class="max-w-4xl mx-auto">
-        <div class="rounded-3xl overflow-hidden border border-gray-100
-                    bg-gradient-to-br from-green-50 to-blue-50
-                    flex items-center justify-center min-h-[320px]">
+        <div class="rounded-3xl overflow-hidden border border-gray-100 dark:border-gray-700
+                    bg-gradient-to-br from-green-50 to-blue-50 dark:from-green-900/20 dark:to-blue-900/20
+                    flex items-center justify-center min-h-[320px] transition-colors">
 
             @if($artikel->thumbnail)
                 <img
@@ -132,10 +146,10 @@
 
 {{-- ================= ISI ARTIKEL ================= --}}
 <div class="px-6 md:px-14 lg:px-24 mt-12 pb-20">
-    <div class="max-w-4xl mx-auto text-gray-700 leading-relaxed article-content">
+    <div class="max-w-4xl mx-auto text-gray-700 dark:text-gray-300 leading-relaxed article-content transition-colors">
 
         {{-- INTRO --}}
-        <p class="text-base md:text-xl font-bold text-gray-900 mb-6 animate-[fadeUp_1.2s_ease-out]">
+        <p class="text-base md:text-xl font-bold text-gray-900 dark:text-gray-100 mb-6 animate-[fadeUp_1.2s_ease-out] transition-colors">
             {{ $artikel->intro }}
         </p>
 
@@ -151,7 +165,7 @@
             </svg>
 
             {{-- TEXT --}}
-            <p class="text-green-800 leading-relaxed">
+            <p class="text-green-800 leading-relaxed dark:text-green-200">
                 <strong class="font-semibold">Tahukah Anda?</strong><br>
                 Stunting dapat dicegah dengan intervensi nutrisi yang tepat sejak
                 <strong>1000 hari pertama kehidupan</strong>.
@@ -169,8 +183,8 @@
 <div class="px-6 md:px-20 lg:px-52 mb-20">
 
     <h2
-        class="text-2xl md:text-3xl font-bold text-center mb-10
-               animate-[fadeUp_1.4s_ease-out]">
+        class="text-2xl md:text-3xl font-bold text-center mb-10 text-gray-900 dark:text-gray-100
+               animate-[fadeUp_1.4s_ease-out] transition-colors">
         Artikel Terkait
     </h2>
 
@@ -178,15 +192,15 @@
 
         @forelse ($relatedArticles ?? [] as $related)
             <a href="{{ route('user.edukasi.detail', $related->slug) }}"
-               class="block bg-white border border-gray-200 rounded-2xl p-6
+               class="block bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-6
                       hover:shadow-lg transition
                       animate-[fadeUp_1.5s_ease-out]">
 
-                <h3 class="font-semibold text-lg leading-snug">
+                <h3 class="font-semibold text-lg leading-snug text-gray-900 dark:text-gray-100 transition-colors">
                     {{ $related->judul }}
                 </h3>
 
-                <p class="text-gray-500 text-sm mt-2">
+                <p class="text-gray-500 dark:text-gray-400 text-sm mt-2 transition-colors">
                     {{ $related->waktu_baca }} menit baca
                 </p>
             </a>
@@ -198,15 +212,15 @@
                 ['judul' => 'Peran ASI Eksklusif dalam Mencegah Stunting', 'baca' => '6 menit baca'],
             ] as $related)
                 <div
-                    class="bg-white border border-gray-200 rounded-2xl p-6
+                    class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-6
                            hover:shadow-lg transition
                            animate-[fadeUp_1.5s_ease-out]">
 
-                    <h3 class="font-semibold text-lg leading-snug">
+                    <h3 class="font-semibold text-lg leading-snug text-gray-900 dark:text-gray-100 transition-colors">
                         {{ $related['judul'] }}
                     </h3>
 
-                    <p class="text-gray-500 text-sm mt-2">
+                    <p class="text-gray-500 dark:text-gray-400 text-sm mt-2 transition-colors">
                         {{ $related['baca'] }}
                     </p>
                 </div>

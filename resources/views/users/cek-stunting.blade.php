@@ -3,7 +3,7 @@
 @section('content')
 
 {{-- ====== HERO ======= --}}
-<section class="bg-gradient-to-b from-[#E6F5EC] via-[#ECF5F1] to-[#F8FBFF] pt-10 pb-14 border-a animate-[fadeUp_.6s_ease-out]">
+<section class="bg-gradient-to-b from-[#E6F5EC] via-[#ECF5F1] to-[#F8FBFF] dark:from-gray-900 dark:via-gray-850 dark:to-gray-900 pt-10 pb-14 border-a animate-[fadeUp_.6s_ease-out] transition-colors">
     <div class="px-6 md:px-10 lg:px-14">
         <div class="flex items-center gap-4">
             <div class="w-14 h-14 bg-green-100 rounded-2xl flex items-center justify-center shadow-sm animate-[fadeUp_.8s_ease-out]">
@@ -14,14 +14,14 @@
                           d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
                 </svg>
             </div>
-            <h1 class="text-2xl md:text-3xl font-extrabold text-gray-900 leading-tight
-                       animate-[fadeUp_.9s_ease-out]">
-                Cek <span class="text-green-600">Stunting</span>
+            <h1 class="text-2xl md:text-3xl font-extrabold text-gray-900 dark:text-gray-100 leading-tight
+                       animate-[fadeUp_.9s_ease-out] transition-colors">
+                Cek <span class="text-green-600 dark:text-green-400">Stunting</span>
             </h1>
         </div>
 
-        <p class="text-gray-600 mt-3 max-w-2xl text-sm md:text-base leading-relaxed
-                  animate-[fadeUp_1s_ease-out]">
+        <p class="text-gray-600 dark:text-gray-400 mt-3 max-w-2xl text-sm md:text-base leading-relaxed
+                  animate-[fadeUp_1s_ease-out] transition-colors">
             Hitung Z-score anak berdasarkan standar WHO untuk mengetahui status pertumbuhan.
         </p>
     </div>
@@ -35,8 +35,8 @@
         <div class="flex flex-col gap-8">
 
             {{-- ----- FORM ----- --}}
-            <div class="p-8 bg-white rounded-3xl shadow-sm border animate-[fadeUp_1s_ease-out]">
-                <h2 class="text-xl font-semibold mb-1 flex items-center gap-2 animate-[fadeUp_1.1s_ease-out]">
+            <div class="p-8 bg-white dark:bg-gray-800 rounded-3xl shadow-sm border dark:border-gray-700 animate-[fadeUp_1s_ease-out] transition-colors">
+                <h2 class="text-xl font-semibold mb-1 flex items-center gap-2 animate-[fadeUp_1.1s_ease-out] text-gray-900 dark:text-gray-100 transition-colors">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-green-600" fill="none"
                          viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -45,26 +45,26 @@
                     Form Pemeriksaan
                 </h2>
 
-                <p class="text-gray-500 text-sm mb-6 animate-[fadeUp_1.2s_ease-out]">
+                <p class="text-gray-500 dark:text-gray-400 text-sm mb-6 animate-[fadeUp_1.2s_ease-out] transition-colors">
                     Masukkan data anak untuk menghitung status pertumbuhan.
                 </p>
 
                 <form onsubmit="event.preventDefault(); hitungZScore();" class="animate-[fadeUp_1.3s_ease-out]">
 
-                  <label class="text-sm font-medium">Nama Anak</label>
-                  <input type="text" id="nama" class="w-full px-4 py-3 border rounded-xl mb-4 focus:ring focus:ring-green-200"
+                  <label class="text-sm font-medium text-gray-700 dark:text-gray-300 transition-colors">Nama Anak</label>
+                  <input type="text" id="nama" class="w-full px-4 py-3 border dark:border-gray-600 rounded-xl mb-4 focus:ring focus:ring-green-200 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 transition-colors"
                         placeholder="Masukkan nama anak">
 
                   <div class="grid grid-cols-2 gap-4 mb-4">
                       <div>
-                          <label class="text-sm font-medium">Umur (bulan)</label>
-                          <input type="number" id="umur" class="w-full px-4 py-3 border rounded-xl focus:ring focus:ring-green-200"
+                          <label class="text-sm font-medium text-gray-700 dark:text-gray-300 transition-colors">Umur (bulan)</label>
+                          <input type="number" id="umur" class="w-full px-4 py-3 border dark:border-gray-600 rounded-xl focus:ring focus:ring-green-200 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 transition-colors"
                                 value="24">
                       </div>
 
                       <div>
-                          <label class="text-sm font-medium">Jenis Kelamin</label>
-                          <select id="jenis_kelamin" class="w-full px-4 py-3 border rounded-xl focus:ring focus:ring-green-200">
+                          <label class="text-sm font-medium text-gray-700 dark:text-gray-300 transition-colors">Jenis Kelamin</label>
+                          <select id="jenis_kelamin" class="w-full px-4 py-3 border dark:border-gray-600 rounded-xl focus:ring focus:ring-green-200 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 transition-colors">
                               <option value="">Pilih</option>
                               <option value="laki">Laki-laki</option>
                               <option value="perempuan">Perempuan</option>
@@ -74,14 +74,14 @@
 
                   <div class="grid grid-cols-2 gap-4 mb-4">
                       <div>
-                          <label class="text-sm font-medium">Tinggi Badan (cm)</label>
-                          <input type="number" id="tinggi" class="w-full px-4 py-3 border rounded-xl focus:ring focus:ring-green-200"
+                          <label class="text-sm font-medium text-gray-700 dark:text-gray-300 transition-colors">Tinggi Badan (cm)</label>
+                          <input type="number" id="tinggi" class="w-full px-4 py-3 border dark:border-gray-600 rounded-xl focus:ring focus:ring-green-200 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 transition-colors"
                                 value="85">
                       </div>
 
                       <div>
-                          <label class="text-sm font-medium">Berat Badan (kg)</label>
-                          <input type="number" id="berat" class="w-full px-4 py-3 border rounded-xl focus:ring focus:ring-green-200"
+                          <label class="text-sm font-medium text-gray-700 dark:text-gray-300 transition-colors">Berat Badan (kg)</label>
+                          <input type="number" id="berat" class="w-full px-4 py-3 border dark:border-gray-600 rounded-xl focus:ring focus:ring-green-200 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 transition-colors"
                                 value="12">
                       </div>
                   </div>
@@ -95,8 +95,8 @@
             </div>
 
             {{-- ---------- INFO BOX ---------- --}}
-            <div class="p-4 bg-blue-50 border border-blue-100 rounded-xl text-sm animate-[fadeUp_1.4s_ease-out]">
-                <p class="font-semibold text-blue-800 mb-1 flex items-center gap-2">
+            <div class="p-4 bg-blue-50 dark:bg-blue-900/20 border border-blue-100 dark:border-blue-800 rounded-xl text-sm animate-[fadeUp_1.4s_ease-out] transition-colors">
+                <p class="font-semibold text-blue-800 dark:text-blue-300 mb-1 flex items-center gap-2">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-600"
                          fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -105,7 +105,7 @@
                     Tentang Z-Score
                 </p>
 
-                <p class="text-blue-700 leading-relaxed">
+                <p class="text-blue-700 dark:text-blue-300 leading-relaxed">
                     Z-score adalah ukuran standar WHO yang membandingkan tinggi/berat anak
                     dengan rata-rata anak seusianya. Nilai <strong>di bawah -2</strong> menunjukkan stunting.
                 </p>
@@ -113,19 +113,19 @@
         </div>
 
         {{-- ======== KOLOM KANAN ======== --}}
-        <div class="p-8 bg-white rounded-3xl shadow-sm border
+        <div class="p-8 bg-white dark:bg-gray-800 rounded-3xl shadow-sm border dark:border-gray-700
                     flex flex-col justify-center items-center text-center h-full
-                    animate-[fadeUp_1.5s_ease-out]">
+                    animate-[fadeUp_1.5s_ease-out] transition-colors">
 
             <svg id="placeholderIcon" xmlns="http://www.w3.org/2000/svg" class="w-16 h-16 text-gray-400 mb-4" fill="none"
                   viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                   d="M8 12h.01M12 12h.01M16 12h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
-            <div id="hasil" class="text-center text-gray-600">
+            <div id="hasil" class="text-center text-gray-600 dark:text-gray-300 transition-colors">
 
-                <h3 class="text-gray-600 font-medium text-lg">Hasil Akan Tampil Di Sini</h3>
-                <p class="text-gray-400 text-sm mt-1 leading-relaxed">
+                <h3 class="text-gray-600 dark:text-gray-200 font-medium text-lg transition-colors">Hasil Akan Tampil Di Sini</h3>
+                <p class="text-gray-400 dark:text-gray-400 text-sm mt-1 leading-relaxed transition-colors">
                     Isi form di samping untuk menghitung status pertumbuhan anak
                 </p>
             </div>
@@ -304,14 +304,14 @@ async function hitungZScore() {
           </svg>
         </div>
         <div>
-          <p class="text-sm text-gray-500 mb-1">Hasil untuk <strong>${nama}</strong></p>
+          <p class="text-sm text-gray-500 dark:text-gray-300 mb-1">Hasil untuk <strong>${nama}</strong></p>
           <h3 class="text-2xl font-bold ${textColor} mb-2">${data.kategori}</h3>
           <div class="inline-block px-4 py-2 bg-gray-50 rounded-lg">
             <p class="text-sm text-gray-500">Z-Score</p>
             <p class="text-3xl font-extrabold text-gray-800">${data.z_score}</p>
           </div>
         </div>
-        <p class="text-gray-600 text-sm leading-relaxed max-w-xs mx-auto">${message}</p>
+        <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed max-w-xs mx-auto">${message}</p>
         ${data.kategori !== "Normal" ? `
           <a href="/rekomendasi" class="inline-block mt-4 px-6 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg text-sm font-medium transition">
             Lihat Rekomendasi Makanan

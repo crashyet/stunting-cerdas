@@ -3,7 +3,7 @@
 @section('content')
 
 {{-- ======= HERO ======= --}}
-<section class="bg-gradient-to-b from-[#E6F5EC] via-[#ECF5F1] to-[#F8FBFF] pt-10 pb-14 border-a animate-fadeUp">
+<section class="bg-gradient-to-b from-[#E6F5EC] via-[#ECF5F1] to-[#F8FBFF] dark:from-gray-900 dark:via-gray-850 dark:to-gray-900 pt-10 pb-14 border-a animate-fadeUp transition-colors">
     <div class="px-6 md:px-10 lg:px-14 animate-fadeUp delay-1">
         <div class="flex items-center gap-4 animate-fadeUp delay-2">
             <div class="w-14 h-14 bg-green-100 rounded-2xl flex items-center justify-center shadow-sm
@@ -15,13 +15,13 @@
                           d="M3 13h4v8H3v-8zm7-6h4v14h-4V7zm7-4h4v18h-4V3z" />
                 </svg>
             </div>
-            <h1 class="text-2xl md:text-3xl font-extrabold text-gray-900 leading-tight
-                       animate-fadeUp delay-4">
-                Dashboard <span class="text-green-600">Monitoring</span>
+            <h1 class="text-2xl md:text-3xl font-extrabold text-gray-900 dark:text-gray-100 leading-tight
+                       animate-fadeUp delay-4 transition-colors">
+                Dashboard <span class="text-green-600 dark:text-green-400">Monitoring</span>
             </h1>
         </div>
-        <p class="text-gray-600 mt-3 max-w-2xl text-sm md:text-base leading-relaxed
-                  animate-fadeUp delay-5">
+        <p class="text-gray-600 dark:text-gray-400 mt-3 max-w-2xl text-sm md:text-base leading-relaxed
+                  animate-fadeUp delay-5 transition-colors">
             Pantau perkembangan dan tren pertumbuhan anak setiap bulan secara menyeluruh.
         </p>
     </div>
@@ -31,28 +31,28 @@
 <div class="px-6 md:px-14 mt-12 grid md:grid-cols-4 gap-6">
 
     {{-- TOTAL ANAK --}}
-    <div class="p-6 rounded-3xl bg-white border shadow-sm flex flex-col animate-fadeUp delay-1">
-        <p class="text-gray-500 text-sm">Total Anak</p>
-        <h2 class="text-3xl font-extrabold text-green-600 mt-2">2</h2>
+    <div class="p-6 rounded-3xl bg-white dark:bg-gray-800 border dark:border-gray-700 shadow-sm flex flex-col animate-fadeUp delay-1 transition-colors">
+        <p class="text-gray-500 dark:text-gray-400 text-sm transition-colors">Total Anak</p>
+        <h2 class="text-3xl font-extrabold text-green-600 dark:text-green-400 mt-2 transition-colors">2</h2>
     </div>
 
     {{-- STATUS NORMAL --}}
-    <div class="p-6 rounded-3xl bg-green-50 border border-green-100 shadow-sm flex flex-col animate-fadeUp delay-2">
-        <p class="text-gray-600 text-sm">Status Normal</p>
-        <h2 class="text-3xl font-extrabold text-green-600 mt-2">3</h2>
-        <p class="text-sm text-green-500 mt-1">↑ 5% vs bulan lalu</p>
+    <div class="p-6 rounded-3xl bg-green-50 dark:bg-green-900/20 border border-green-100 dark:border-green-800 shadow-sm flex flex-col animate-fadeUp delay-2 transition-colors">
+        <p class="text-gray-600 dark:text-gray-300 text-sm transition-colors">Status Normal</p>
+        <h2 class="text-3xl font-extrabold text-green-600 dark:text-green-400 mt-2 transition-colors">3</h2>
+        <p class="text-sm text-green-500 dark:text-green-400 mt-1 transition-colors">↑ 5% vs bulan lalu</p>
     </div>
 
     {{-- BERISIKO --}}
-    <div class="p-6 rounded-3xl bg-yellow-50 border border-yellow-100 shadow-sm flex flex-col animate-fadeUp delay-3">
-        <p class="text-gray-600 text-sm">Status Berisiko</p>
-        <h2 class="text-3xl font-extrabold text-yellow-600 mt-2">1</h2>
+    <div class="p-6 rounded-3xl bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-100 dark:border-yellow-800 shadow-sm flex flex-col animate-fadeUp delay-3 transition-colors">
+        <p class="text-gray-600 dark:text-gray-300 text-sm transition-colors">Status Berisiko</p>
+        <h2 class="text-3xl font-extrabold text-yellow-600 dark:text-yellow-400 mt-2 transition-colors">1</h2>
     </div>
 
     {{-- STUNTING --}}
-    <div class="p-6 rounded-3xl bg-red-50 border border-red-100 shadow-sm flex flex-col animate-fadeUp delay-4">
-        <p class="text-gray-600 text-sm">Status Stunting</p>
-        <h2 class="text-3xl font-extrabold text-red-600 mt-2">0</h2>
+    <div class="p-6 rounded-3xl bg-red-50 dark:bg-red-900/20 border border-red-100 dark:border-red-800 shadow-sm flex flex-col animate-fadeUp delay-4 transition-colors">
+        <p class="text-gray-600 dark:text-gray-300 text-sm transition-colors">Status Stunting</p>
+        <h2 class="text-3xl font-extrabold text-red-600 dark:text-red-400 mt-2 transition-colors">0</h2>
     </div>
 </div>
 
@@ -60,8 +60,8 @@
 <div class="px-6 md:px-14 mt-12 grid md:grid-cols-12 gap-10">
 
     {{-- LINE CHART --}}
-    <div class="col-span-12 md:col-span-8 p-6 bg-white rounded-3xl border shadow-sm animate-fadeUp delay-1">
-        <h3 class="font-semibold text-lg mb-4 flex items-center gap-2 animate-fadeUp delay-2">
+    <div class="col-span-12 md:col-span-8 p-6 bg-white dark:bg-gray-800 rounded-3xl border dark:border-gray-700 shadow-sm animate-fadeUp delay-1 transition-colors">
+        <h3 class="font-semibold text-lg mb-4 flex items-center gap-2 animate-fadeUp delay-2 text-gray-900 dark:text-gray-100 transition-colors">
             <svg xmlns="http://www.w3.org/2000/svg"
                  class="w-6 h-6 text-green-600"
                  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -77,8 +77,8 @@
     </div>
 
     {{-- DOUGHNUT CHART --}}
-    <div class="col-span-12 md:col-span-4 p-6 bg-white rounded-3xl border shadow-sm animate-fadeUp delay-2">
-        <h3 class="font-semibold text-lg mb-4 flex items-center gap-2 animate-fadeUp delay-3">
+    <div class="col-span-12 md:col-span-4 p-6 bg-white dark:bg-gray-800 rounded-3xl border dark:border-gray-700 shadow-sm animate-fadeUp delay-2 transition-colors">
+        <h3 class="font-semibold text-lg mb-4 flex items-center gap-2 animate-fadeUp delay-3 text-gray-900 dark:text-gray-100 transition-colors">
             <svg xmlns="http://www.w3.org/2000/svg"
                  class="w-6 h-6 text-blue-600"
                  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -95,8 +95,8 @@
 
 {{-- ======= RIWAYAT PEMERIKSAAN ======= --}}
 <div class="px-6 md:px-14 mt-12 mb-10">
-    <div class="p-8 bg-white rounded-3xl border shadow-sm animate-fadeUp">
-        <h3 class="font-bold text-xl mb-6 flex items-center gap-2 animate-fadeUp delay-1">
+    <div class="p-8 bg-white dark:bg-gray-800 rounded-3xl border dark:border-gray-700 shadow-sm animate-fadeUp transition-colors">
+        <h3 class="font-bold text-xl mb-6 flex items-center gap-2 animate-fadeUp delay-1 text-gray-900 dark:text-gray-100 transition-colors">
             <svg xmlns="http://www.w3.org/2000/svg"
                 class="w-6 h-6 text-gray-700"
                 fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
@@ -113,11 +113,11 @@
             ['nama'=>'Siti Aisyah','tanggal'=>'25 Januari 2024','tinggi'=>92,'berat'=>14,'status'=>'Normal','color'=>'green'],
         ] as $item)
 
-        <div class="p-4 rounded-2xl bg-gray-100 mb-3 flex justify-between items-center animate-fadeUp delay-{{ $loop->iteration + 1 }}">
+        <div class="p-4 rounded-2xl bg-gray-100 dark:bg-gray-700 mb-3 flex justify-between items-center animate-fadeUp delay-{{ $loop->iteration + 1 }} transition-colors">
 
             {{-- LEFT --}}
             <div>
-                <p class="font-semibold flex items-center gap-2 text-gray-800">
+                <p class="font-semibold flex items-center gap-2 text-gray-800 dark:text-gray-100 transition-colors">
                     <svg xmlns="http://www.w3.org/2000/svg"
                         class="w-5 h-5 text-green-600"
                         fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">

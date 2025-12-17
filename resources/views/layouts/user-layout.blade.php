@@ -6,10 +6,17 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>Cegah Stunting - User Panel</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    
+    {{-- Tailwind CDN with Dark Mode Config --}}
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+        }
+    </script>
 </head>
 
-<body class="bg-white overflow-x-hidden">
+<body class="bg-white dark:bg-gray-900 overflow-x-hidden transition-colors duration-300">
 
 {{-- SIDEBAR / NAVBAR --}}
 @include('components.navbar')
@@ -21,6 +28,9 @@
     @yield('content')
 
 </main>
+
+{{-- Dark Mode Toggle --}}
+@include('components.dark-mode-toggle')
 
 </body>
 </html>

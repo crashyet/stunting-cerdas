@@ -8,7 +8,7 @@
 @endphp
 
 {{-- ================= HERO ================= --}}
-<section class="bg-gradient-to-r from-green-50 to-blue-50 pt-10 pb-14 border-a">
+<section class="bg-gradient-to-r from-green-50 to-blue-50 dark:from-gray-900 dark:to-gray-800 pt-10 pb-14 border-a transition-colors">
     <div class="px-6 md:px-10 lg:px-14">
         <div class="flex items-center gap-4">
             <div class="w-12 h-12 bg-green-100 rounded-2xl flex items-center justify-center shadow-sm">
@@ -20,25 +20,25 @@
                 </svg>
             </div>
 
-            <h1 class="text-2xl md:text-3xl font-extrabold text-gray-900 leading-tight">
-                Rekomendasi <span class="text-green-600">Makanan</span>
+            <h1 class="text-2xl md:text-3xl font-extrabold text-gray-900 dark:text-gray-100 leading-tight transition-colors">
+                Rekomendasi <span class="text-green-600 dark:text-green-400">Makanan</span>
             </h1>
         </div>
 
-        <p class="text-gray-600 mt-3 max-w-2xl text-sm md:text-base leading-relaxed">
+        <p class="text-gray-600 dark:text-gray-400 mt-3 max-w-2xl text-sm md:text-base leading-relaxed transition-colors">
             Temukan menu makanan bergizi sesuai usia anak untuk mendukung pertumbuhan optimal.
         </p>
     </div>
 </section>
 
 {{-- ================= SEARCH + FILTER ================= --}}
-<div class="sticky top-0 z-40 bg-white/80 backdrop-blur-xl py-5 shadow-sm border-b">
+<div class="sticky top-0 z-40 bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl py-5 shadow-sm border-b dark:border-gray-700 transition-colors">
     <form method="GET"
           class="px-6 md:px-14 flex flex-col md:flex-row justify-between items-center gap-4">
 
         {{-- SEARCH --}}
-        <div class="w-full md:w-1/3 flex items-center bg-white px-5 py-2.5 rounded-full
-                    shadow-sm border border-gray-200">
+        <div class="w-full md:w-1/3 flex items-center bg-white dark:bg-gray-700 px-5 py-2.5 rounded-full
+                    shadow-sm border border-gray-200 dark:border-gray-600 transition-colors">
             <svg xmlns="http://www.w3.org/2000/svg"
                  class="h-5 w-5 text-gray-400"
                  fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -48,7 +48,7 @@
 
             <input type="text" name="search" value="{{ request('search') }}"
                    placeholder="Cari makanan..."
-                   class="ml-3 w-full bg-transparent text-sm focus:outline-none">
+                   class="ml-3 w-full bg-transparent text-sm focus:outline-none text-gray-900 dark:text-gray-100">
         </div>
 
         {{-- FILTER USIA --}}
@@ -78,9 +78,9 @@
 {{-- ================= TIPS GIZI ================= --}}
 
 <div class="px-6 md:px-14 mt-10">
-    <div class="bg-gradient-to-r from-green-50 to-blue-50 p-6 rounded-2xl shadow-sm">
+    <div class="bg-gradient-to-r from-green-50 to-blue-50 dark:from-green-900/20 dark:to-blue-900/20 p-6 rounded-2xl shadow-sm transition-colors">
 
-        <h2 class="text-lg font-semibold mb-4 flex items-center gap-2">
+        <h2 class="text-lg font-semibold mb-4 flex items-center gap-2 text-gray-900 dark:text-gray-100 transition-colors">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-yellow-500"
                  fill="none" viewBox="0 0 24 24" stroke-width="2"
                  stroke="currentColor">
@@ -91,21 +91,21 @@
         </h2>
 
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div class="bg-white p-4 rounded-xl shadow-sm">
-                <p class="text-green-600 font-bold text-xl">15–25g</p>
-                <p class="text-gray-600 text-sm">Protein/hari</p>
+            <div class="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-sm transition-colors">
+                <p class="text-green-600 dark:text-green-400 font-bold text-xl transition-colors">15–25g</p>
+                <p class="text-gray-600 dark:text-gray-400 text-sm transition-colors">Protein/hari</p>
             </div>
-            <div class="bg-white p-4 rounded-xl shadow-sm">
-                <p class="text-blue-600 font-bold text-xl">130g</p>
-                <p class="text-gray-600 text-sm">Karbohidrat/hari</p>
+            <div class="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-sm transition-colors">
+                <p class="text-blue-600 dark:text-blue-400 font-bold text-xl transition-colors">130g</p>
+                <p class="text-gray-600 dark:text-gray-400 text-sm transition-colors">Karbohidrat/hari</p>
             </div>
-            <div class="bg-white p-4 rounded-xl shadow-sm">
-                <p class="text-green-500 font-bold text-xl">30g</p>
-                <p class="text-gray-600 text-sm">Lemak/hari</p>
+            <div class="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-sm transition-colors">
+                <p class="text-green-500 dark:text-green-400 font-bold text-xl transition-colors">30g</p>
+                <p class="text-gray-600 dark:text-gray-400 text-sm transition-colors">Lemak/hari</p>
             </div>
-            <div class="bg-white p-4 rounded-xl shadow-sm">
-                <p class="text-blue-800 font-bold text-xl">1000 kal</p>
-                <p class="text-gray-600 text-sm">Kalori/hari (1–3 th)</p>
+            <div class="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-sm transition-colors">
+                <p class="text-blue-800 dark:text-blue-400 font-bold text-xl transition-colors">1000 kal</p>
+                <p class="text-gray-600 dark:text-gray-400 text-sm transition-colors">Kalori/hari (1–3 th)</p>
             </div>
         </div>
     </div>
@@ -119,7 +119,7 @@
     <a href="{{ route('rekomendasi.show', $food->slug) }}" class="block">
 
     <div
-    class="rounded-3xl border bg-white shadow-sm overflow-hidden
+    class="rounded-3xl border dark:border-gray-700 bg-white dark:bg-gray-800 shadow-sm overflow-hidden transition-colors
     {{ $animateCard ? 'animate-[fadeUp_'.(0.6 + ($i * 0.08)).'s_ease-out]' : '' }}">
 
     {{-- IMAGE --}}
@@ -138,11 +138,11 @@
 
     {{-- CONTENT --}}
     <div class="p-4">
-        <h3 class="font-semibold text-sm md:text-base">
+        <h3 class="font-semibold text-sm md:text-base text-gray-900 dark:text-gray-100 transition-colors">
             {{ $food['judul'] }}
         </h3>
 
-        <p class="text-gray-500 text-xs md:text-sm">
+        <p class="text-gray-500 dark:text-gray-400 text-xs md:text-sm transition-colors">
             {{ $food['kategori'] }}
         </p>
 

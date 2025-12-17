@@ -1,4 +1,4 @@
-<nav class="fixed top-0 left-0 w-full z-50 bg-white/70 backdrop-blur-xl border-b border-gray-200/40 shadow-sm">
+<nav class="fixed top-0 left-0 w-full z-50 bg-white/70 dark:bg-gray-800/70 backdrop-blur-xl border-b border-gray-200/40 dark:border-gray-700/40 shadow-sm transition-colors">
     <div class="max-w-7xl mx-auto flex items-center justify-between px-2 md:px-0 h-[72px]">
 
         {{-- LOGO --}}
@@ -23,19 +23,19 @@
         </div>
 
         {{-- MENU CENTER (desktop) --}}
-        <ul class="hidden md:flex items-center gap-10 font-medium text-gray-700 absolute left-1/2 -translate-x-1/2">
-            <li><a href="#beranda" class="hover:text-green-600 transition">Beranda</a></li>
-            <li><a href="#fitur" class="hover:text-green-600 transition">Fitur</a></li>
-            <li><a href="#tentang" class="hover:text-green-600 transition">Tentang</a></li>
-            <li><a href="#tujuan" class="hover:text-green-600 transition">Tujuan</a></li>
-             <li><a href="#edukasi" class="hover:text-green-600 transition">Edukasi</a></li>
+        <ul class="hidden md:flex items-center gap-10 font-medium text-gray-700 dark:text-gray-300 absolute left-1/2 -translate-x-1/2 transition-colors">
+            <li><a href="#beranda" class="hover:text-green-600 dark:hover:text-green-400 transition">Beranda</a></li>
+            <li><a href="#fitur" class="hover:text-green-600 dark:hover:text-green-400 transition">Fitur</a></li>
+            <li><a href="#tentang" class="hover:text-green-600 dark:hover:text-green-400 transition">Tentang</a></li>
+            <li><a href="#tujuan" class="hover:text-green-600 dark:hover:text-green-400 transition">Tujuan</a></li>
+             <li><a href="#edukasi" class="hover:text-green-600 dark:hover:text-green-400 transition">Edukasi</a></li>
         </ul>
 
         {{-- BUTTON LOGIN --}}
         <div>
             <a href="/login"
-               class="px-5 py-2.5 rounded-xl border border-green-600 text-green-700 font-semibold
-                      bg-white hover:bg-green-50 transition shadow-sm">
+               class="px-5 py-2.5 rounded-xl border border-green-600 dark:border-green-500 text-green-700 dark:text-green-400 font-semibold
+                      bg-white dark:bg-gray-800 hover:bg-green-50 dark:hover:bg-gray-700 transition shadow-sm">
                 Login
             </a>
         </div>
