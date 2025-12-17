@@ -10,7 +10,7 @@
 @endphp
 
 {{-- ================= SIDEBAR ================= --}}
-<div id="sidebar" class="sidebar w-64 bg-white h-screen shadow-xl fixed left-0 top-0 z-50">
+<div id="sidebar" class="sidebar w-64 bg-white dark:bg-gray-800 h-screen shadow-xl fixed left-0 top-0 z-50 transition-colors duration-300">
 
     {{-- HEADER --}}
     <div class="sidebar-header flex items-center justify-between px-6 py-5">
@@ -31,20 +31,20 @@
                 </svg>
             </div>
             <h1 class="text-lg font-bold whitespace-nowrap">
-                <span class="text-green-600">Cegah</span>
-                <span class="text-blue-500">Stunting</span>
+                <span class="text-green-600 dark:text-green-400">Cegah</span>
+                <span class="text-blue-500 dark:text-blue-400">Stunting</span>
             </h1>
         </div>
 
-        <button onclick="toggleSidebar()" class="text-gray-600 hover:text-green-600">
+        <button onclick="toggleSidebar()" class="text-gray-600 dark:text-gray-300 hover:text-green-600 dark:hover:text-green-400 transition-colors">
             ☰
         </button>
     </div>
 
-    <div class="h-px bg-gray-200 mx-6 mb-4"></div>
+    <div class="h-px bg-gray-200 dark:bg-gray-700 mx-6 mb-4"></div>
 
     {{-- MENU --}}
-    <ul class="space-y-2 px-3 text-sm text-gray-700">
+    <ul class="space-y-2 px-3 text-sm text-gray-700 dark:text-gray-300">
 
         <li>
             <a href="/edukasi" class="menu-item {{ $active['edukasi'] ? 'active' : '' }}">
@@ -111,22 +111,22 @@
     {{-- PROFIL --}}
         <div class="bottom-profile absolute bottom-6 left-0 w-full px-1">
         <button class="menu-item flex items-center gap-3
-                    bg-gray-100 rounded-2xl px-3 py-3 w-full">
+                    bg-gray-100 dark:bg-gray-700 rounded-2xl px-3 py-3 w-full transition-colors">
 
             {{-- FOTO PROFIL (HURUF AWAL NAMA) --}}
             <div class="profile-avatar
-                        w-10 h-10 rounded-full bg-gray-300
+                        w-10 h-10 rounded-full bg-gray-300 dark:bg-gray-600
                         flex items-center justify-center
-                        text-gray-700 font-semibold">
+                        text-gray-700 dark:text-gray-200 font-semibold">
                 {{ strtoupper(substr(auth()->user()->name, 0, 1)) }}
             </div>
 
             {{-- NAMA & EMAIL --}}
             <div class="sidebar-text flex flex-col text-left leading-tight">
-                <span class="text-sm font-semibold text-gray-900">
+                <span class="text-sm font-semibold text-gray-900 dark:text-gray-100">
                     {{ auth()->user()->name }}
                 </span>
-                <span class="text-xs text-gray-500">
+                <span class="text-xs text-gray-500 dark:text-gray-400">
                     {{ auth()->user()->email }}
                 </span>
             </div>
@@ -155,12 +155,25 @@
     transition: .25s;
 }
 
-.menu-item:hover { background: #ecfdf5; }
+.menu-item:hover { 
+    background: #ecfdf5;
+}
+
+/* Dark mode hover */
+.dark .menu-item:hover {
+    background: rgba(16, 185, 129, 0.15);
+}
 
 .menu-item.active {
     background: #16a34a;
     color: #fff;
     box-shadow: 0 6px 18px rgba(22,163,74,.35);
+}
+
+/* Dark mode active state */
+.dark .menu-item.active {
+    background: #059669;
+    box-shadow: 0 6px 18px rgba(5, 150, 105, 0.4);
 }
 
 .menu-item.active svg { color: #fff; }
@@ -196,6 +209,11 @@
     justify-content: center;
 }
 
+/* Dark mode profile avatar */
+.dark .profile-avatar {
+    background: #059669;
+}
+
 .sidebar.collapsed .menu-item {
     position: relative;
 }
@@ -216,6 +234,11 @@
     background: #16a34a;
     border-radius: 14px;
     z-index: -1;
+}
+
+/* Dark mode collapsed active */
+.dark .sidebar.collapsed .menu-item.active::before {
+    background: #059669;
 }
 
 .bottom-profile .menu-item {

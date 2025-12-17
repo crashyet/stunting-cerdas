@@ -3,7 +3,7 @@
 @section('content')
 
 {{-- ======= HERO ======== --}}
-<section class="bg-gradient-to-b from-[#E6F5EC] via-[#ECF5F1] to-[#F8FBFF] pt-10 pb-14 border-a animate-[fadeUp_.5s_ease-out]">
+<section class="bg-gradient-to-b from-[#E6F5EC] via-[#ECF5F1] to-[#F8FBFF] dark:from-gray-900 dark:via-gray-850 dark:to-gray-900 pt-10 pb-14 border-a animate-[fadeUp_.5s_ease-out] transition-colors">
     <div class="px-6 md:px-10 lg:px-14 animate-[fadeUp_.6s_ease-out]">
         <div class="flex items-center gap-4 animate-[fadeUp_.7s_ease-out]">
             <div class="w-12 h-12 bg-green-100 rounded-2xl flex items-center justify-center shadow-sm">
@@ -15,13 +15,13 @@
                 </svg>
             </div>
 
-            <h1 class="text-2xl md:text-3xl font-extrabold text-gray-900 leading-tight">
-                Data <span class="text-green-600">Anak</span>
+            <h1 class="text-2xl md:text-3xl font-extrabold text-gray-900 dark:text-gray-100 leading-tight transition-colors">
+                Data <span class="text-green-600 dark:text-green-400">Anak</span>
             </h1>
 
         </div>
-        <p class="text-gray-600 mt-3 max-w-2xl text-sm md:text-base leading-relaxed
-                  animate-[fadeUp_.8s_ease-out]">
+        <p class="text-gray-600 dark:text-gray-400 mt-3 max-w-2xl text-sm md:text-base leading-relaxed
+                  animate-[fadeUp_.8s_ease-out] transition-colors">
             Kelola data anak Anda untuk pemantauan pertumbuhan yang lebih baik.
         </p>
     </div>
@@ -29,11 +29,11 @@
 
 
 {{-- ===== STICKY NAVBAR ====== --}}
-<div class="sticky top-0 z-40 bg-white/70 backdrop-blur-xl py-4 shadow-sm border-b animate-[fadeUp_.9s_ease-out]">
+<div class="sticky top-0 z-40 bg-white/70 dark:bg-gray-800/70 backdrop-blur-xl py-4 shadow-sm border-b dark:border-gray-700 animate-[fadeUp_.9s_ease-out] transition-colors">
 
     <div class="px-6 md:px-14 flex flex-col md:flex-row justify-between items-center gap-4">
-        <div class="w-full md:w-1/3 flex items-center bg-white px-4 py-2 rounded-full
-                    shadow-sm border border-gray-200 animate-[fadeUp_1s_ease-out]">
+        <div class="w-full md:w-1/3 flex items-center bg-white dark:bg-gray-700 px-4 py-2 rounded-full
+                    shadow-sm border border-gray-200 dark:border-gray-600 animate-[fadeUp_1s_ease-out] transition-colors">
             <svg xmlns="http://www.w3.org/2000/svg"
                  class="h-5 w-5 text-gray-400"
                  fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
@@ -43,7 +43,7 @@
 
             <input type="text"
                    placeholder="Cari anak..."
-                   class="ml-3 w-full bg-transparent text-sm focus:outline-none">
+                   class="ml-3 w-full bg-transparent text-sm focus:outline-none text-gray-900 dark:text-gray-100">
         </div>
 
         <button onclick="openModal()" type="button"
@@ -166,7 +166,7 @@
 
 {{-- ======= MODAL POPUP ======= --}}
 <div id="modalOverlay" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
-    <div id="modalContent" class="bg-white rounded-3xl shadow-2xl max-w-md w-full max-h-[90vh] overflow-y-auto transform scale-95 opacity-0 transition-all duration-300">
+    <div id="modalContent" class="bg-white dark:bg-gray-800 rounded-3xl shadow-2xl max-w-md w-full max-h-[90vh] overflow-y-auto transform scale-95 opacity-0 transition-all duration-300">
         
         {{-- MODAL HEADER --}}
         <div class="sticky top-0 bg-gradient-to-r from-green-500 to-green-600 p-6 rounded-t-3xl">
@@ -190,32 +190,32 @@
             
             {{-- NAMA ANAK --}}
             <div>
-                <label class="block text-sm font-semibold text-gray-700 mb-2">Nama Anak *</label>
+                <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2 transition-colors">Nama Anak *</label>
                 <input type="text" id="childName" required
-                    class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent transition"
+                    class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent transition bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
                     placeholder="Masukkan nama anak">
             </div>
 
             {{-- JENIS KELAMIN --}}
             <div>
-                <label class="block text-sm font-semibold text-gray-700 mb-2">Jenis Kelamin *</label>
+                <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2 transition-colors">Jenis Kelamin *</label>
                 <div class="grid grid-cols-2 gap-3">
                     <label class="relative cursor-pointer">
                         <input type="radio" name="gender" value="laki-laki" required class="peer sr-only">
-                        <div class="p-4 border-2 border-gray-300 rounded-xl peer-checked:border-blue-500 peer-checked:bg-blue-50 transition flex items-center gap-3">
+                        <div class="p-4 border-2 border-gray-300 dark:border-gray-600 rounded-xl peer-checked:border-blue-500 peer-checked:bg-blue-50 dark:peer-checked:bg-blue-900/20 transition flex items-center gap-3">
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
                             </svg>
-                            <span class="font-medium text-gray-700">Laki-laki</span>
+                            <span class="font-medium text-gray-700 dark:text-gray-200 transition-colors">Laki-laki</span>
                         </div>
                     </label>
                     <label class="relative cursor-pointer">
                         <input type="radio" name="gender" value="perempuan" required class="peer sr-only">
-                        <div class="p-4 border-2 border-gray-300 rounded-xl peer-checked:border-pink-500 peer-checked:bg-pink-50 transition flex items-center gap-3">
+                        <div class="p-4 border-2 border-gray-300 dark:border-gray-600 rounded-xl peer-checked:border-pink-500 peer-checked:bg-pink-50 dark:peer-checked:bg-pink-900/20 transition flex items-center gap-3">
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-pink-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
                             </svg>
-                            <span class="font-medium text-gray-700">Perempuan</span>
+                            <span class="font-medium text-gray-700 dark:text-gray-200 transition-colors">Perempuan</span>
                         </div>
                     </label>
                 </div>
@@ -223,25 +223,25 @@
 
             {{-- UMUR (BULAN) --}}
             <div>
-                <label class="block text-sm font-semibold text-gray-700 mb-2">Umur (bulan) *</label>
+                <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2 transition-colors">Umur (bulan) *</label>
                 <input type="number" id="age" required min="0" max="60" step="1"
-                    class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent transition"
+                    class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent transition bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
                     placeholder="Contoh: 24">
-                <p class="text-xs text-gray-500 mt-1">Masukkan umur anak dalam bulan (0-60 bulan)</p>
+                <p class="text-xs text-gray-500 dark:text-gray-400 mt-1 transition-colors">Masukkan umur anak dalam bulan (0-60 bulan)</p>
             </div>
 
             {{-- TINGGI & BERAT --}}
             <div class="grid grid-cols-2 gap-4">
                 <div>
-                    <label class="block text-sm font-semibold text-gray-700 mb-2">Tinggi (cm) *</label>
+                    <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2 transition-colors">Tinggi (cm) *</label>
                     <input type="number" id="height" required min="40" max="150" step="0.1"
-                        class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent transition"
+                        class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent transition bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
                         placeholder="85">
                 </div>
                 <div>
-                    <label class="block text-sm font-semibold text-gray-700 mb-2">Berat (kg) *</label>
+                    <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2 transition-colors">Berat (kg) *</label>
                     <input type="number" id="weight" required min="2" max="50" step="0.1"
-                        class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent transition"
+                        class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent transition bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
                         placeholder="12">
                 </div>
             </div>
@@ -266,7 +266,7 @@
 
 {{-- ======= SUCCESS MODAL ======= --}}
 <div id="successModal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
-    <div class="bg-white rounded-3xl shadow-2xl max-w-sm w-full p-8 text-center transform scale-95 opacity-0 transition-all duration-300" id="successContent">
+    <div class="bg-white dark:bg-gray-800 rounded-3xl shadow-2xl max-w-sm w-full p-8 text-center transform scale-95 opacity-0 transition-all duration-300" id="successContent">
         {{-- SUCCESS ICON --}}
         <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -274,9 +274,9 @@
             </svg>
         </div>
         
-        <h3 class="text-2xl font-bold text-gray-800 mb-2">Berhasil!</h3>
-        <p class="text-gray-600 mb-1" id="successMessage">Data anak berhasil ditambahkan</p>
-        <p class="text-sm text-gray-400 mb-6">Data sudah tersimpan ke database</p>
+        <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-2 transition-colors">Berhasil!</h3>
+        <p class="text-gray-600 dark:text-gray-400 mb-1 transition-colors" id="successMessage">Data anak berhasil ditambahkan</p>
+        <p class="text-sm text-gray-400 dark:text-gray-500 mb-6 transition-colors">Data sudah tersimpan ke database</p>
         
         <button onclick="closeSuccessModal()" type="button"
             class="w-full px-6 py-3 bg-green-600 text-white rounded-xl font-semibold hover:bg-green-700 transition">

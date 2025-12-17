@@ -11,7 +11,7 @@
 </style>
 
 {{-- ====== HERO ====== --}}
-<section class="bg-gradient-to-b from-[#E6F5EC] via-[#ECF5F1] to-[#F8FBFF] pt-10 pb-14">
+<section class="bg-gradient-to-b from-[#E6F5EC] via-[#ECF5F1] to-[#F8FBFF] dark:from-gray-900 dark:via-gray-850 dark:to-gray-900 pt-10 pb-14 transition-colors">
     <div class="px-6 md:px-10 lg:px-14">
         <div class="flex items-center gap-4">
             <div class="w-14 h-14 bg-green-100 rounded-2xl flex items-center justify-center shadow-sm animate-[fadeUp_.6s_ease-out]">
@@ -25,12 +25,12 @@
                 </svg>
             </div>
 
-            <h1 class="text-2xl md:text-3xl font-extrabold text-gray-900 animate-[fadeUp_.7s_ease-out]">
-                Deteksi <span class="text-green-600">Makanan</span>
+            <h1 class="text-2xl md:text-3xl font-extrabold text-gray-900 dark:text-gray-100 animate-[fadeUp_.7s_ease-out] transition-colors">
+                Deteksi <span class="text-green-600 dark:text-green-400">Makanan</span>
             </h1>
         </div>
 
-        <p class="text-gray-600 mt-3 max-w-2xl text-sm md:text-base animate-[fadeUp_.8s_ease-out]">
+        <p class="text-gray-600 dark:text-gray-400 mt-3 max-w-2xl text-sm md:text-base animate-[fadeUp_.8s_ease-out] transition-colors">
             Upload foto makanan untuk mendapatkan analisis gizi secara otomatis.
         </p>
     </div>
@@ -44,9 +44,9 @@
         <div class="flex flex-col gap-8 ">
 
             {{-- === UPLOAD CARD === --}}
-            <div class="bg-white rounded-3xl shadow-sm border p-6 animate-[fadeUp_1s_ease-out]">
+            <div class="bg-white dark:bg-gray-800 rounded-3xl shadow-sm border dark:border-gray-700 p-6 animate-[fadeUp_1s_ease-out] transition-colors">
 
-                <h2 class="text-lg font-semibold flex items-center gap-2 mb-4">
+                <h2 class="text-lg font-semibold flex items-center gap-2 mb-4 text-gray-900 dark:text-gray-100 transition-colors">
                     {{-- UPLOAD ICON --}}
                     <svg xmlns="http://www.w3.org/2000/svg"
                         class="w-5 h-5 text-green-600"
@@ -69,9 +69,9 @@
 
                 <!-- AREA UPLOAD -->
                 <label for="foto" id="uploadArea"
-                    class="border-2 border-dashed border-green-200 rounded-2xl p-10
+                    class="border-2 border-dashed border-green-200 dark:border-green-700 rounded-2xl p-10
                           flex flex-col items-center justify-center text-center
-                          bg-green-50/40 cursor-pointer transition hover:bg-green-50">
+                          bg-green-50/40 dark:bg-green-900/20 cursor-pointer transition hover:bg-green-50 dark:hover:bg-green-900/30">
 
                     <div class="w-16 h-16 bg-green-100 rounded-full
                                 flex items-center justify-center mb-4">
@@ -84,17 +84,17 @@
                         </svg>
                     </div>
 
-                    <p class="font-medium text-gray-700">
+                    <p class="font-medium text-gray-700 dark:text-gray-300 transition-colors">
                         Klik atau drag foto ke sini
                     </p>
-                    <p class="text-sm text-gray-500 mt-1">
+                    <p class="text-sm text-gray-500 dark:text-gray-400 mt-1 transition-colors">
                         Format: JPG, PNG, WEBP (Maks. 10MB)
                     </p>
 
                     <!-- TOMBOL PILIH GAMBAR -->
                     <div
-                        class="mt-4 px-6 py-2.5 border border-gray-300 rounded-xl
-                              text-sm font-medium hover:bg-gray-50 transition
+                        class="mt-4 px-6 py-2.5 border border-gray-300 rounded-xl dark:text-gray-300 transition-colors
+                              text-sm font-medium hover:bg-gray-50 dark:hover:bg-gray-700 transition
                               flex items-center gap-2">
 
                         {{-- BUTTON ICON --}}
@@ -133,8 +133,8 @@
             </div>
 
             {{-- === TIPS FOTO === --}}
-            <div class="rounded-2xl p-5 bg-gradient-to-r from-blue-50 via-blue-100/50 to-blue-50 border border-blue-200 shadow-sm animate-[fadeUp_1s_ease-out]">
-                <h3 class="font-semibold mb-4 flex items-center gap-2">
+            <div class="rounded-2xl p-5 bg-gradient-to-r from-blue-50 via-blue-100/50 to-blue-50 dark:from-blue-900/20 dark:via-blue-800/20 dark:to-blue-900/20 border border-blue-200 dark:border-blue-800 shadow-sm animate-[fadeUp_1s_ease-out] transition-colors">
+                <h3 class="font-semibold mb-4 flex items-center gap-2 text-gray-900 dark:text-gray-100 transition-colors">
                     {{-- LIGHT BULB ICON --}}
                     <svg xmlns="http://www.w3.org/2000/svg"
                          class="w-5 h-5 text-yellow-500"
@@ -147,7 +147,7 @@
                     Tips Foto yang Baik
                 </h3>
 
-                <ul class="space-y-3 text-sm text-gray-700">
+                <ul class="space-y-3 text-sm text-gray-700 dark:text-gray-300 transition-colors">
 
                     @foreach ([
                         'Pastikan pencahayaan cukup terang',
@@ -173,9 +173,9 @@
         </div>
 
         {{-- ===== KOLOM KANAN ===== --}}
-        <div class="bg-white rounded-3xl shadow-sm border p-8 animate-[fadeUp_1.2s_ease-out]">
+        <div class="bg-white dark:bg-gray-800 rounded-3xl shadow-sm border dark:border-gray-700 p-8 animate-[fadeUp_1.2s_ease-out] transition-colors">
             
-            <h2 class="text-lg font-semibold flex items-center gap-2 mb-6">
+            <h2 class="text-lg font-semibold flex items-center gap-2 mb-6 text-gray-900 dark:text-gray-100 transition-colors">
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
                 </svg>
@@ -184,7 +184,7 @@
 
             <!-- PLACEHOLDER ICON -->
             <div id="placeholderResult" class="flex flex-col items-center justify-center text-center py-10">
-                <div class="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center mb-6">
+                <div class="w-20 h-20 bg-gray-100 dark:bg-gray-700 rounded-full flex items-center justify-center mb-6 transition-colors">
                     <svg xmlns="http://www.w3.org/2000/svg"
                          class="w-10 h-10 text-gray-400"
                          fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -193,11 +193,11 @@
                     </svg>
                 </div>
 
-                <h3 class="text-lg font-semibold text-gray-700">
+                <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-200 transition-colors">
                     Belum Ada Hasil
                 </h3>
 
-                <p class="text-gray-500 text-sm mt-2 max-w-sm">
+                <p class="text-gray-500 dark:text-gray-400 text-sm mt-2 max-w-sm transition-colors">
                     Upload foto makanan dan klik tombol
                     <strong>Deteksi Makanan</strong> untuk mendapatkan
                     analisis gizi lengkap.
@@ -311,14 +311,14 @@ async function analyzeFoodImage() {
         console.error('Error:', error);
         resultContainer.innerHTML = `
             <div class="text-center py-10">
-                <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <div class="w-16 h-16 bg-red-100 dark:bg-red-900/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-red-600 dark:text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
                     </svg>
                 </div>
-                <h3 class="text-red-600 font-semibold text-lg mb-2">Gagal Menganalisis</h3>
-                <p class="text-gray-600 text-sm">Pastikan server Node.js berjalan di port 3000</p>
-                <p class="text-gray-400 text-xs mt-2">${error.message}</p>
+                <h3 class="text-red-600 dark:text-red-400 font-semibold text-lg mb-2">Gagal Menganalisis</h3>
+                <p class="text-gray-600 dark:text-gray-400 text-sm">Pastikan server Node.js berjalan di port 3000</p>
+                <p class="text-gray-400 dark:text-gray-500 text-xs mt-2">${error.message}</p>
             </div>
         `;
     } finally {
@@ -340,7 +340,7 @@ function displayResults(foods) {
     if (!foods || foods.length === 0) {
         resultContainer.innerHTML = `
             <div class="text-center py-10">
-                <p class="text-gray-500">Tidak ada makanan terdeteksi</p>
+                <p class="text-gray-500 dark:text-gray-400">Tidak ada makanan terdeteksi</p>
             </div>
         `;
         return;
@@ -356,40 +356,40 @@ function displayResults(foods) {
 
     let html = `
         <!-- TOTAL NUTRISI -->
-        <div class="bg-gradient-to-r from-green-50 to-green-100 rounded-2xl p-6 border border-green-200">
-            <h3 class="font-semibold text-green-800 mb-4 flex items-center gap-2">
+        <div class="bg-gradient-to-r from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/20 rounded-2xl p-6 border border-green-200 dark:border-green-800 transition-colors">
+            <h3 class="font-semibold text-green-800 dark:text-green-300 mb-4 flex items-center gap-2 transition-colors">
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
                 </svg>
                 Total Nutrisi
             </h3>
             <div class="grid grid-cols-2 gap-3">
-                <div class="bg-white rounded-xl p-3 text-center">
-                    <p class="text-xs text-gray-500">Kalori</p>
-                    <p class="text-lg font-bold text-green-700">${total.kalori.toFixed(0)}</p>
-                    <p class="text-xs text-gray-400">kkal</p>
+                <div class="bg-white dark:bg-gray-700 rounded-xl p-3 text-center transition-colors">
+                    <p class="text-xs text-gray-500 dark:text-gray-400 transition-colors">Kalori</p>
+                    <p class="text-lg font-bold text-green-700 dark:text-green-400 transition-colors">${total.kalori.toFixed(0)}</p>
+                    <p class="text-xs text-gray-400 dark:text-gray-500 transition-colors">kkal</p>
                 </div>
-                <div class="bg-white rounded-xl p-3 text-center">
-                    <p class="text-xs text-gray-500">Protein</p>
-                    <p class="text-lg font-bold text-blue-700">${total.protein.toFixed(1)}</p>
-                    <p class="text-xs text-gray-400">gram</p>
+                <div class="bg-white dark:bg-gray-700 rounded-xl p-3 text-center transition-colors">
+                    <p class="text-xs text-gray-500 dark:text-gray-400 transition-colors">Protein</p>
+                    <p class="text-lg font-bold text-blue-700 dark:text-blue-400 transition-colors">${total.protein.toFixed(1)}</p>
+                    <p class="text-xs text-gray-400 dark:text-gray-500 transition-colors">gram</p>
                 </div>
-                <div class="bg-white rounded-xl p-3 text-center">
-                    <p class="text-xs text-gray-500">Karbohidrat</p>
-                    <p class="text-lg font-bold text-orange-700">${total.karbohidrat.toFixed(1)}</p>
-                    <p class="text-xs text-gray-400">gram</p>
+                <div class="bg-white dark:bg-gray-700 rounded-xl p-3 text-center transition-colors">
+                    <p class="text-xs text-gray-500 dark:text-gray-400 transition-colors">Karbohidrat</p>
+                    <p class="text-lg font-bold text-orange-700 dark:text-orange-400 transition-colors">${total.karbohidrat.toFixed(1)}</p>
+                    <p class="text-xs text-gray-400 dark:text-gray-500 transition-colors">gram</p>
                 </div>
-                <div class="bg-white rounded-xl p-3 text-center">
-                    <p class="text-xs text-gray-500">Lemak</p>
-                    <p class="text-lg font-bold text-red-700">${total.lemak.toFixed(1)}</p>
-                    <p class="text-xs text-gray-400">gram</p>
+                <div class="bg-white dark:bg-gray-700 rounded-xl p-3 text-center transition-colors">
+                    <p class="text-xs text-gray-500 dark:text-gray-400 transition-colors">Lemak</p>
+                    <p class="text-lg font-bold text-red-700 dark:text-red-400 transition-colors">${total.lemak.toFixed(1)}</p>
+                    <p class="text-xs text-gray-400 dark:text-gray-500 transition-colors">gram</p>
                 </div>
             </div>
         </div>
 
         <!-- DAFTAR MAKANAN -->
         <div class="space-y-3">
-            <h3 class="font-semibold text-gray-700 flex items-center gap-2">
+            <h3 class="font-semibold text-gray-700 dark:text-gray-200 flex items-center gap-2 transition-colors">
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"/>
                 </svg>
@@ -399,37 +399,37 @@ function displayResults(foods) {
 
     foods.forEach((food, index) => {
         html += `
-            <div class="bg-gray-50 rounded-xl p-4 border border-gray-200 hover:shadow-md transition">
+            <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-4 border border-gray-200 dark:border-gray-600 hover:shadow-md transition">
                 <div class="flex items-start justify-between mb-2">
-                    <h4 class="font-semibold text-gray-800">${index + 1}. ${food.nama_menu}</h4>
-                    <span class="text-xs bg-green-100 text-green-700 px-2 py-1 rounded-full">${food.estimasi_gram}g</span>
+                    <h4 class="font-semibold text-gray-800 dark:text-gray-100">${index + 1}. ${food.nama_menu}</h4>
+                    <span class="text-xs bg-green-100 dark:bg-green-900/40 text-green-700 dark:text-green-300 px-2 py-1 rounded-full">${food.estimasi_gram}g</span>
                 </div>
                 
-                ${food.deskripsi ? `<p class="text-sm text-gray-600 mb-3">${food.deskripsi}</p>` : ''}
+                ${food.deskripsi ? `<p class="text-sm text-gray-600 dark:text-gray-400 mb-3">${food.deskripsi}</p>` : ''}
                 
                 <div class="grid grid-cols-4 gap-2 text-xs">
-                    <div class="text-center bg-white rounded-lg py-2">
-                        <p class="text-gray-500">Kalori</p>
-                        <p class="font-semibold text-green-600">${food.kalori || 0}</p>
+                    <div class="text-center bg-white dark:bg-gray-600 rounded-lg py-2">
+                        <p class="text-gray-500 dark:text-gray-400">Kalori</p>
+                        <p class="font-semibold text-green-600 dark:text-green-400">${food.kalori || 0}</p>
                     </div>
-                    <div class="text-center bg-white rounded-lg py-2">
-                        <p class="text-gray-500">Protein</p>
-                        <p class="font-semibold text-blue-600">${food.protein || 0}g</p>
+                    <div class="text-center bg-white dark:bg-gray-600 rounded-lg py-2">
+                        <p class="text-gray-500 dark:text-gray-400">Protein</p>
+                        <p class="font-semibold text-blue-600 dark:text-blue-400">${food.protein || 0}g</p>
                     </div>
-                    <div class="text-center bg-white rounded-lg py-2">
-                        <p class="text-gray-500">Karbo</p>
-                        <p class="font-semibold text-orange-600">${food.karbohidrat || 0}g</p>
+                    <div class="text-center bg-white dark:bg-gray-600 rounded-lg py-2">
+                        <p class="text-gray-500 dark:text-gray-400">Karbo</p>
+                        <p class="font-semibold text-orange-600 dark:text-orange-400">${food.karbohidrat || 0}g</p>
                     </div>
-                    <div class="text-center bg-white rounded-lg py-2">
-                        <p class="text-gray-500">Lemak</p>
-                        <p class="font-semibold text-red-600">${food.lemak || 0}g</p>
+                    <div class="text-center bg-white dark:bg-gray-600 rounded-lg py-2">
+                        <p class="text-gray-500 dark:text-gray-400">Lemak</p>
+                        <p class="font-semibold text-red-600 dark:text-red-300">${food.lemak || 0}g</p>
                     </div>
                 </div>
                 
                 ${food.proses_pengolahan ? `
                     <div class="mt-3 pt-3 border-t border-gray-200">
                         <p class="text-xs text-gray-500">Proses Pengolahan:</p>
-                        <p class="text-xs text-gray-700 mt-1">${food.proses_pengolahan}</p>
+                        <p class="text-xs text-gray-700 dark:text-gray-400 mt-1">${food.proses_pengolahan}</p>
                     </div>
                 ` : ''}
             </div>
